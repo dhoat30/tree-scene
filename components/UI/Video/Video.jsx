@@ -36,6 +36,7 @@ export default function Video({
               style={{
                 objectFit: "cover", // cover, contain, none
               }}
+              sizes="(max-width: 1200px) 100vw, 50vw"
             />
             <ButtonStyled onClick={handleImageClick}>
               <PlayIcon />

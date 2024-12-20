@@ -18,7 +18,9 @@ export default function SecondAboutUsSection({ data }) {
             paddingBottom: `${(data.image.height / data.image.width) * 100}%`,
           }}
         >
-          <Image src={data.image.url} alt={data.image.alt} fill />
+          <Image src={data.image.url} alt={data.image.alt} fill 
+          
+          />
         </div>
         <div className="stats-wrapper">
           {data.statsArr.map((stat, index) => {

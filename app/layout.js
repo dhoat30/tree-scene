@@ -21,12 +21,9 @@ const work_sans = Work_Sans({
 
 
 export default function RootLayout({ children }) {
-
-
-
   return (
     <html lang="en" className={`${work_sans.variable}`}>
-      <GoogleTagManager gtmId="GTM-NDXM6D" />
+      <GoogleTagManager gtmId="GTM-5FNFX47G" />
       <body >
       <ClientProvider>
           {children}

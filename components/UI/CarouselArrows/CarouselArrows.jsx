@@ -35,7 +35,7 @@ const Container = styled.div`
     &:hover {
       svg {
         path {
-          fill: var(--light-on-primary-container) !important;
+          fill: var(--light-surface-tint) !important;
         }
       }
     }

@@ -4,16 +4,21 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import styled from "@emotion/styled";
 import ServiceCard from "../Card/ServiceCard";
+import Button from "@mui/material/Button";
 export default function ServicesCardsTemplate({
   subtitle,
   title,
   description,
   cards,
   archivePageSlug,
+  showLimitedServices = false,
 }) {
   if (!cards.length > 0) return null;
+  // reverse the order of the cards
+  const reversedCards = [...cards].reverse();
 
-  const serviceCards = cards.map((item, key) => {
+  const serviceCards = reversedCards.map((item, key) => {
+    if (showLimitedServices && key > 2) return null;
     return (
       <ServiceCard
         key={key}
@@ -24,6 +29,8 @@ export default function ServicesCardsTemplate({
         image={item.acf.hero_section.image}
         title={item.title.rendered}
         description={item.excerpt?.rendered}
+        sizes="(max-width: 650px) 100vw, (max-width: 1100px) 50vw, 30vw"
+
       />
     );
   });
@@ -54,7 +61,20 @@ export default function ServicesCardsTemplate({
             {description}
           </Typography>
         </div>
-        <div className="cards-wrapper mt-32">{serviceCards} </div>
+        <div className="cards-wrapper mt-32">{serviceCards}</div>
+        {showLimitedServices && (
+          <div className="button-wrapper flex justify-center mt-24" >
+          <Button
+            className="archive-button"
+            size="large"
+            variant="contained"
+            color="primary"
+            href="/services"
+          >
+            View all services
+          </Button>
+          </div> 
+        )}
       </Container>
     </Section>
   );
@@ -100,5 +120,7 @@ const Section = styled.section`
         padding: 16px;
       }
     }
+  }
+  .archive-button {
   }
 `;

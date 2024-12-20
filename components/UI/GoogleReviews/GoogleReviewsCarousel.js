@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useCallback } from "react";
+import { useRef } from "react";
 import Container from "@mui/material/Container";
 import styled from "@emotion/styled";
 import Slider from "react-slick";
@@ -8,9 +8,9 @@ import CarouselArrows from "../CarouselArrows/CarouselArrows";
 import Link from "next/link";
 import Button from "@mui/material/Button";
 import CallMadeOutlinedIcon from "@mui/icons-material/CallMadeOutlined";
-import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 import GoogleReviewCard from "./GoogleReviewCard/GoogleReviewCard";
 import Typography from "@mui/material/Typography";
+
 var settings = {
   dots: false,
   arrows: false,

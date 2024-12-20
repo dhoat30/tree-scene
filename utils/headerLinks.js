@@ -10,6 +10,12 @@ export const headerLinks = [
     // ]
     // },
     {
+        id: 6,
+        label: "Home",
+        url: "/home",
+       
+    },
+    {
         id: 2,
         label: "Services",
         url: "/services",

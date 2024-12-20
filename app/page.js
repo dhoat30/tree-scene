@@ -1,4 +1,4 @@
-import { getAllPosts, getOptions, getSinglePostData, getSinglePostDataWithID, getGoogleReviews } from '@/utils/fetchData'
+import {  getOptions, getSinglePostData, getAllPosts, getGoogleReviews } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
 import OptimizedHero from '@/components/UI/Hero/OptimizedHero/OptimizedHero'
 import TechLogos from '@/components/UI/TechLogos/TechLogos'
@@ -9,6 +9,7 @@ import ServiceSelectorTabs from '@/components/UI/Tabs/ServicesSelectorTabs/Servi
 import FaqAccordionSection from '@/components/UI/Layout/Sections/FaqAccordionSection'
 import BlogsArchive from '@/components/Pages/BlogsPage/BlogsArchive'
 import GoogleReviewsCarousel from '@/components/UI/GoogleReviews/GoogleReviewsCarousel'
+import ServicesCardsTemplate from '@/components/UI/Services/ServicesCardsTemplate'
 
 
 export async function generateMetadata({ params, searchParams }, parent) {
@@ -55,7 +56,8 @@ export default async function Page() {
 
   const postData = await getSinglePostData("home", "/wp-json/wp/v2/pages")
   const options = await getOptions()
-    
+  const allPosts = await getAllPosts("wp-json/wp/v2/service")
+
 
   if (!postData) {
     return {
@@ -93,7 +95,7 @@ export default async function Page() {
   // );
 
   // get all blogs 
-  const allBlogsData = await getAllPosts("wp-json/wp/v2/posts")
+  // const allBlogsData = await getAllPosts("wp-json/wp/v2/posts")
   return (
     <>
       <Header />
@@ -101,7 +103,7 @@ export default async function Page() {
         <OptimizedHero data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} />
         <TechLogos data={options.clients_logos} />
         <GoogleReviewsCarousel data={googleReviewsData}/>
-
+    <ServicesCardsTemplate title="All Services" description="We offer a wide range of services to cater to all your cleaning needs." cards={allPosts} archivePageSlug="services" showLimitedServices={true} />
         {/* <ServiceSelectorTabs residentialServicesData={residentialServices} commercialServicesData={commercialServices} industrialServicesData={industrialServices} title={postData[0]?.acf?.services_selector.title} description={postData[0]?.acf?.services_selector.description} /> */}
         <Layout sections={postData[0]?.acf?.sections} />
         <USP showTitle={true} statsArray={options.stats.items} cards={options.usp.items} title={options.usp.section_title} description={options.usp.section_description} />

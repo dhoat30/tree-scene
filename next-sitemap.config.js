@@ -14,7 +14,7 @@ const getData = async (endpoint, urlPrefix) => {
 };
 
 // const getBlogsData = () => getData('https://cms.treescene.co.nz/wp-json/wp/v2/posts?acf_format=standard&per_page=100', "blogs");
-const getServices = () => getData('https://cms.treescene.co.nz/wp-json/wp/v2/service?acf_format=standard&per_page=100', "residential-cleaning");
+const getServices = () => getData('https://cms.treescene.co.nz/wp-json/wp/v2/service?acf_format=standard&per_page=100', "services");
 // const getCommercialServices = () => getData('https://cms.treescene.co.nz/wp-json/wp/v2/commercial-cleaning?acf_format=standard&per_page=100', "commercial-cleaning");
 // const getIndustrialServices = () => getData('https://cms.treescene.co.nz/wp-json/wp/v2/industrial-cleaning?acf_format=standard&per_page=100', "industrial-cleaning");
 
@@ -22,7 +22,7 @@ module.exports = {
     siteUrl: isProd ? 'https://treescene.co.nz' : 'http://localhost:3000',
     generateRobotsTxt: true,
     sitemapSize: 1000,
-    exclude: ['/our-work', '/thank-you', '/order-received', '/checkout', '/form-submitted/thank-you'],
+    exclude: [ '/thank-you', '/order-received', '/checkout', '/form-submitted/thank-you'],
     additionalPaths: async (config) => {
         // const blogUrls = await getBlogsData();
         const services = await getServices();
