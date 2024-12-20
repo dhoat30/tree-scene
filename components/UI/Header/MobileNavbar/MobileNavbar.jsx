@@ -142,8 +142,8 @@ export default function MobileNavbar() {
                 <Link href="/" className="logo-wrapper">
                   <Image
                     src="/logo.png"
-                    width={72}
-                    height={33}
+                    width={513 /4}
+                    height={171/4}
                     alt="Epic Cleaning Logo"
                     quality={100}
                   />
