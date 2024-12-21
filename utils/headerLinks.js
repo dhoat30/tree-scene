@@ -12,7 +12,7 @@ export const headerLinks = [
     {
         id: 6,
         label: "Home",
-        url: "/home",
+        url: "/",
        
     },
     {
