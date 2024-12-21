@@ -11,7 +11,7 @@ export default function Copyright() {
       <Container maxWidth="xl" className="content-wrapper">
         <div className="copyright-wrapper">
           <Typography variant="body1" component="span">
-            © {new Date().getFullYear()} Epic Cleaning. All rights reserved
+            © {new Date().getFullYear()} Tree Scene. All rights reserved
           </Typography>
           <a href="https://webduel.co.nz" rel="nofollow" target="_blank">
             <Typography variant="body1" component="span">

@@ -63,7 +63,7 @@ export default function Footer({
                   component="div"
                   sx={{ marginBottom: "8px" }}
                 >
-                  Get cleaning tips & tricks every month
+                  Get tips & tricks every month
                 </Typography>
                 <NewsletterForm
                   className="newsletter-form"
