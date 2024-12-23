@@ -9,7 +9,8 @@ import ServicesCardsTemplate from '@/components/UI/Services/ServicesCardsTemplat
 import FaqAccordionSection from '@/components/UI/Layout/Sections/FaqAccordionSection'
 
 
-export async function generateMetadata({ params, searchParams }, parent) {
+export async function generateMetadata(props, parent) {
+    const params = await props.params;
     // read route params
     const slug = params.slug
 
@@ -45,10 +46,10 @@ export async function generateMetadata({ params, searchParams }, parent) {
             },
         }
     }
-
 }
 
-export default async function Contact({ params }) {
+export default async function Contact(props) {
+    const params = await props.params;
     const slug = params.slug
     const postData = await getSinglePostData("faq", "/wp-json/wp/v2/pages")
     const allPosts = await getAllPosts("wp-json/wp/v2/industrial-cleaning")

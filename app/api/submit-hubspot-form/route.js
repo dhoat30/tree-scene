@@ -52,6 +52,7 @@ export async function POST(req, res) {
 }
 
 export async function GET(req, res) {
-    return NextResponse.json(res)
+    const response = await res.json();
+    return NextResponse.json( response);
 
 };

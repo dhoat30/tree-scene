@@ -23,7 +23,8 @@ export const metadata = {
     },
 };
 
-export default async function Page({ searchParams }) {
+export default async function Page(props) {
+    const searchParams = await props.searchParams;
     const options = await getOptions()
     const { serviceName, packageName, price, description } = searchParams
     return (

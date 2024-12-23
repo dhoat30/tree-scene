@@ -9,7 +9,8 @@ import BreadcrumbHero from '@/components/UI/Hero/BreadcrumbHero'
 import GoogleReviewGridLayout from '@/components/UI/GoogleReviews/GoogleReviewGridLayout'
 
 
-export async function generateMetadata({ params, searchParams }, parent) {
+export async function generateMetadata(props, parent) {
+    const params = await props.params;
     // read route params
     const slug = params.slug
 
@@ -45,7 +46,6 @@ export async function generateMetadata({ params, searchParams }, parent) {
             },
         }
     }
-
 }
 
 export default async function Contact() {

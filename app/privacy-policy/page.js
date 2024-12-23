@@ -5,7 +5,8 @@ import Footer from '@/components/UI/Footer/Footer'
 import HtmlPageTemplate from '@/components/UI/HtmlPageTemplate/HtmlPageTemplate'
 
 
-export async function generateMetadata({ params, searchParams }, parent) {
+export async function generateMetadata(props, parent) {
+    const params = await props.params;
     // read route params
     const slug = params.slug
 
@@ -41,7 +42,6 @@ export async function generateMetadata({ params, searchParams }, parent) {
             },
         }
     }
-
 }
 
 export default async function Contact() {

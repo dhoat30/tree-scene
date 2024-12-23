@@ -12,7 +12,8 @@ import GoogleReviewsCarousel from '@/components/UI/GoogleReviews/GoogleReviewsCa
 import ServicesCardsTemplate from '@/components/UI/Services/ServicesCardsTemplate'
 
 
-export async function generateMetadata({ params, searchParams }, parent) {
+export async function generateMetadata(props, parent) {
+  const params = await props.params;
   // read route params
   const slug = params.slug
 
@@ -49,7 +50,6 @@ export async function generateMetadata({ params, searchParams }, parent) {
       },
     }
   }
-
 }
 
 export default async function Page() {

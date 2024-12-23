@@ -11,7 +11,8 @@ import Gallery from '@/components/UI/Gallery/Gallery'
 import BreadcrumbHero from '@/components/UI/Hero/BreadcrumbHero'
 
 
-export async function generateMetadata({ params, searchParams }, parent) {
+export async function generateMetadata(props, parent) {
+    const params = await props.params;
     // read route params
     const slug = params.slug
 
@@ -47,7 +48,6 @@ export async function generateMetadata({ params, searchParams }, parent) {
             },
         }
     }
-
 }
 
 export default async function Contact() {

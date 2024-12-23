@@ -5,6 +5,7 @@ const DOMAIN = process.env.MAILGUN_DOMAIN;
 const API_KEY = process.env.MAILGUN_API_KEY;
 
 export async function GET(req, res) {
+  const response = await res.json();
 
   return NextResponse.json(response)
 }
