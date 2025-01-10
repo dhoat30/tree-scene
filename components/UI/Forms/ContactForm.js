@@ -154,7 +154,7 @@ export default function ContactForm({ className, formName = "Contact Form" }) {
         const isSelectMultiple = field.type === "select" && field.multiple; // Example condition
 
         return <Input
-            key={index}
+            key={index * Math.random()}
             label={field.label}
             type={field.type}
             value={isSelectMultiple ? formData[field.id] || [] : formData[field.id] || ''}

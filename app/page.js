@@ -96,6 +96,7 @@ export default async function Page() {
 
   // get all blogs 
   // const allBlogsData = await getAllPosts("wp-json/wp/v2/posts")
+
   return (
     <>
       <Header />

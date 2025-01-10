@@ -15,7 +15,8 @@ import Alert from '@mui/material/Alert';
 import Container from '@mui/material/Container';
 import { useRouter } from 'next/navigation';
 import Typography from "@mui/material/Typography";
-
+import GoogleMapsLoader from "@/components/GoogleMaps/GoogleMapsLoader";
+import GoogleAutocomplete from "@/components/GoogleMaps/GoogleAutoComplete";
 export default function GetQuoteForm({ className, formName = "Get a Quote Form", title = "Please fill out a form" }) {
     const router = useRouter();
 
@@ -33,6 +34,7 @@ export default function GetQuoteForm({ className, formName = "Get a Quote Form",
     const [isSuccess, setIsSuccess] = useState(false);
     const [error, setError] = useState(false);
     const [newSubmission, setNewSubmission] = useState(false);
+    const [mapsLoaded, setMapsLoaded] = useState(false);
 
     const handleChange = (id, value, isSelectMultiple) => {
         let newValue = value.target ? value.target.value : value;
@@ -47,7 +49,15 @@ export default function GetQuoteForm({ className, formName = "Get a Quote Form",
             setErrors({ ...errors, [id]: false });
         }
     };
-
+    const handleSelectAddress = (selectedAddress) => {
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            address: selectedAddress,
+        }));
+        if (errors.address) {
+            setErrors({ ...errors, address: false });
+        }
+    };
     const handleBlur = (id, validationFunction) => {
         if (!validationFunction(formData[id])) {
             setErrors({ ...errors, [id]: true });
@@ -160,13 +170,18 @@ export default function GetQuoteForm({ className, formName = "Get a Quote Form",
         return [];
     };
 
+    // Initialize Google Maps script
+    const handleLoad = () => {
+        setMapsLoaded(true);
+    };
+
     const formInputs = getQuoteFormData.map((field, index) => {
         if (field.id === 'service') {
             const filteredOptions = getFilteredServiceOptions();
             return (
                 <Input
                     lightTheme={true}
-                    key={index}
+                    key={index * Math.random()}
                     label={field.label}
                     type={field.type}
                     value={formData[field.id]}
@@ -180,11 +195,30 @@ export default function GetQuoteForm({ className, formName = "Get a Quote Form",
                     multipleValue={field.multiple}
                 />
             );
+        } else if (field.id === 'address') {
+            return (
+                <React.Fragment key={field.id}> 
+                    {!mapsLoaded && <GoogleMapsLoader onLoad={handleLoad} key="google-maps-loader" />}
+                    {mapsLoaded && (
+                        <GoogleAutocomplete
+                            className="mt-16"
+                        label={field.label}
+                            value={formData.address}
+                            onChange={(value) => handleChange(field.id, value, false)}
+                            onSelect={handleSelectAddress}
+                            required={field.required}
+                            autoComplete={field.autoComplete}
+                            error={errors[field.id]}
+                            helperText={errors[field.id] ? 'Please enter a valid address' : ''}
+                        />
+                    )}
+                </React.Fragment>
+            );
         } else {
             return (
                 <Input
                     lightTheme={true}
-                    key={index}
+                    key={index * Math.random()}
                     label={field.label}
                     type={field.type}
                     value={formData[field.id]}
