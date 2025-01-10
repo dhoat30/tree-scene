@@ -26,8 +26,6 @@ export const headerLinks = [
             { label: "Land Clearing", url: "/services/land-clearing-tauranga" },
             { label: "Planting and Gardening Services", url: "/services/planting-and-gardening-services-tauranga" },
             { label: "Storm-Damaged Trees and Emergency Tree Work", url: "/services/storm-damaged-trees-emergency-tree-work" },
-            { label: "Tree Health Monitoring and Assessments", url: "/services/tree-health-monitoring-and-assessments-tauranga" },
-            { label: "Chipping and Wood Splitting Services", url: "/services/chipping-and-wood-splitting-services-tauranga" },
             { label: "Firewood & Mulch Tauranga", url: "/services/firewood-and-mulch-tauranga" },
         ]
     },
