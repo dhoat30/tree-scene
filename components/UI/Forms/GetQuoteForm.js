@@ -181,7 +181,7 @@ export default function GetQuoteForm({ className, formName = "Get a Quote Form",
             return (
                 <Input
                     lightTheme={true}
-                    key={index * Math.random()}
+                    key={index}
                     label={field.label}
                     type={field.type}
                     value={formData[field.id]}
@@ -218,7 +218,7 @@ export default function GetQuoteForm({ className, formName = "Get a Quote Form",
             return (
                 <Input
                     lightTheme={true}
-                    key={index * Math.random()}
+                    key={index}
                     label={field.label}
                     type={field.type}
                     value={formData[field.id]}
