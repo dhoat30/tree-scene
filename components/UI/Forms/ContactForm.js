@@ -116,8 +116,25 @@ export default function ContactForm({ className, formName = "Contact Form" }) {
             headers: { 'Content-Type': 'application/json' },
             data: data
         };
+        
+        const facebookData = { 
+            method: 'post', 
+            url: '/api/facebook-conversion-api',
+            headers: { 'Content-Type': 'application/json' },
+            data: { 
+                data: {
+                event: "Lead", 
+                firstName: formData.firstname,
+                email: formData.email,
+                phone: formData.phone,
+                county: "Bay of Plenty", 
+                eventSourceUrl: window.location.href, 
+            } 
+               
+            }
+        }
 
-        Promise.all([axios(configHubspot), axios(configSendMail)])
+        Promise.all([axios(configHubspot), axios(configSendMail), axios(facebookData)])
             .then(function (responses) {
                 // responses[1] is the response from sendmail
                 if (responses[0].status === 200) {

@@ -136,10 +136,28 @@ export default function GetQuoteForm({ className, formName = "Get a Quote Form",
             data: dataPayload
         };
 
-        Promise.all([axios(configHubspot), axios(configSendMail)])
+        const facebookData = { 
+            method: 'post', 
+            url: '/api/facebook-conversion-api',
+            headers: { 'Content-Type': 'application/json' },
+            data: { 
+                data: {
+                event: "Lead", 
+                firstName: formData.firstname,
+                email: formData.email,
+                phone: formData.phone,
+                county: "Bay of Plenty", 
+                eventSourceUrl: window.location.href, 
+                serviceRequested: formData['service'].join(", ")
+            } 
+               
+            }
+        }
+
+        Promise.all([axios(configHubspot), axios(configSendMail), axios(facebookData)])
             .then(function (response) {
                 console.log(response);
-                if (response[1].status === 200) {
+                if (response[0].status === 200) {
                     setIsLoading(false);
                     setIsSuccess(true);
                     setNewSubmission(false);
