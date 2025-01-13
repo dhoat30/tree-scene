@@ -92,15 +92,7 @@ export default function ContactForm({ className, formName = "Contact Form" }) {
         }
 
         setIsLoading(true)
-        // Send an event to GA4 manually
-        // if (typeof window !== 'undefined') {
-        //     window.dataLayer = window.dataLayer || [];
-        //     window.dataLayer.push({
-        //         'event': 'contact_form', // The custom event name you configured in GTM
-        //         'event_category': 'form_submit',
-        //         'event_label': 'Speed Checker Form Submitted'
-        //     });
-        // }
+    
 
         // hubspot config
         var configHubspot = {

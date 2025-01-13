@@ -111,15 +111,6 @@ export default function GetQuoteForm({ className, formName = "Get a Quote Form",
 
         setIsLoading(true);
 
-        // Send an event to GA4 manually
-        // if (typeof window !== 'undefined') {
-        //     window.dataLayer = window.dataLayer || [];
-        //     window.dataLayer.push({
-        //         'event': 'quote_form_submission', // The custom event name you configured in GTM
-        //         'event_category': 'form_submit',
-        //         'event_label': 'Instant Quote From Submission'
-        //     });
-        // }
 
         // Hubspot config
         var configHubspot = {

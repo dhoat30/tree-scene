@@ -5,11 +5,12 @@ import TechLogos from '@/components/UI/TechLogos/TechLogos'
 import USP from '@/components/UI/USP/USP'
 import Header from '@/components/UI/Header/Header'
 import Footer from '@/components/UI/Footer/Footer'
-import ServiceSelectorTabs from '@/components/UI/Tabs/ServicesSelectorTabs/ServiceSelectorTabs'
 import FaqAccordionSection from '@/components/UI/Layout/Sections/FaqAccordionSection'
 import BlogsArchive from '@/components/Pages/BlogsPage/BlogsArchive'
 import GoogleReviewsCarousel from '@/components/UI/GoogleReviews/GoogleReviewsCarousel'
 import ServicesCardsTemplate from '@/components/UI/Services/ServicesCardsTemplate'
+import Loading from '@/components/UI/Loader/Loading'
+import { Suspense } from 'react';
 
 
 export async function generateMetadata(props, parent) {
@@ -53,7 +54,6 @@ export async function generateMetadata(props, parent) {
 }
 
 export default async function Page() {
-
   const postData = await getSinglePostData("home", "/wp-json/wp/v2/pages")
   const options = await getOptions()
   const allPosts = await getAllPosts("wp-json/wp/v2/service")
@@ -66,36 +66,8 @@ export default async function Page() {
   }
 // google reviews data fetch 
   const googleReviewsData = await getGoogleReviews()  
-  // Fetching the residential cleaning services IDs
-  // const residentialServicesIDs = postData[0]?.acf?.services_selector.residential_services
-  // // Fetching the residential cleaning services data based on IDs
-  // const residentialServices = await Promise.all(
-  //   residentialServicesIDs?.map(async (id) => {
-  //     return await getSinglePostDataWithID(id, "wp-json/wp/v2/residential-cleaning");
-  //   })
-  // );
+  
 
-
-  // //fetching the commercial cleaning services IDs
-  // const commercialServicesIDs = postData[0]?.acf?.services_selector.commercial_services
-  // // Fetching the commercial cleaning services data based on IDs
-  // const commercialServices = await Promise.all(
-  //   commercialServicesIDs?.map(async (id) => {
-  //     return await getSinglePostDataWithID(id, "wp-json/wp/v2/commercial-cleaning");
-  //   })
-  // );
-
-  // //fetching the industrial cleaning services IDs
-  // const industrialServicesIDs = postData[0]?.acf?.services_selector.industrial_services
-  // // Fetching the industrial cleaning services data based on IDs
-  // const industrialServices = await Promise.all(
-  //   industrialServicesIDs.map(async (id) => {
-  //     return await getSinglePostDataWithID(id, "wp-json/wp/v2/industrial-cleaning");
-  //   })
-  // );
-
-  // get all blogs 
-  // const allBlogsData = await getAllPosts("wp-json/wp/v2/posts")
 
   return (
     <>

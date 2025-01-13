@@ -7,8 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Work_Sans } from 'next/font/google'
 
 import ClientProvider from '@/components/Providers/ClientProvider';
-
-import { GoogleTagManager } from '@next/third-parties/google'
+import Script from 'next/script'
 
 // fonts settings
 
