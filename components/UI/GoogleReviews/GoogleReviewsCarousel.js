@@ -39,7 +39,6 @@ var settings = {
 };
 
 export default function GoogleReviewsCarousel({data}) {
-  console.log("google review", data)
   // slider arrow functionality
   const sliderRef = useRef(null);
 

@@ -10,6 +10,7 @@ export default function BlogMetaInfo({
   className,
   categoryDetails,
 }) {
+  if(!categoryDetails) return null 
   return (
     <Wrapper className={`${className}`}>
       <div className="text-wrapper">

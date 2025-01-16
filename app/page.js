@@ -67,7 +67,7 @@ export default async function Page() {
 // google reviews data fetch 
   const googleReviewsData = await getGoogleReviews()  
   
-
+console.log(postData[0]?.acf)
 
   return (
     <>
