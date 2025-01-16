@@ -20,6 +20,11 @@ export const informationLinks = [
     { label: "FAQs", url: "/faq" },
     { label: "Contact Us", url: "/contact-us" },
     { label: "Get Free Quote", url: "/get-a-quote" },
-    
+    {
+     
+        label: "Tree Removal Cost",
+        url: "/tree-removal-cost-tauranga",
+       
+    },
 
 ] 

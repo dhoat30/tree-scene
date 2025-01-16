@@ -29,7 +29,12 @@ export const headerLinks = [
             { label: "Firewood & Mulch Tauranga", url: "/services/firewood-and-mulch-tauranga" },
         ]
     },
-
+    {
+        id: 6,
+        label: "Tree Removal Cost",
+        url: "/tree-removal-cost-tauranga",
+       
+    },
     {
         id: 6,
         label: "About Us",
