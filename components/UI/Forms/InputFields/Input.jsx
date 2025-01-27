@@ -239,7 +239,7 @@ export default function Input({
               label={option.label}
               onClick={() => handleChipClick(option.value)}
               variant={value.includes(option.value) ? "filled" : "outlined"}
-              color="secondary"
+              color="primary"
             />
           ))}
         </div>

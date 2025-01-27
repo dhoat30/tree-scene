@@ -61,7 +61,7 @@ export default async function Contact() {
         <>
             <Header />
             <main>
-                <GetQuotePage data={postData[0]} />
+                <GetQuotePage data={postData[0]}  heroUSP={options.hero_usp}  />
                 <TechLogos data={options.clients_logos} />
                 <Layout sections={postData[0]?.acf?.sections} />
                 <USP showTitle={true} statsArray={options.stats.items} cards={options.usp.items} title={options.usp.section_title} description={options.usp.section_description} />

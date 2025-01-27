@@ -9,11 +9,12 @@ import HeroImage from "@/components/UI/Hero/OptimizedHero/HeroImage";
 import Video from "@/components/UI/Video/Video";
 import USP from "@/components/UI/USP/USP";
 import GetQuoteForm from "@/components/UI/Forms/GetQuoteForm";
+import HeroUSP from "@/components/UI/USP/HeroUSP";
 // const WebsitePriceCalculatorForm = dynamic(() =>
 //   import("@/components/UI/Forms/WebsitePriceCalculatorForm")
 // );
 
-export default function GetQuotePage({ data, websitePackageOffer }) {
+export default function GetQuotePage({ data, websitePackageOffer, heroUSP }) {
   let graphicComponent = null;
   if (data.acf.hero_section.show_video) {
     if (data.acf.hero_section.video_options === "enter_youtube_id") {
@@ -30,15 +31,17 @@ export default function GetQuotePage({ data, websitePackageOffer }) {
   } else {
     graphicComponent = <HeroImage image={data.acf.hero_section.image} />;
   }
+
+  
   return (
     <ThemeProvider theme={lightTheme}>
       <Section>
         <Container maxWidth="lg" className="container">
           <div className="content-container">
-            <Typography variant="h2" component="h1" className="subtitle">
+            <Typography variant="h4" component="h1" className="subtitle">
               {data.acf.hero_section.subtitle}
             </Typography>
-
+              <HeroUSP data={heroUSP} /> 
             <Typography
               variant="body1"
               component="p"
@@ -80,6 +83,9 @@ const Section = styled.section`
     }
     @media (max-width: 600px) {
       padding: 0;
+    }
+    .subtitle { 
+      font-weight: 600;
     }
     .form-container {
       border: 1px solid var(--light-outline-variant);

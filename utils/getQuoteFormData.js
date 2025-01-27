@@ -1,27 +1,24 @@
 export const servicePropertyMap = {
     Residential: [
-        { value: "Tree Removal", label: "Tree Removal", price: 0 },
-        { value: "Tree Pruning", label: "Tree Pruning", price: 0 },
-        { value: "Hedge Trimming", label: "Hedge Trimming", price: 0 },
-        { value: "Land Clearing", label: "Land Clearing", price: 0 },
-        { value: "Planting and Gardening Services", label: "Planting and Gardening Services", price: 0 },
-        { value: "Storm-Damaged Trees and Emergency Tree Work", label: "Storm-Damaged Trees and Emergency Tree Work", price: 0 },
+        { value: "Tree Removal", label: "Tree Removal - Starting from $299", price: 0 },
+        { value: "Tree Pruning", label: "Tree Pruning - Starting from $299", price: 0 },
+        { value: "Hedge Trimming", label: "Hedge Trimming - Starting from $149", price: 0 },
+        { value: "Land Clearing", label: "Land Clearing - Starting from $499", price: 0 },
+        { value: "Storm-Damaged Trees and Emergency Tree Work - Starting from $399", label: "Storm-Damaged Trees and Emergency Tree Work", price: 0 },
         { value: "Tree Health Monitoring and Assessments", label: "Tree Health Monitoring and Assessments", price: 0 },
-        { value: "Chipping and Wood Splitting Services", label: "Chipping and Wood Splitting Services", price: 0 },
+        { value: "Chipping and Wood Splitting Services", label: "Chipping and Wood Splitting Services - Starting from $299", price: 0 },
         { value: "Firewood and Mulch Tauranga", label: "Firewood and Mulch Tauranga", price: 0 },
 
     ],
     Commercial: [
-        { value: "Tree Removal", label: "Tree Removal", price: 0 },
-        { value: "Tree Pruning", label: "Tree Pruning", price: 0 },
-        { value: "Hedge Trimming", label: "Hedge Trimming", price: 0 },
-        { value: "Land Clearing", label: "Land Clearing", price: 0 },
-        { value: "Planting and Gardening Services", label: "Planting and Gardening Services", price: 0 },
-        { value: "Storm-Damaged Trees and Emergency Tree Work", label: "Storm-Damaged Trees and Emergency Tree Work", price: 0 },
+        { value: "Tree Removal", label: "Tree Removal - Starting from $299", price: 0 },
+        { value: "Tree Pruning", label: "Tree Pruning - Starting from $299", price: 0 },
+        { value: "Hedge Trimming", label: "Hedge Trimming - Starting from $149", price: 0 },
+        { value: "Land Clearing", label: "Land Clearing - Starting from $499", price: 0 },
+        { value: "Storm-Damaged Trees and Emergency Tree Work - Starting from $399", label: "Storm-Damaged Trees and Emergency Tree Work", price: 0 },
         { value: "Tree Health Monitoring and Assessments", label: "Tree Health Monitoring and Assessments", price: 0 },
-        { value: "Chipping and Wood Splitting Services", label: "Chipping and Wood Splitting Services", price: 0 },
+        { value: "Chipping and Wood Splitting Services", label: "Chipping and Wood Splitting Services - Starting from $299", price: 0 },
         { value: "Firewood and Mulch Tauranga", label: "Firewood and Mulch Tauranga", price: 0 },
-
         // Add more commercial services as needed
     ],
  
