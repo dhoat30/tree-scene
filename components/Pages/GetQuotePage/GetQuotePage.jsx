@@ -10,12 +10,14 @@ import Video from "@/components/UI/Video/Video";
 import USP from "@/components/UI/USP/USP";
 import GetQuoteForm from "@/components/UI/Forms/GetQuoteForm";
 import HeroUSP from "@/components/UI/USP/HeroUSP";
+import BeforeAfter from "@/components/UI/BeforeAfterSlider/BeforeAfter";
 // const WebsitePriceCalculatorForm = dynamic(() =>
 //   import("@/components/UI/Forms/WebsitePriceCalculatorForm")
 // );
 
 export default function GetQuotePage({ data, websitePackageOffer, heroUSP }) {
   let graphicComponent = null;
+  console.log("data", data);
   if (data.acf.hero_section.show_video) {
     if (data.acf.hero_section.video_options === "enter_youtube_id") {
       if (data.acf.hero_section.youtube_id) {
@@ -28,7 +30,12 @@ export default function GetQuotePage({ data, websitePackageOffer, heroUSP }) {
         );
       }
     }
-  } else {
+  }
+ else if (data.acf.hero_section.show_before_after_images) { 
+
+  graphicComponent = <BeforeAfter data={{beforeImage: data.acf.hero_section.before_after_images.before_image, afterImage:data.acf.hero_section.before_after_images.after_image }} /> 
+  } 
+  else {
     graphicComponent = <HeroImage image={data.acf.hero_section.image} />;
   }
 
