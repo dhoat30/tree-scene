@@ -6,8 +6,10 @@ import HeroImage from "./HeroImage";
 import Video from "../../Video/Video";
 import BeforeAfter from "../../BeforeAfterSlider/BeforeAfter";
 export default async function OptimizedHero({ data, heroUSP }) {
-    if (!data || !data.image) return null
     console.log(data)
+    if (!data) return null
+   
+
     const heroData = {
         subtitle: data.subtitle,
         title: data.title,
@@ -16,6 +18,7 @@ export default async function OptimizedHero({ data, heroUSP }) {
         ctaArray: data.buttons,
     };
     let graphicComponent = null;
+    
      if (data.show_before_after_images) {
         const beforeAfterImage = {
             beforeImage: data.before_after_images?.before_image,

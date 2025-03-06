@@ -21,12 +21,16 @@ export const headerLinks = [
         url: "/services",
         subLinks: [
             { label: "Tree Removal", url: "/services/tree-removal" },
+            { label: "Palm Cleaning & Removal", url: "/services/palm-cleaning-removal-services" },
+
             { label: "Tree Pruning", url: "/services/tree-pruning-tauranga" },
             { label: "Hedge Trimming", url: "/services/hedge-trimming-tauranga" },
             { label: "Land Clearing", url: "/services/land-clearing-tauranga" },
             { label: "Planting and Gardening Services", url: "/services/planting-and-gardening-services-tauranga" },
             { label: "Storm-Damaged Trees and Emergency Tree Work", url: "/services/storm-damaged-trees-emergency-tree-work" },
             { label: "Firewood & Mulch Tauranga", url: "/services/firewood-and-mulch-tauranga" },
+            { label: "Powerline Clearing", url: "/services/powerline-clearing" },
+
         ]
     },
     {

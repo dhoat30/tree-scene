@@ -26,7 +26,7 @@ export default function ServicesCardsTemplate({
           label: "LEARN MORE",
           link: `/${archivePageSlug}/${item.slug}`,
         }}
-        image={item.acf.hero_section.image}
+        image={item.acf.hero_section.image ? item.acf.hero_section.image : item.acf.hero_section.before_after_images.after_image}
         title={item.title.rendered}
         description={item.excerpt?.rendered}
         sizes="(max-width: 650px) 100vw, (max-width: 1100px) 50vw, 30vw"
