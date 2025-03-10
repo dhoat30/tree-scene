@@ -8,7 +8,7 @@ import { Work_Sans } from 'next/font/google'
 
 import ClientProvider from '@/components/Providers/ClientProvider';
 import Script from 'next/script'
-
+import {AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 // fonts settings
 
 const work_sans = Work_Sans({
@@ -49,9 +49,13 @@ export default function RootLayout({ children }) {
             loading='lazy'
           />
         </noscript>
+        <AppRouterCacheProvider>
+
       <ClientProvider>
           {children}
         </ClientProvider>
+       </AppRouterCacheProvider>
+
 
       </body>
     </html>

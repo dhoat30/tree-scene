@@ -25,7 +25,6 @@ export const servicePropertyMap = {
 };
 
 // utils/getQuoteFormData.js
-
 export const getQuoteFormData = [
 
     {

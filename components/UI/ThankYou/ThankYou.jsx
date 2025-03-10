@@ -41,11 +41,11 @@ export default function ThankYou({
                 Go back to Home
               </Button>
             </Link>
-            <Link href="/blogs">
+            {/* <Link href="/blogs">
               <Button variant="contained" color="primary" size="large">
                 Read our blogs
               </Button>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </Container>
