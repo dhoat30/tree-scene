@@ -51,8 +51,8 @@ export const multipartFormData = [
             { value: "Tree Pruning", label: "Tree Pruning - Starting from $299", price: 0 },
             { value: "Hedge Trimming", label: "Hedge Trimming - Starting from $149", price: 0 },
             { value: "Land Clearing", label: "Land Clearing - Starting from $499", price: 0 },
-            { value: "Storm-Damaged Trees and Emergency Tree Work - Starting from $399", label: "Storm-Damaged Trees and Emergency Tree Work", price: 0 },
-            { value: "Chipping and Wood Splitting Services", label: "Chipping and Wood Splitting Services - Starting from $299", price: 0 },
+            { value: "Storm-Damaged and Emergency Tree Work", label: "Storm-Damaged and Emergency Tree Work", price: 0 },
+            { value: "Chipping and Wood Splitting Services", label: "Chipping and Wood Splitting Services", price: 0 },
         ], 
     },
     {

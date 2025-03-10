@@ -220,14 +220,14 @@ console.log(formData)
                             options={multipartFormData[activeStep].options}
                         />
 
-                        <Box className="button-wrapper" sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+                        <Box className="button-wrapper mt-16" sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                             <Button
                                 color="primary"
                                 disabled={activeStep === 0}
                                 onClick={handleBack}
                                 variant="outlined"
                                 startIcon={<KeyboardArrowLeft />}
-                                size="large"
+                                size="medium"
                             >
                                 Back
                             </Button>
@@ -236,10 +236,10 @@ console.log(formData)
                                 :
                                 <Button onClick={handleNext} color="primary" variant="contained"
                                     endIcon={<KeyboardArrowRight />}
-                                    size="large"
+                                    size="medium"
                                 >
                                     
-                                    Continue
+                                    Next
                                 </Button>
                             }
                         </Box>
@@ -275,8 +275,8 @@ overflow: auto;
 }
 .close-icon{ 
     position: absolute;
-    right: 16px; 
-    top: 6px; 
+    right: 8px; 
+    top: 12px; 
     color: var(--light-outline); 
     &:hover{ 
         cursor: pointer;
@@ -285,9 +285,8 @@ overflow: auto;
 .mobile-stepper{ 
     background: none; 
     padding:0;
-    max-width: 400px; 
     margin: 0 auto;
-    padding-top: 16px; 
+  
     .MuiLinearProgress-root{ 
         width:100%;
         height: 8px; 
@@ -320,11 +319,11 @@ svg.Mui-active{
 }
 
 .input-wrapper{ 
-        padding: 0 24px 24px 24px; 
+        padding: 16px 24px 24px 24px; 
     background: var(--light--surface-container);
 border-radius: 12px; 
     @media(max-width: 600px){ 
-        padding: 0 16px 24px 16px; 
+        padding: 16px 16px 24px 16px; 
 
     }
     .Mui-error{ 
