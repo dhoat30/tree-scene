@@ -146,7 +146,7 @@ function DesktopNavbar() {
               >
                 {menuItems}
               </Box>
-              <Link href="/get-a-quote">
+              <Link href="/get-free-quote">
                 <Button size="large" variant="contained">
                   GET A QUOTE
                 </Button>

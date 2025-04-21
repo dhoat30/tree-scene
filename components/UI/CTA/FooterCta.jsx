@@ -48,7 +48,7 @@ export default function FooterCta({ title, description, cta }) {
                 </Button>
               </Link>
 
-              {/* <Link href="/get-a-quote">
+              {/* <Link href="/get-free-quote">
               <Button
                 size="large"
                 variant="outlined"

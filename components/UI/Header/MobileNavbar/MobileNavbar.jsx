@@ -186,7 +186,7 @@ export default function MobileNavbar() {
             </IconButton>
           </DrawerHeader>
           <ListContainer>{menuItems}</ListContainer>
-          <Link href="/get-a-quote" style={{ margin: "16px" }}>
+          <Link href="/get-free-quote" style={{ margin: "16px" }}>
             <Button
               size="large"
               variant="outlined"

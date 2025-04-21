@@ -19,7 +19,7 @@ export const informationLinks = [
     { label: "About Us", url: "/about-us" },
     { label: "FAQs", url: "/faq" },
     { label: "Contact Us", url: "/contact-us" },
-    { label: "Get Free Quote", url: "/get-a-quote" },
+    { label: "Get Free Quote", url: "/get-free-quote" },
     {
      
         label: "Tree Removal Cost",
