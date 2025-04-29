@@ -14,7 +14,7 @@ export async function generateMetadata(props, parent) {
     const slug = params.slug
 
     // fetch data
-    const data = await getSinglePostData("get-a-quote", "/wp-json/wp/v2/pages")
+    const data = await getSinglePostData("get-free-quote", "/wp-json/wp/v2/pages")
 
     // optionally access and extend (rather than replace) parent metadata
     const previousImages = (await parent).openGraph?.images || []
@@ -49,7 +49,7 @@ export async function generateMetadata(props, parent) {
 
 export default async function Contact() {
 
-    const postData = await getSinglePostData("get-a-quote", "/wp-json/wp/v2/pages")
+    const postData = await getSinglePostData("get-free-quote", "/wp-json/wp/v2/pages")
     const options = await getOptions()
     if (!postData) {
         return {

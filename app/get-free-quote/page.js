@@ -16,7 +16,7 @@ export async function generateMetadata(props, parent) {
     const slug = params.slug
 
     // fetch data
-    const data = await getSinglePostData("testimonials", "/wp-json/wp/v2/pages")
+    const data = await getSinglePostData("get-free-quote", "/wp-json/wp/v2/pages")
 
     // optionally access and extend (rather than replace) parent metadata
     const previousImages = (await parent).openGraph?.images || []
@@ -51,7 +51,7 @@ export async function generateMetadata(props, parent) {
 
 export default async function Contact() {
 
-    const postData = await getSinglePostData("testimonials", "/wp-json/wp/v2/pages")
+    const postData = await getSinglePostData("get-free-quote", "/wp-json/wp/v2/pages")
 
     const googleReviewsData = await getGoogleReviews()
     const options = await getOptions()
@@ -64,14 +64,15 @@ export default async function Contact() {
         <>
             <Header />
             <main>
+              
+                <BreadcrumbHero title={postData[0]?.acf.hero_section.title} description={postData[0]?.acf.hero_section.description} showBreadcrumb={true} />
                 <MultipartForm/> 
-                <BreadcrumbHero title={postData[0]?.acf.hero_section.title} description={postData[0]?.acf.hero_section.description} showBreadcrumb={false} />
                 <GoogleReviewGridLayout data={googleReviewsData} />
                 <TechLogos data={options.clients_logos} />
                 <Layout sections={postData[0]?.acf?.sections} />
                 <USP showTitle={true} statsArray={options.stats.items} cards={options.usp.items} title={options.usp.section_title} description={options.usp.section_description} />
             </main>
-            <Footer footerCtaData={options.footer_cta} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} />
+            <Footer showFooterCta={false} footerCtaData={options.footer_cta} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} />
         </>
 
     )

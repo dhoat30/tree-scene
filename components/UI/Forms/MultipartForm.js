@@ -17,7 +17,8 @@ import Container from '@mui/material/Container';
 import { useRouter } from 'next/navigation'
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { usePathname } from 'next/navigation';
-
+import GoogleMapsLoader from "@/components/GoogleMaps/GoogleMapsLoader";
+import GoogleAutocomplete from "@/components/GoogleMaps/GoogleAutoComplete";
 
 export default function MultipartForm({ className, formName = "Get a Free Quote" }) {
     const router = useRouter()
@@ -28,23 +29,25 @@ export default function MultipartForm({ className, formName = "Get a Free Quote"
         propertyType: '', 
         howManyTrees: '',
         service: [],
+        address: '', 
+
         treeHeight: '',
         workBeginIn: '',
       
     });
+    const [errors, setErrors] = useState({});
+
     const [formErrors, setFormErrors] = useState({});
     const [activeStep, setActiveStep] = React.useState(0);
     const [isLoading, setIsLoading] = useState(false)
     const [isSuccess, setIsSuccess] = useState(false)
     const [error, setError] = useState(false)
     const [newSubmission, setNewSubmission] = useState(false)
-    const [showPopUpForm, setShowPopUpForm]  = useState(false)
+    const [mapsLoaded, setMapsLoaded] = useState(false);
 
     const pathName = usePathname()
 
-    useEffect(()=> { 
-        setShowPopUpForm(true)
-    }, [pathName])
+
     // theme 
     const theme = useTheme();
 console.log(formData)
@@ -60,7 +63,15 @@ console.log(formData)
 
         }
     };
-
+    const handleSelectAddress = (selectedAddress) => {
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            address: selectedAddress,
+        }));
+        if (errors.address) {
+            setErrors({ ...errors, address: false });
+        }
+    };
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
@@ -84,6 +95,10 @@ console.log(formData)
     //     setFormData(newFormData);
     // };
 
+    // Initialize Google Maps script
+    const handleLoad = () => {
+        setMapsLoaded(true);
+    };
     // submit handler 
     const submitHandler = (e) => {
 
@@ -98,7 +113,7 @@ console.log(formData)
         const dataPayload = {
             email: formData.email,
             formName: formName,
-            message: `First Name: ${formData.firstname} \n Email: ${formData.email} \n Phone: ${formData.phone} \n What kind of property needs tree services?: ${formData['propertyType']} \n How many trees or shrubs need attention?: ${formData['howManyTrees']} \n Services Required?: ${formData['service'].join(", ") }  \n How tall are the trees or shrubs?: ${formData['treeHeight']} \n When do you want the work to begin?: ${formData['workBeginIn']} `,
+            message: `First Name: ${formData.firstname} \n Email: ${formData.email} \n Phone: ${formData.phone} \n What kind of property needs tree services?: ${formData['propertyType']} \n How many trees or shrubs need attention?: ${formData['howManyTrees']} \n Services Required?: ${formData['service'].join(", ") }  \n How tall are the trees or shrubs?: ${formData['treeHeight']} \n When do you want the work to begin?: ${formData['workBeginIn']} \n Address: ${formData['address']} `,
             portalID: "46904146",
             hubspotFormID: "ae634c78-c492-4836-ae1d-01bcc392fe57",
             hubspotFormObject: [
@@ -113,6 +128,10 @@ console.log(formData)
                 {
                     name: "phone",
                     value: formData.phone
+                },
+                {
+                    name: "address",
+                    value: formData['address']
                 },
                 {
                     name: "property_type",
@@ -135,7 +154,7 @@ console.log(formData)
                     value: formData['workBeginIn']
                 },
               
-               
+
 
             ]
         }
@@ -188,10 +207,48 @@ console.log(formData)
     }
     const currentField = multipartFormData[activeStep];
     let dollarUSLocale = Intl.NumberFormat('en-US')
+    let inputField
+    if(multipartFormData[activeStep].id === 'address') {
+        inputField = (
+            <React.Fragment key={multipartFormData[activeStep].id}> 
+                {!mapsLoaded && <GoogleMapsLoader onLoad={handleLoad} key="google-maps-loader" />}
+                {mapsLoaded && (
+                    <GoogleAutocomplete
+                        className="mt-16"
+                    label={multipartFormData[activeStep].label}
+                        value={formData.address}
+                        onChange={(value) => handleChange(multipartFormData[activeStep].id, value, false)}
+                        onSelect={handleSelectAddress}
+                        required={multipartFormData[activeStep].required}
+                        autoComplete={multipartFormData[activeStep].autoComplete}
+                        error={formErrors[currentField.id]}
+                        helperText={multipartFormData[activeStep].errorMessage ? 'Please enter a valid address' : ''}
+                    />
+                )}
+            </React.Fragment>
+        );
+    } 
+    else{ 
+        inputField=  <Input
+        lightTheme={true}
+        label={multipartFormData[activeStep].label}
+        type={multipartFormData[activeStep].type}
+        value={formData[currentField.id] || ''}
+        onChange={multipartFormData[activeStep].type === 'chip' ?
+            (newValue) => handleChange(multipartFormData[activeStep].id, newValue, multipartFormData[activeStep].multiple) :
+            (e) => handleChange(multipartFormData[activeStep].id, e, multipartFormData[activeStep].multiple)}
+        onBlur={multipartFormData[activeStep].onBlur}
+        required={multipartFormData[activeStep].required}
+        autoComplete={multipartFormData[activeStep].autoComplete}
+        isInvalid={formErrors[currentField.id]}
+        errorMessage={multipartFormData[activeStep].errorMessage}
+        options={multipartFormData[activeStep].options}
+    />
+    }
     return (
-        <>{showPopUpForm && 
+        <>
             <ContainerStyled variant="div" className={`${className}`} maxWidth="xl">
-            <div className="overlay" onClick={()=> setShowPopUpForm(false)}></div>
+            {/* <div className="overlay" onClick={()=> setShowPopUpForm(false)}></div> */}
             <div className="wrapper">
                 <CloseOutlinedIcon className="close-icon" fontSize="medium" onClick={()=> setShowPopUpForm(false)}/> 
                 <MobileStepper
@@ -204,21 +261,7 @@ console.log(formData)
 
                 <React.Fragment>
                     <div className="input-wrapper p-6">
-                        <Input
-                            lightTheme={true}
-                            label={multipartFormData[activeStep].label}
-                            type={multipartFormData[activeStep].type}
-                            value={formData[currentField.id] || ''}
-                            onChange={multipartFormData[activeStep].type === 'chip' ?
-                                (newValue) => handleChange(multipartFormData[activeStep].id, newValue, multipartFormData[activeStep].multiple) :
-                                (e) => handleChange(multipartFormData[activeStep].id, e, multipartFormData[activeStep].multiple)}
-                            onBlur={multipartFormData[activeStep].onBlur}
-                            required={multipartFormData[activeStep].required}
-                            autoComplete={multipartFormData[activeStep].autoComplete}
-                            isInvalid={formErrors[currentField.id]}
-                            errorMessage={multipartFormData[activeStep].errorMessage}
-                            options={multipartFormData[activeStep].options}
-                        />
+                       {inputField}
 
                         <Box className="button-wrapper mt-16" sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                             <Button
@@ -250,27 +293,25 @@ console.log(formData)
             </div>
 
         </ContainerStyled>
-}
+
             </>
        
     )
 }
 
 const ContainerStyled = styled(Container)`
-
+padding: 24px 0; 
+background: var(--light-surface-container);
 .wrapper{ 
-position: fixed; 
-top: 50%; 
-left: 50%; 
-transform: translate(-50%, -50%);
-max-width: 600px; 
-width: calc(100% - 16px); 
-height: auto; 
-
-max-height: 60vh;
+max-width: 500px; 
+width: 100%;
 background-color: var(--light-surface-container-lowest);
-z-index: 110; 
-overflow: auto;
+margin: 0 auto; 
+border-radius: 12px;
+overflow: hidden;
+@media (max-width: 500px) {
+    width: calc(100% - 24px);
+}
 
 }
 .close-icon{ 
@@ -323,7 +364,7 @@ svg.Mui-active{
     background: var(--light--surface-container);
 border-radius: 12px; 
     @media(max-width: 600px){ 
-        padding: 16px 16px 24px 16px; 
+        padding: 16px 8px 24px 8px; 
 
     }
     .Mui-error{ 

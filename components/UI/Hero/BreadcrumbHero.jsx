@@ -17,9 +17,12 @@ export default function BreadcrumbHero({
           <Typography variant="h2" component="h1">
             {title}
           </Typography>
+          {description && 
+         
           <Typography variant="body1" component="p" className="mt-16">
             {description}
           </Typography>
+           }
         </div>
       </Container>
     </TitleWrapper>

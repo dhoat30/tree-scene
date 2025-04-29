@@ -1,7 +1,7 @@
 
 
 export const multipartFormData = [
-
+ 
     {
         id: 'propertyType',
         label: 'What kind of property needs tree services?',
@@ -61,12 +61,10 @@ export const multipartFormData = [
         type: 'radio', // or 'radio' for single selection
         options: [
             { value: "Small (under 6ft/2m) ", label: "Small (under 6ft/2m) " },
-            { value: "Medium (6ft - 13ft / 2m-4m)", label: "Medium (6ft - 13ft / 2m-4m)" },
-            { value: "Large (more than 13ft / 4m)", label: "Large (more than 13ft / 4m)" },
+            { value: "Medium (6ft - 26ft / 2m-4m)", label: "Medium (6ft - 26ft / 2m-8m)" },
+            { value: "Large (more than 26ft / 8m)", label: "Large (more than 13ft / 8m)" },
             { value: "I require stump removal ", label: "I require stump removal " },
             { value: "Something else", label: "Something else" },
-
-
         ],
         // validation: value => {
         //     if (typeof value === 'string') {
@@ -98,6 +96,7 @@ export const multipartFormData = [
         // },
         errorMessage: 'Please select at least one industry'
     },
+
     {
         id: 'firstname', label: 'First name', type: 'text', required: false, autoComplete: "given-name",
         errorMessage: 'First name should be at least 3 characters long'
@@ -118,4 +117,17 @@ export const multipartFormData = [
         // },
         errorMessage: 'Please enter a valid New Zealand phone number'
     },
+    {
+        id: 'address',
+        label: 'Property Address',
+        type: 'text',
+        required: true,
+        validation: value => {
+            if (typeof value === 'string') {
+                return value.trim().length > 5;
+            }
+            return false;
+        },
+        errorMessage: 'First name should be at least 3 characters long'
+    }
 ]

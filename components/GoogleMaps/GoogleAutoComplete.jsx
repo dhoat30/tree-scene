@@ -48,7 +48,7 @@ export default function GoogleAutocomplete({
       required={required}
       autoComplete={autoComplete}
       error={error}
-      helperText={helperText}
+      helperText={error && helperText}
     />
   );
 }
