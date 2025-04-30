@@ -301,7 +301,7 @@ console.log(formData)
 
 const ContainerStyled = styled(Container)`
 padding: 24px 0; 
-background: var(--light-surface-container);
+
 .wrapper{ 
 max-width: 500px; 
 width: 100%;

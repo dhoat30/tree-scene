@@ -109,12 +109,12 @@ export const multipartFormData = [
         id: 'phone',
         label: 'Phone number',
         type: 'tel',
-        required: false,
+        required: true,
         autoComplete: "tel",
-        // validation: value => {
-        //     const cleanPhone = (value || '').replace(/[^0-9]/g, '');
-        //     return cleanPhone.length > 6; // Matches numbers having more than 6 characters
-        // },
+        validation: value => {
+            const cleanPhone = (value || '').replace(/[^0-9]/g, '');
+            return cleanPhone.length > 6; // Matches numbers having more than 6 characters
+        },
         errorMessage: 'Please enter a valid New Zealand phone number'
     },
     {
