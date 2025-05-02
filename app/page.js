@@ -62,10 +62,10 @@ export default async function Page() {
   const client = serviceClients.find(c => c.uuid === job.company_uuid);
   return {
     ...job,
-    client_name: client?.name || 'Unknown',
+    client_name: client?.name.split(' ')[0] || 'Unknown',
   };
 });
-
+console.log(serviceJobs)
 
   if (!postData) {
     return {

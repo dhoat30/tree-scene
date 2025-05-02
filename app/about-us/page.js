@@ -55,13 +55,13 @@ export default async function Contact(props) {
     const options = await getOptions()
     let  serviceJobs = await getServiceJobs() 
     const serviceClients = await getServiceClients() 
-   serviceJobs = serviceJobs.map(job => {
-    const client = serviceClients.find(c => c.uuid === job.company_uuid);
-    return {
-      ...job,
-      client_name: client?.name || 'Unknown',
-    };
-  });
+    serviceJobs = serviceJobs.map(job => {
+        const client = serviceClients.find(c => c.uuid === job.company_uuid);
+        return {
+          ...job,
+          client_name: client?.name.split(' ')[0] || 'Unknown',
+        };
+      });
 
     if (!postData) {
         return {
