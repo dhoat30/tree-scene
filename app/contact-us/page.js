@@ -1,4 +1,4 @@
-import { getOptions, getSinglePostData, getAllPosts, getSingleServicePackage } from '@/utils/fetchData'
+import { getOptions, getSinglePostData, getServiceJobs, getServiceClients } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
 import OptimizedHero from '@/components/UI/Hero/OptimizedHero/OptimizedHero'
 import TechLogos from '@/components/UI/TechLogos/TechLogos'
@@ -77,7 +77,7 @@ export default async function Contact() {
             <main>
                 <ContactHero data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} contactInfoData={contactInfo} />
                 <TechLogos data={options.clients_logos} />
-                <Layout sections={postData[0]?.acf?.sections} />
+                <Layout sections={postData[0]?.acf?.sections} serviceJobs={serviceJobs} />
                 <USP showTitle={true} statsArray={options.stats.items} cards={options.usp.items} title={options.usp.section_title} description={options.usp.section_description} />
             </main>
             <Footer footerCtaData={options.footer_cta} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} />
