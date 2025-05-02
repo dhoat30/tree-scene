@@ -65,7 +65,6 @@ export default async function Page() {
     client_name: client?.name.split(' ')[0] || 'Unknown',
   };
 });
-console.log(serviceJobs)
 
   if (!postData) {
     return {

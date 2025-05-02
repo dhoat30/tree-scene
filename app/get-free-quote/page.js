@@ -1,4 +1,4 @@
-import { getOptions, getSinglePostData, getGoogleReviews } from '@/utils/fetchData'
+import { getOptions, getSinglePostData, getGoogleReviews, getServiceJobs, getServiceClients  } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
 import TechLogos from '@/components/UI/TechLogos/TechLogos'
 import USP from '@/components/UI/USP/USP'
@@ -55,6 +55,17 @@ export default async function Contact() {
 
     const googleReviewsData = await getGoogleReviews()
     const options = await getOptions()
+
+    let  serviceJobs = await getServiceJobs() 
+  const serviceClients = await getServiceClients() 
+ serviceJobs = serviceJobs.map(job => {
+  const client = serviceClients.find(c => c.uuid === job.company_uuid);
+  return {
+    ...job,
+    client_name: client?.name.split(' ')[0] || 'Unknown',
+  };
+});
+
     if (!postData) {
         return {
             notFound: true,
@@ -67,9 +78,9 @@ export default async function Contact() {
               
                 <BreadcrumbHero title={postData[0]?.acf.hero_section.title} description={postData[0]?.acf.hero_section.description} showBreadcrumb={true} />
                 <MultipartForm/> 
+                <Layout sections={postData[0]?.acf?.sections} serviceJobs={serviceJobs} />
                 <GoogleReviewGridLayout data={googleReviewsData} />
                 <TechLogos data={options.clients_logos} />
-                <Layout sections={postData[0]?.acf?.sections} />
                 <USP showTitle={true} statsArray={options.stats.items} cards={options.usp.items} title={options.usp.section_title} description={options.usp.section_description} />
             </main>
             <Footer showFooterCta={false} footerCtaData={options.footer_cta} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} />

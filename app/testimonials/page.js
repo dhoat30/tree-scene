@@ -1,10 +1,9 @@
-import { getOptions, getSinglePostData, getGoogleReviews } from '@/utils/fetchData'
+import { getOptions, getSinglePostData, getGoogleReviews, getServiceJobs, getServiceClients } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
 import TechLogos from '@/components/UI/TechLogos/TechLogos'
 import USP from '@/components/UI/USP/USP'
 import Header from '@/components/UI/Header/Header'
 import Footer from '@/components/UI/Footer/Footer'
-import Gallery from '@/components/UI/Gallery/Gallery'
 import BreadcrumbHero from '@/components/UI/Hero/BreadcrumbHero'
 import GoogleReviewGridLayout from '@/components/UI/GoogleReviews/GoogleReviewGridLayout'
 
@@ -54,6 +53,17 @@ export default async function Contact() {
 
     const googleReviewsData = await getGoogleReviews()
     const options = await getOptions()
+
+    let  serviceJobs = await getServiceJobs() 
+  const serviceClients = await getServiceClients() 
+ serviceJobs = serviceJobs.map(job => {
+  const client = serviceClients.find(c => c.uuid === job.company_uuid);
+  return {
+    ...job,
+    client_name: client?.name.split(' ')[0] || 'Unknown',
+  };
+});
+
     if (!postData) {
         return {
             notFound: true,
@@ -66,7 +76,7 @@ export default async function Contact() {
                 <BreadcrumbHero title={postData[0]?.acf.hero_section.title} description={postData[0]?.acf.hero_section.description} showBreadcrumb={false} />
                 <GoogleReviewGridLayout data={googleReviewsData} />
                 <TechLogos data={options.clients_logos} />
-                <Layout sections={postData[0]?.acf?.sections} />
+                <Layout sections={postData[0]?.acf?.sections} serviceJobs={serviceJobs} />
                 <USP showTitle={true} statsArray={options.stats.items} cards={options.usp.items} title={options.usp.section_title} description={options.usp.section_description} />
             </main>
             <Footer footerCtaData={options.footer_cta} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} />

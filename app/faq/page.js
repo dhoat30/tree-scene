@@ -1,4 +1,4 @@
-import { getOptions, getSinglePostData, getAllPosts, getSingleServicePackage } from '@/utils/fetchData'
+import { getOptions, getSinglePostData, getAllPosts, getServiceJobs, getServiceClients } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
 import OptimizedHero from '@/components/UI/Hero/OptimizedHero/OptimizedHero'
 import TechLogos from '@/components/UI/TechLogos/TechLogos'
@@ -54,6 +54,18 @@ export default async function Contact(props) {
     const postData = await getSinglePostData("faq", "/wp-json/wp/v2/pages")
     const allPosts = await getAllPosts("wp-json/wp/v2/industrial-cleaning")
     const options = await getOptions()
+
+    let  serviceJobs = await getServiceJobs() 
+    const serviceClients = await getServiceClients() 
+   serviceJobs = serviceJobs.map(job => {
+    const client = serviceClients.find(c => c.uuid === job.company_uuid);
+    return {
+      ...job,
+      client_name: client?.name.split(' ')[0] || 'Unknown',
+    };
+  });
+  
+
     if (!postData) {
         return {
             notFound: true,
@@ -66,7 +78,7 @@ export default async function Contact(props) {
             <main >
                 <div className='mt-40'></div>
                 <FaqAccordionSection title={options.faq.section_title} description={options.faq.section_description} qaData={options.faq.items} />
-                <Layout sections={postData[0]?.acf?.sections} />
+                <Layout sections={postData[0]?.acf?.sections} serviceJobs={serviceJobs}/>
                 <USP showTitle={true} statsArray={options.stats.items} cards={options.usp.items} title={options.usp.section_title} description={options.usp.section_description} />
 
             </main>

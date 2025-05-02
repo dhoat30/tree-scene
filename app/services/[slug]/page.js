@@ -1,4 +1,4 @@
-import { getOptions, getSinglePostData, getGoogleReviews, getSingleServicePackage } from '@/utils/fetchData'
+import { getOptions, getSinglePostData, getGoogleReviews, getServiceJobs, getServiceClients } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
 import OptimizedHero from '@/components/UI/Hero/OptimizedHero/OptimizedHero'
 import TechLogos from '@/components/UI/TechLogos/TechLogos'
@@ -53,6 +53,17 @@ export default async function Contact(props) {
 
     const postData = await getSinglePostData(slug, "/wp-json/wp/v2/service")
     const options = await getOptions()
+
+    let  serviceJobs = await getServiceJobs() 
+    const serviceClients = await getServiceClients() 
+   serviceJobs = serviceJobs.map(job => {
+    const client = serviceClients.find(c => c.uuid === job.company_uuid);
+    return {
+      ...job,
+      client_name: client?.name.split(' ')[0] || 'Unknown',
+    };
+  });
+
     if (!postData) {
         return {
             notFound: true,
@@ -66,7 +77,7 @@ export default async function Contact(props) {
             <main>
                 <OptimizedHero data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} />
                 <TechLogos data={options.clients_logos} />
-                <Layout sections={postData[0]?.acf?.sections} />
+        <Layout sections={postData[0]?.acf?.sections} serviceJobs={serviceJobs} />
                 <USP showTitle={true} statsArray={options.stats.items} cards={options.usp.items} title={options.usp.section_title} description={options.usp.section_description} />
                 <GoogleReviewsCarousel data={googleReviewsData} />
             </main>
