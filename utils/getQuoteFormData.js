@@ -68,8 +68,6 @@ export const getQuoteFormData = [
         label: 'Property Address',
         type: 'text',
         required: false,
-     
-
     },
    
     {

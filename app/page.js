@@ -55,6 +55,7 @@ export default async function Page() {
   const postData = await getSinglePostData("home", "/wp-json/wp/v2/pages")
   const options = await getOptions()
   const allPosts = await getAllPosts("wp-json/wp/v2/service")
+
   let  serviceJobs = await getServiceJobs() 
   const serviceClients = await getServiceClients() 
  serviceJobs = serviceJobs.map(job => {
@@ -64,6 +65,7 @@ export default async function Page() {
     client_name: client?.name || 'Unknown',
   };
 });
+
 
   if (!postData) {
     return {

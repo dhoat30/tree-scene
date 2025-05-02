@@ -84,13 +84,7 @@ export default function JobsMap({ jobs }) {
                   position={[job.lat, job.lng]}
                   icon={greenIcon}
                 >
-                  <Popup>
-                    <strong>{job.job_description}</strong>
-                    <br />
-                    {job.job_address}
-                    <br />
-                    Status: {job.status}
-                  </Popup>
+                
                 </Marker>
               ))}
             </MapContainer>

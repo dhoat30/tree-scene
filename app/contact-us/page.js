@@ -52,6 +52,17 @@ export default async function Contact() {
 
     const postData = await getSinglePostData("contact-us", "/wp-json/wp/v2/pages")
     const options = await getOptions()
+
+    let  serviceJobs = await getServiceJobs() 
+    const serviceClients = await getServiceClients() 
+   serviceJobs = serviceJobs.map(job => {
+    const client = serviceClients.find(c => c.uuid === job.company_uuid);
+    return {
+      ...job,
+      client_name: client?.name || 'Unknown',
+    };
+  });
+  
     if (!postData) {
         return {
             notFound: true,

@@ -131,7 +131,7 @@ export default function Layout({ sections, projectsData, serviceJobs }) {
         />
       );
     }
-    if (section.acf_fc_layout === "show_jobs_map") {
+    if (section.acf_fc_layout === "show_jobs_map" && serviceJobs) {
        return (
        <section key={index} className={`${styles.jobs_section} flex align-center`}>
        <JobsMap  jobs={serviceJobs}  /> 

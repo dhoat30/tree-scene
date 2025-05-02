@@ -16,8 +16,33 @@ export const contactFormData = [
     },
 
     {
-        id: 'phone', label: 'Phone', type: 'tel', required: false,
+      
+            id: 'phone',
+            label: 'Phone number',
+            type: 'tel',
+            required: true,
+            autoComplete: "tel",
+            validation: value => {
+                const cleanPhone = (value || '').replace(/[^0-9]/g, '');
+                return cleanPhone.length > 6; // Matches numbers having more than 6 characters
+            },
+            errorMessage: 'Please enter a valid phone number'
+    
     },
+    {
+        id: 'address',
+        label: 'Property Address',
+        type: 'text',
+        required: true,
+        validation: value => {
+            if (typeof value === 'string') {
+                return value.trim().length > 5;
+            }
+            return false;
+        },
+        errorMessage: 'First name should be at least 3 characters long'
+    }, 
+   
 
     {
         id: 'message', label: 'Message', type: 'textarea', required: false,
