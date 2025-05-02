@@ -9,7 +9,15 @@ import ServiceTabs from "./Sections/ServiceTabs";
 import Packages from "./Sections/Packages";
 import FaqAccordionSection from "./Sections/FaqAccordionSection";
 import ServiceChecklist from "./Sections/ServiceChecklist";
-export default function Layout({ sections, projectsData }) {
+import dynamic from "next/dynamic";
+
+import styles from "./Layout.module.scss";
+const JobsMap = dynamic(() => import("./Sections/JobsMap/JobsMap"), {
+  ssr: false, // <-- disables server-side rendering for this component
+});
+
+export default function Layout({ sections, projectsData, serviceJobs }) {
+  console.log(sections)
   if (!sections) return null;
   const sectionsJSX = sections.map((section, index) => {
     if (section.acf_fc_layout === "zigzag_cards") {
@@ -122,6 +130,13 @@ export default function Layout({ sections, projectsData }) {
           cards={section.items}
         />
       );
+    }
+    if (section.acf_fc_layout === "show_jobs_map") {
+       return (
+       <section key={index} className={`${styles.jobs_section} flex align-center`}>
+       <JobsMap  jobs={serviceJobs}  /> 
+       </section>
+       )
     }
   });
 

@@ -1,4 +1,4 @@
-import {  getOptions, getSinglePostData, getAllPosts, getGoogleReviews } from '@/utils/fetchData'
+import {  getOptions, getSinglePostData, getAllPosts, getGoogleReviews, getServiceJobs, getServiceClients } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
 import OptimizedHero from '@/components/UI/Hero/OptimizedHero/OptimizedHero'
 import TechLogos from '@/components/UI/TechLogos/TechLogos'
@@ -9,8 +9,6 @@ import FaqAccordionSection from '@/components/UI/Layout/Sections/FaqAccordionSec
 import BlogsArchive from '@/components/Pages/BlogsPage/BlogsArchive'
 import GoogleReviewsCarousel from '@/components/UI/GoogleReviews/GoogleReviewsCarousel'
 import ServicesCardsTemplate from '@/components/UI/Services/ServicesCardsTemplate'
-import Loading from '@/components/UI/Loader/Loading'
-import { Suspense } from 'react';
 
 
 export async function generateMetadata(props, parent) {
@@ -57,7 +55,15 @@ export default async function Page() {
   const postData = await getSinglePostData("home", "/wp-json/wp/v2/pages")
   const options = await getOptions()
   const allPosts = await getAllPosts("wp-json/wp/v2/service")
-
+  let  serviceJobs = await getServiceJobs() 
+  const serviceClients = await getServiceClients() 
+ serviceJobs = serviceJobs.map(job => {
+  const client = serviceClients.find(c => c.uuid === job.company_uuid);
+  return {
+    ...job,
+    client_name: client?.name || 'Unknown',
+  };
+});
 
   if (!postData) {
     return {
@@ -77,7 +83,7 @@ export default async function Page() {
         <GoogleReviewsCarousel data={googleReviewsData}/>
     <ServicesCardsTemplate title="All Services" description="We offer a wide range of services to cater to all your cleaning needs." cards={allPosts} archivePageSlug="services" showLimitedServices={true} />
         {/* <ServiceSelectorTabs residentialServicesData={residentialServices} commercialServicesData={commercialServices} industrialServicesData={industrialServices} title={postData[0]?.acf?.services_selector.title} description={postData[0]?.acf?.services_selector.description} /> */}
-        <Layout sections={postData[0]?.acf?.sections} />
+        <Layout sections={postData[0]?.acf?.sections} serviceJobs={serviceJobs} />
         <USP showTitle={true} statsArray={options.stats.items} cards={options.usp.items} title={options.usp.section_title} description={options.usp.section_description} />
         <FaqAccordionSection title={options.faq.section_title} description={options.faq.section_description} qaData={options.faq.items} />
         {/* <BlogsArchive blogsData={allBlogsData} sectionUI={true} show={3} /> */}

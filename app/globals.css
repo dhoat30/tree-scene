@@ -279,6 +279,9 @@ strong {
 }
 
 /* general positioning  */
+.center-align{ 
+  text-align: center;
+}
 .mt-8 {
   margin-top: 8px;
 }
@@ -298,9 +301,29 @@ strong {
   margin-bottom: 8px;
 }
 .mb-16 {
-  margin-bottom: 16px;
+  margin-bottom: 16px ;
 }
-
+.pt-8 {
+  padding-top: 8px;
+}
+.pt-16 {
+  padding-top: 16px;
+}
+.pt-24 {
+  padding-top: 24px;
+}
+.pt-32 {
+  padding-top: 32px;
+}
+.pt-40 {
+  padding-top: 40px;
+}
+.pb-8 {
+  padding-bottom: 8px;
+}
+.pb-16 {
+  padding-bottom: 16px ;
+}
 .flex {
   display: flex;
 }
@@ -329,4 +352,9 @@ strong {
   height: 100%; 
   background: rgba(0, 0, 0, 0.8);
   z-index: 100; 
+}
+
+/* remove leaflet logo */
+.leaflet-control-attribution {
+  display: none !important;
 }

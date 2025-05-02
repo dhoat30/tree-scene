@@ -47,7 +47,7 @@ export const lightTheme = createTheme({
       },
     },
     h4: {
-      fontWeight: 500,
+      fontWeight: 600,
       color: "var(--light-on-surface)",
     },
     h5: {

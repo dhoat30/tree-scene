@@ -1,6 +1,8 @@
 //import css file 
 import './globals.css'
 import './tokens.css'
+import 'leaflet/dist/leaflet.css';
+
 // Import slick css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

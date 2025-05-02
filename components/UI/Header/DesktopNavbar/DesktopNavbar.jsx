@@ -161,7 +161,7 @@ function DesktopNavbar() {
 export default DesktopNavbar;
 
 const AppBarContainer = styled(AppBar)`
-  z-index: 100;
+  z-index: 10000;
   top: 0;
   position: fixed;
   box-shadow: none;
