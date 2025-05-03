@@ -49,7 +49,12 @@ export const headerLinks = [
         id: 6,
         label: "Our Work",
         url: "/our-work/gallery",
-       
+        subLinks: [
+            { label: "Before & After Gallery", url: "/our-work/gallery" },
+            { label: "Video Gallery", url: "/our-work/video-gallery" },
+            
+
+        ]
     },
 
     {

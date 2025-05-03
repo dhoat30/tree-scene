@@ -15,7 +15,9 @@ export const informationLinks = [
         label: "Testimonials",
         url: "/testimonials"
     },
-    { label: "Our Work", url: "/our-work/gallery" },
+    { label: "Before & After Gallery", url: "/our-work/gallery" },
+    { label: "Video Gallery", url: "/our-work/video-gallery" },
+
     { label: "About Us", url: "/about-us" },
     { label: "FAQs", url: "/faq" },
     { label: "Contact Us", url: "/contact-us" },
