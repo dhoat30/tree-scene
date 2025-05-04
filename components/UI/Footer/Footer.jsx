@@ -36,6 +36,8 @@ export default function Footer({
           {/* logo wrapper */}
           <div className="footer-wrapper">
             <div className="certification-wrapper">
+              {certifications.cards &&
+              (<>
               <Typography
                 variant="h6"
                 component="div"
@@ -43,9 +45,8 @@ export default function Footer({
               >
                 Certifications
               </Typography>
-              <div className="certification-logos flex flex-wrap gap-8 align-center">
-                {certifications.cards &&
-                  certifications.cards.map((item, index) => {
+              <div className="certification-logos flex flex-wrap gap-8 align-center mb-40">
+                {certifications.cards.map((item, index) => {
                     return (
                       <Image
                         key={index}
@@ -57,7 +58,8 @@ export default function Footer({
                     );
                   })}
               </div>
-              <div className="newsletter-wrapper mt-40">
+              </>)}
+              <div className="newsletter-wrapper ">
                 <Typography
                   variant="subtitle1"
                   component="div"

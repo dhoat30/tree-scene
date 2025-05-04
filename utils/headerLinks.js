@@ -26,11 +26,11 @@ export const headerLinks = [
             { label: "Tree Pruning", url: "/services/tree-pruning-tauranga" },
             { label: "Hedge Trimming", url: "/services/hedge-trimming-tauranga" },
             { label: "Land Clearing", url: "/services/land-clearing-tauranga" },
+            { label: "Stump Grinding", url: "/services/stump-grinding" },
             { label: "Planting and Gardening Services", url: "/services/planting-and-gardening-services-tauranga" },
             { label: "Storm-Damaged Trees and Emergency Tree Work", url: "/services/storm-damaged-trees-emergency-tree-work" },
             { label: "Firewood & Mulch Tauranga", url: "/services/firewood-and-mulch-tauranga" },
             { label: "Powerline Clearing", url: "/services/powerline-clearing" },
-
         ]
     },
     {
@@ -67,9 +67,6 @@ export const headerLinks = [
         id: 2,
         label: "Contact",
         url: "/contact-us",
-  
     },
-
-
 ]
 
