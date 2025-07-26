@@ -18,19 +18,23 @@ export const headerLinks = [
     {
         id: 2,
         label: "Services",
-        url: "/services",
+        url: "#",
+        gridTemplateColumn: "300px 300px", 
+        width: "700px",
         subLinks: [
-            { label: "Tree Removal", url: "/services/tree-removal" },
-            { label: "Palm Cleaning & Removal", url: "/services/palm-cleaning-removal-services" },
+            // { label: "All Services", url: "/services", subtitle: "Safe, efficient & professional",  graphic: "/services-graphics/tree-trimming.png" },
 
-            { label: "Tree Pruning", url: "/services/tree-pruning-tauranga" },
-            { label: "Hedge Trimming", url: "/services/hedge-trimming-tauranga" },
-            { label: "Land Clearing", url: "/services/land-clearing-tauranga" },
-            { label: "Stump Grinding", url: "/services/stump-grinding" },
-            { label: "Planting and Gardening Services", url: "/services/planting-and-gardening-services-tauranga" },
-            { label: "Storm-Damaged Trees and Emergency Tree Work", url: "/services/storm-damaged-trees-emergency-tree-work" },
-            { label: "Firewood & Mulch Tauranga", url: "/services/firewood-and-mulch-tauranga" },
-            { label: "Powerline Clearing", url: "/services/powerline-clearing" },
+            { label: "Tree Removal", url: "/services/tree-removal", subtitle: "Safe, efficient & professional", graphic: "/services-graphics/tree-removal.png"},
+            { label: "Palm Cleaning & Removal", url: "/services/palm-cleaning-removal-services",  subtitle: "Safe, efficient & professional", graphic: "/services-graphics/palm-tree.png" },
+
+            { label: "Tree Pruning", url: "/services/tree-pruning-tauranga", subtitle: "Safe, efficient & professional",  graphic: "/services-graphics/chainsaw.png" },
+            { label: "Hedge Trimming", url: "/services/hedge-trimming-tauranga", subtitle: "Safe, efficient & professional",  graphic: "/services-graphics/hedge.png" },
+            { label: "Land Clearing", url: "/services/land-clearing-tauranga", subtitle: "Safe, efficient & professional",  graphic: "/services-graphics/excavator.png" },
+            { label: "Stump Grinding", url: "/services/stump-grinding", subtitle: "Safe, efficient & professional",  graphic: "/services-graphics/stump.png" },
+            { label: "Planting and Gardening Services", url: "/services/planting-and-gardening-services-tauranga", subtitle: "Safe, efficient & professional",  graphic: "/services-graphics/planting-tree.png" },
+            { label: "Emergency Tree Work", url: "/services/storm-damaged-trees-emergency-tree-work", subtitle: "Safe, efficient & professional", graphic: "/services-graphics/fallen-tree.png" },
+            { label: "Firewood & Mulch Tauranga", url: "/services/firewood-and-mulch-tauranga", subtitle: "Safe, efficient & professional",  graphic: "/services-graphics/firewood.png" },
+            { label: "Powerline Clearing", url: "/services/powerline-clearing", subtitle: "Safe, efficient & professional", graphic: "/services-graphics/powerline.png" },
         ]
     },
     {
@@ -48,10 +52,12 @@ export const headerLinks = [
     {
         id: 6,
         label: "Our Work",
-        url: "/our-work/gallery",
+        url: "#",
+        gridTemplateColumn: "1fr", 
+        width: "300px",
         subLinks: [
-            { label: "Before & After Gallery", url: "/our-work/gallery" },
-            { label: "Video Gallery", url: "/our-work/video-gallery" },
+            { label: "Before & After Gallery", url: "/our-work/gallery", subtitle: "Safe, efficient & professional", graphic: "/services-graphics/gallery.png" },
+            { label: "Video Gallery", url: "/our-work/video-gallery", subtitle: "Safe, efficient & professional", graphic: "/services-graphics/play.png" },
             
 
         ]

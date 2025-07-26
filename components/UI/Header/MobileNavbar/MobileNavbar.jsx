@@ -16,12 +16,12 @@ import { headerLinks } from "@/utils/headerLinks";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import Button from "@mui/material/Button";
-
+import Typography from "@mui/material/Typography";
 import dynamic from "next/dynamic";
 
 const Drawer = dynamic(() => import("@mui/material/Drawer"));
 
-const drawerWidth = 300;
+const drawerWidth = "auto";
 
 const DrawerHeader = style("div")(({ theme }) => ({
   display: "flex",
@@ -47,26 +47,30 @@ export default function MobileNavbar() {
   };
 
   const handleClick = (event, item, index) => {
-    event.preventDefault();
-
+  
+   console.log(index)
     // Check if the link has sublinks
     if (item.subLinks && item.subLinks.length > 0) {
+      event.preventDefault();
+
+      setShowMenu((prevIndex) =>
+        prevIndex === index ? -1 : index
+      ); // Toggle the submenu open/close
       // If the same submenu is open, navigate to the link
-      if (showMenu === index) {
-        router.push(item.url); // Navigate to the link
-        handleDrawerClose(); // Close the drawer after navigation
-      } else {
-        // Open the submenu
-        setShowMenu(index);
-      }
-    } else {
-      // If no sublinks, just navigate and close the drawer
-      router.push(item.url);
-      handleDrawerClose();
+
+      // router.push(item.url); // Navigate to the link
+      // handleDrawerClose(); // Close the drawer after navigation
+    } 
+    else { 
+      handleDrawerClose(); // Close the drawer after navigation
+
     }
+
   };
 
   const menuItems = headerLinks.map((item, index) => {
+    const isOpen = showMenu === index;
+
     return (
       <li
         className="flex-auto text-center relative parent-list-item"
@@ -86,15 +90,42 @@ export default function MobileNavbar() {
             className={`${
               showMenu === index ? "block" : "hidden"
             } bg-primary-light text-surface-light top-8 dropdown`}
+
+          
           >
             {item.subLinks.map((subLink, subIndex) => (
-              <li key={subIndex} className="text-left child-list-item">
+              <li key={subIndex} className="text-left child-list-item" onClick={()=> handleDrawerClose() }>
                 <Divider
                   key={subIndex + 100}
                   style={{ borderColor: "rgba(255,255,255,0.1)" }}
                 />
                 <Link href={subLink.url} className="child-link">
-                  {subLink.label}
+                {subLink.graphic && (
+                    <Image
+                      className="icon-wrapper border-radius-8"
+                      src={subLink.graphic}
+                      alt={subLink.label}
+                      width="40"
+                      height="40"
+                      quality={100}
+                    />
+                  )}
+                  <div className="label-wrapper">
+                    <Typography
+                      className="subLink"
+                      component="span"
+                      variant="subtitle1"
+                    >
+                      {subLink.label}
+                    </Typography>
+                    <Typography
+                      className="subLink"
+                      component="span"
+                      variant="body2"
+                    >
+                      {subLink.subtitle}
+                    </Typography>
+                  </div>
                 </Link>
               </li>
             ))}
@@ -102,8 +133,7 @@ export default function MobileNavbar() {
         )}
         <Divider
           key={index + 122}
-          light={true}
-          style={{ borderColor: "rgba(255,255,255,0.5)" }}
+      
         />
       </li>
     );
@@ -164,12 +194,14 @@ export default function MobileNavbar() {
       >
         <Drawer
           sx={{
-            width: drawerWidth,
+            width: "95%",
+            maxWidth: "500px", 
             flexShrink: 0,
             "& .MuiDrawer-paper": {
-              width: drawerWidth,
+              width: "95%",
+              maxWidth: "500px", 
               boxSizing: "border-box",
-              backgroundColor: "var(--light-on-primary-fixed-variant, #295000)",
+              backgroundColor: "var(--light-surface-container-low)",
             },
           }}
           anchor="left"
@@ -192,14 +224,7 @@ export default function MobileNavbar() {
               variant="outlined"
               className="button"
               onClick={handleDrawerClose}
-              sx={{
-                border: "1px solid white",
-                color: "white",
-                width: "100%",
-                "&:hover": {
-                  border: "1px solid #eaeaea",
-                },
-              }}
+              sx={{ width: "100%" }}
             >
               GET A QUOTE
             </Button>
@@ -212,7 +237,7 @@ export default function MobileNavbar() {
 
 const AppBarStyled = styled(AppBar)`
   backdrop-filter: blur(7.6px);
-
+  
   .menu-logo-wrapper {
     display: flex;
     align-items: center;
@@ -244,19 +269,16 @@ const ListContainer = styled.ul`
 
   .parent-list-item {
     .parent-link {
-      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
       display: block;
       text-align: left;
       padding: 16px 16px;
-      color: white;
+      color: var(--light-on-surface);
       font-weight: 500;
       letter-spacing: 0.005rem;
       position: relative;
-      &:hover {
-        color: #ebebeb;
-      }
+  
       &.active {
-        color: #f0f0f0;
+        color: var(--light-primary  );
       }
     }
     svg {
@@ -265,7 +287,7 @@ const ListContainer = styled.ul`
       top: 24px;
       transform: rotate(180deg);
       path {
-        fill: white !important;
+        fill: var(--light-on-surface) !important;
       }
     }
   }
@@ -273,12 +295,24 @@ const ListContainer = styled.ul`
     .child-link {
       display: block;
       text-align: left;
-      padding: 16px 40px;
-      color: #dedede;
+      padding: 16px 16px;
+      color: var(--light-on-surface-variant);
       font-weight: 400;
       position: relative;
+      display: grid;
+        grid-template-columns: 40px auto;
+        gap: 8px;
+        align-items: center;
+        img{ 
+          padding: 4px; 
+          border: 1px solid var(--light-outline-variant);
+        }
+        .label-wrapper{ 
+          display: flex; 
+         flex-direction: column;
+        }
       &:hover {
-        color: #ebebeb;
+        color: var(--light-primary);
       }
     }
   }
@@ -286,11 +320,11 @@ const ListContainer = styled.ul`
 
 const ChevronLeftIconStyle = styled(ChevronLeftIcon)`
   path {
-    fill: white !important;
+    fill: var(--light-on-surface) !important;
   }
 `;
 const ChevronRightIconStyle = styled(ChevronLeftIcon)`
   path {
-    fill: white !important;
+    fill: var(--light-on-surface) !important;
   }
 `;

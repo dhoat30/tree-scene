@@ -7,7 +7,6 @@ import 'leaflet/dist/leaflet.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Work_Sans } from 'next/font/google'
-
 import ClientProvider from '@/components/Providers/ClientProvider';
 import Script from 'next/script'
 import {AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
@@ -52,8 +51,8 @@ export default function RootLayout({ children }) {
           />
         </noscript>
         <AppRouterCacheProvider>
-
       <ClientProvider>
+     
           {children}
         </ClientProvider>
        </AppRouterCacheProvider>

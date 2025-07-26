@@ -67,6 +67,7 @@ export const lightTheme = createTheme({
     subtitle1: {
       color: "var(--light-on-surface)",
       fontWeight: 500,
+      fontSize: "0.9rem"
     },
   },
   components: {
@@ -77,7 +78,11 @@ export const lightTheme = createTheme({
           color: "var(--light-on-primary)",
           paddingRight: "32px",
           paddingLeft: "32px",
+     
         },
+        contained: { 
+          background: "var(--light-primary)"
+        }, 
         outlined: {
           border: "1px solid var(--light-primary)",
           color: "var(--light-primary)",

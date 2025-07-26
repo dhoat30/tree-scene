@@ -9,7 +9,7 @@ const oauth2Client = new google.auth.OAuth2(
 );
 
 // Replace this with the actual authorization code
-const code = decodeURIComponent("4/0AanRRrtFGRNgnyMMbOyPlWZdecld04k6Kq6l3sH0t8YE-ky3C6V9m7sZ9oQetpriH2BhMA");
+const code = decodeURIComponent("4/0AUJR-x6QvSBCC2WgFptRJ1Ln5KJU1xT8QtAO-C9y3S9J33uvIPoqEu2zYYzaJ_LAdEbiaQ");
 
 async function getTokens() {
   try {
