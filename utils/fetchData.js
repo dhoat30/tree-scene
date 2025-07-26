@@ -4,7 +4,7 @@ const { google } = require('googleapis');
 //get single post with slug 
 export const getSinglePostData = async (slug, apiRoute) => {
     let response = await fetch(`${process.env.url}/${apiRoute}?slug=${slug}&acf_format=standard`, {
-        next: { revalidate: 259200 },
+        next: { revalidate: 2592000 },
     });
     let data = await response.json();
     return data
@@ -13,7 +13,7 @@ export const getSinglePostData = async (slug, apiRoute) => {
 // get single post data using post id 
 export const getSinglePostDataWithID = async (id, apiRoute) => {
     let response = await fetch(`${process.env.url}/${apiRoute}/${id}?acf_format=standard`, {
-        next: { revalidate: 259200 },
+        next: { revalidate: 2592000 },
     });
     let data = await response.json();
     return data
@@ -22,7 +22,7 @@ export const getSinglePostDataWithID = async (id, apiRoute) => {
 //get all posts 
 export const getAllPosts = async (apiRoute) => {
     let response = await fetch(`${process.env.url}/${apiRoute}?acf_format=standard&per_page=100`, {
-        next: { revalidate: 259200 },
+        next: { revalidate: 2592000 },
     });
     let data = await response.json();
     return data
@@ -31,7 +31,7 @@ export const getAllPosts = async (apiRoute) => {
 
 export const getOptions = async () => {
     let fetchData = await fetch(`${process.env.url}/wp-json/options/all`, {
-        next: { revalidate: 259200 },
+        next: { revalidate: 2592000 },
     });
     let data = await fetchData.json();
     return data
@@ -45,7 +45,7 @@ export const getOptions = async () => {
 
 export const getGoogleReviews = async () => {
     // Add revalidation logic
-    const nextRevalidateOptions = { next: { revalidate: 30 * 86400 } }; // Revalidate every 30 days 
+    const nextRevalidateOptions = { next: { revalidate: 2592000 } }; // Revalidate every 30 days 
 
     // Fetch reviews directly from Google API
     const oauth2Client = new google.auth.OAuth2(
@@ -73,7 +73,7 @@ export const getGoogleReviews = async () => {
 //get projects 
 // export const getProjects = async () => {
 //     let fetchData = await fetch(`${process.env.url}/wp-json/wp/v2/work?acf_format=standard&per_page=100`, {
-//         next: { revalidate: 259200 },
+//         next: { revalidate: 2592000 },
 //     });
 //     let data = await fetchData.json();
 //     return data
@@ -82,7 +82,7 @@ export const getGoogleReviews = async () => {
 //fetch work categories 
 // export const getProjectCategories = async () => {
 //     let fetchData = await fetch(`${process.env.url}/wp-json/wp/v2/work-category`, {
-//         next: { revalidate: 259200 },
+//         next: { revalidate: 2592000 },
 //     });
 //     let data = await fetchData.json();
 //     return data
@@ -91,7 +91,7 @@ export const getGoogleReviews = async () => {
 // fetch single project 
 // export const getSingleProject = async (slug) => {
 //     let fetchData = await fetch(`${process.env.url}/wp-json/wp/v2/work?slug=${slug}&acf_format=standard`, {
-//         next: { revalidate: 259200 },
+//         next: { revalidate: 2592000 },
 //     });
 //     let data = await fetchData.json();
 //     return data
@@ -102,7 +102,7 @@ export const getGoogleReviews = async () => {
 //get service packages  
 export const getCommercialServices = async () => {
     let fetchData = await fetch(`${process.env.url}/wp-json/wp/v2/commercial-cleaning?acf_format=standard&per_page=100`, {
-        next: { revalidate: 259200 },
+        next: { revalidate: 2592000 },
     });
     let data = await fetchData.json();
     return data
@@ -110,7 +110,7 @@ export const getCommercialServices = async () => {
 
 export const getSingleCommercialService = async (slug) => {
     let fetchData = await fetch(`${process.env.url}/wp-json/wp/v2/commercial-cleaning?slug=${slug}&acf_format=standard`, {
-        next: { revalidate: 259200 },
+        next: { revalidate: 2592000 },
     });
     let data = await fetchData.json();
     return data
@@ -120,7 +120,7 @@ export const getSingleCommercialService = async (slug) => {
 // get all blogs  
 export const getBlogsData = async () => {
     let fetchData = await fetch(`${process.env.url}/wp-json/wp/v2/posts?acf_format=standard&per_page=100`, {
-        next: { revalidate: 259200 },
+        next: { revalidate: 2592000 },
     });
     let data = await fetchData.json();
     return data
@@ -128,7 +128,7 @@ export const getBlogsData = async () => {
 // get single blog data 
 export const getSingleBlog = async (slug) => {
     let fetchData = await fetch(`${process.env.url}/wp-json/wp/v2/posts?slug=${slug}&acf_format=standard`, {
-        next: { revalidate: 259200 },
+        next: { revalidate: 2592000 },
     });
     let data = await fetchData.json();
     return data
@@ -175,7 +175,7 @@ export const getServiceClients = async () => {
       headers: {
         'Authorization': 'Basic ' + Buffer.from(`${email}:${password}`).toString('base64'),
         'Accept': 'application/json',
-        next: { revalidate: 259200 }, // Cache for 1 hour
+        next: { revalidate: 2592000 }, // Cache for 1 hour
       },
     });
 

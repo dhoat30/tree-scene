@@ -133,7 +133,6 @@ export default function MobileNavbar() {
         )}
         <Divider
           key={index + 122}
-      
         />
       </li>
     );
