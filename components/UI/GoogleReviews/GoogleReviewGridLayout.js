@@ -47,7 +47,7 @@ export default function GoogleReviewGridLayout({data}) {
 }
 
 const Section = styled.section`
-  background: var(--light-surface-container-lowest);
+  background: var(--light-surface-container-low);
 
   padding: 4px  0 16px 0;
  

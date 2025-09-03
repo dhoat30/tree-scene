@@ -108,11 +108,11 @@ Explore authentic customer feedback and see why people trust us. Each review ref
       </div>
       <Container maxWidth="xl" className="cta-wrapper mt-32">
         <Link href={"https://g.page/r/CY-1cv33dewyEAE/review"} target="_blank">
-          <Button variant={`contained`} endIcon={<CallMadeOutlinedIcon />}>
+          <Button variant={`contained`} endIcon={<CallMadeOutlinedIcon />} size="large">
            Leave a Review 
           </Button>
         </Link>
-        <Link href="/testimonials">
+        <Link href="/testimonials" size="large">
           <Button variant={`outlined`}>
             Read More Reviews
           </Button>

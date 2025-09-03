@@ -40,6 +40,7 @@ export default function ServicePackagePage({ pageData, servicesPackagesData }) {
 }
 const Section = styled.section`
   padding: 80px 0;
+  background-color: var(--light-surface-container-low);
   .cards-wrapper {
     display: grid;
     grid-template-columns: 1fr;

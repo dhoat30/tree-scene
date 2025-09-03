@@ -78,7 +78,8 @@ export default function ServicesSection({
 }
 const Section = styled.section`
   padding: 80px 0 80px 0;
-  background: var(--dark-surface-container-lowest);
+  background-color: var(--light-surface-container-low);
+
   @media (max-width: 600px) {
     padding: 40px 0 40px 0;
   }

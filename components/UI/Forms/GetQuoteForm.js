@@ -254,10 +254,8 @@ export default function GetQuoteForm({ className, formName = "Get a Quote Form",
             <ContainerStyled variant="div" className={`${className} py-8`} maxWidth="xl">
                 <Box sx={{ width: '100%' }}>
                     <React.Fragment>
-                        <div className="input-wrapper p-6">
-                            <Typography variant="h4" component="h1" className="title">
-                                {title}
-                            </Typography>
+                        <div className="input-wrapper ">
+                         
                             {formInputs}
                             <LoadingBtn newSubmission={newSubmission} onClick={submitHandler} isLoading={isLoading} isSuccess={isSuccess}>
                                 Submit now
@@ -307,11 +305,11 @@ const ContainerStyled = styled(Container)`
   }
 
   .input-wrapper{ 
-    padding: 24px 24px 24px 24px; 
+    padding: 0 24px 0 24px; 
     background: var(--light--surface-container);
     border-radius: 12px; 
     @media (max-width: 600px) {
-      padding: 24px 16px;
+      padding: 0 16px;
     }
     .title { 
       margin: 8px 0; 

@@ -55,7 +55,7 @@ export default function GoogleReviewCard({ name, description, customerPic, class
 }
 
 const Div = styled.div`
-  background: var(--light-surface-container-high);
+  background: var(--light-surface-container-lowest);
   padding: 16px;
   border: 1px solid var(--light-outline-variant);
   max-width: calc(100% - 16px);

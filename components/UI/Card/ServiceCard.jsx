@@ -45,13 +45,16 @@ export default function ServiceCard({ title, description, image, cta }) {
 }
 
 const Card = styled.div`
+    background-color: var(--light-surface-container-lowest) !important;
+
   .card {
+
     border-radius: 8px;
     overflow: hidden;
-    background: var(--light-surface-container);
     border: 1px solid var(--light-outline-variant);
     .content-wrapper {
-      padding: 16px;
+      /* padding: 16px; */
+
     }
   }
 `;

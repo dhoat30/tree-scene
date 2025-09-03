@@ -31,7 +31,7 @@ export default function BreadcrumbHero({
 
 const TitleWrapper = styled.div`
   text-align: center;
-  background: var(--light-surface-container);
+  background: var(--light-surface-container-low);
   border-bottom: 1px solid var(--light-outline);
   padding-top: 120px;
   padding-bottom: 24px;
@@ -39,6 +39,8 @@ const TitleWrapper = styled.div`
     padding-top: 72px;
   }
   .container {
+   
+
     flex-direction: column;
     display: flex;
     align-items: center;

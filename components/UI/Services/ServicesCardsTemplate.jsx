@@ -81,7 +81,7 @@ export default function ServicesCardsTemplate({
 }
 
 const Section = styled.section`
-  background: var(--light-surface-container-lowest);
+  background-color: var(--light-surface-container-low);
 
   padding: 80px 0;
   @media (max-width: 900px) {
