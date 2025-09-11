@@ -12,6 +12,7 @@ export async function generateMetadata(props, parent) {
     const params = await props.params;
     // read route params
     const slug = params.slug
+    
 
     // fetch data
     const data = await getSinglePostData("about-us", "/wp-json/wp/v2/pages")
