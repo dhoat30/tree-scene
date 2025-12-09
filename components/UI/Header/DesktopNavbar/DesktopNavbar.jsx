@@ -153,7 +153,7 @@ function DesktopNavbar() {
               src="/logo.png"
               width={513 / 3.5}
               height={171 / 3.5}
-              alt="Epic Cleaning Logo"
+              alt="Tree Scene Logo"
               style={{ cursor: "pointer" }}
             />
           </Link>

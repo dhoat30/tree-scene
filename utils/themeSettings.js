@@ -18,10 +18,11 @@ export const lightTheme = createTheme({
   typography: {
     fontFamily: ["var(--font-work-sans)", "Segoe UI", "sans-serif"].join(","),
     h1: {
-      fontSize: "5rem",
-      fontWeight: 600,
+      fontSize: "4rem",
+      fontWeight: 900,
       color: "var(--light-on-surface)",
-
+      textTransform: "uppercase", 
+      lineHeight: "90%", 
       "@media (max-width:900px)": {
         fontSize: "3rem",
       },
@@ -29,21 +30,22 @@ export const lightTheme = createTheme({
     h2: {
       fontWeight: 600,
       fontSize: "3rem",
-      lineHeight: "3.4rem",
+      lineHeight: "100%",
       color: "var(--light-on-surface)",
 
       "@media (max-width:600px)": {
         fontSize: "2.5rem",
-        lineHeight: "2.8rem",
       },
     },
     h3: {
       fontWeight: 600,
-      letterSpacing: "0.05rem",
+      letterSpacing: "-0.05rem",
       color: "var(--light-on-surface)",
+              lineHeight: "100%",
+
       "@media (max-width:600px)": {
         fontSize: "1.7rem",
-        lineHeight: "2.2rem",
+      
       },
     },
     h4: {
@@ -51,8 +53,8 @@ export const lightTheme = createTheme({
       color: "var(--light-on-surface)",
     },
     h5: {
-      fontWeight: 400,
-      letterSpacing: "0.02rem",
+      fontWeight: 500,
+      letterSpacing: "-0.05rem",
 
       color: "var(--light-on-surface)",
     },
@@ -63,6 +65,7 @@ export const lightTheme = createTheme({
     body1: {
       color: "var( --light-on-surface-variant)",
       letterSpacing: "-0.03rem",
+      lineHeight: 1.5
     },
     body2: {},
     subtitle1: {

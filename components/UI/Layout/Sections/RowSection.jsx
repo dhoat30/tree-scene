@@ -20,6 +20,7 @@ export default function RowSection({
   beforeImage,
   afterImage,
 }) {
+  console.log(image)
   const imgPadding = (image.height / image.width) * 100;
   const contentAlignment = imageAlignment === "left" ? "2 / 3" : "1 / 2";
   return (

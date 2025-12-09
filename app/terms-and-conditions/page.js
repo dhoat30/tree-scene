@@ -25,7 +25,7 @@ export async function generateMetadata(props, parent) {
                 title: seoData.title,
                 description: seoData.description,
                 url: 'https://treescene.co.nz',
-                siteName: 'Epic Cleaning Tauranga',
+                siteName: 'Tree Scene Tauranga',
                 images: [
                     {
                         url: seoData?.og_image && seoData?.og_image[0]?.url,

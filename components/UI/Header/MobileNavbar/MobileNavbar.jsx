@@ -173,7 +173,7 @@ export default function MobileNavbar() {
                     src="/logo.png"
                     width={513 /4}
                     height={171/4}
-                    alt="Epic Cleaning Logo"
+                    alt="Tree Scene Logo"
                     quality={100}
                   />
                 </Link>

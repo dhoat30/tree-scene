@@ -80,12 +80,13 @@ export default function HeroContent({
       </Typography>
       <Typography
         component="h1"
-        variant="h2"
+        variant="h1"
         className="title"
         color="var(--light-on-primary-fixed-variant)"
       >
         {title}
       </Typography>
+
       <Typography
         component="p"
         variant="body1"
@@ -102,6 +103,7 @@ export default function HeroContent({
 
 const Div = styled.div`
   .subtitle {
+ 
     @media (max-width: 600px) {
       font-size: 1.5rem;
     }

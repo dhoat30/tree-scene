@@ -1,11 +1,12 @@
-import { getOptions, getSinglePostData, getGoogleReviews, getServiceJobs, getServiceClients } from '@/utils/fetchData'
+import { getOptions, getSinglePostData, getAllPosts, getSingleServicePackage } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
 import OptimizedHero from '@/components/UI/Hero/OptimizedHero/OptimizedHero'
 import TechLogos from '@/components/UI/TechLogos/TechLogos'
 import USP from '@/components/UI/USP/USP'
 import Header from '@/components/UI/Header/Header'
 import Footer from '@/components/UI/Footer/Footer'
-import GoogleReviewsCarousel from '@/components/UI/GoogleReviews/GoogleReviewsCarousel'
+import GetQuotePage from '@/components/Pages/GetQuotePage/GetQuotePage'
+import MulchWaitlistForm from '@/components/Pages/GetQuotePage/MulchWaitlistForm'
 
 
 export async function generateMetadata(props, parent) {
@@ -14,7 +15,7 @@ export async function generateMetadata(props, parent) {
     const slug = params.slug
 
     // fetch data
-    const data = await getSinglePostData(slug, "/wp-json/wp/v2/service")
+    const data = await getSinglePostData("mulch-waitlist-form", "/wp-json/wp/v2/pages")
 
     // optionally access and extend (rather than replace) parent metadata
     const previousImages = (await parent).openGraph?.images || []
@@ -47,41 +48,26 @@ export async function generateMetadata(props, parent) {
     }
 }
 
-export default async function Contact(props) {
-    const params = await props.params;
-    const slug = params.slug
-
-    const postData = await getSinglePostData(slug, "/wp-json/wp/v2/service")
+export default async function Contact() {
+    const postData = await getSinglePostData("mulch-waitlist-form", "/wp-json/wp/v2/pages")
     const options = await getOptions()
-
-    let  serviceJobs = await getServiceJobs() 
-    const serviceClients = await getServiceClients() 
-   serviceJobs = serviceJobs.map(job => {
-    const client = serviceClients.find(c => c.uuid === job.company_uuid);
-    return {
-      ...job,
-      client_name: client?.name.split(' ')[0] || 'Unknown',
-    };
-  });
-
     if (!postData) {
         return {
             notFound: true,
         }
     }
-    // google reviews data fetch 
-    const googleReviewsData = await getGoogleReviews()
     return (
         <>
             <Header />
             <main>
-                <OptimizedHero data={postData[0]?.acf?.hero_section} heroUSP={options.hero_usp} />
+
+                <MulchWaitlistForm data={postData[0]} /> 
                 <TechLogos data={options.clients_logos} />
-        <Layout sections={postData[0]?.acf?.sections} serviceJobs={serviceJobs} />
+                <Layout sections={postData[0]?.acf?.sections} />
                 <USP showTitle={true} statsArray={options.stats.items} cards={options.usp.items} title={options.usp.section_title} description={options.usp.section_description} />
-                <GoogleReviewsCarousel data={googleReviewsData} />
+
             </main>
-            <Footer footerCtaData={options.footer_cta} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} />
+            <Footer footerCtaData={options.footer_cta} certifications={options.certifications} contactInfo={options.contact_info} socialData={options.social_links} showFooterCta={false} />
         </>
     )
 }

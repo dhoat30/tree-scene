@@ -15,6 +15,7 @@ export default function RowCard({
   ctaLink,
   ctaLabel,
 }) {
+  console.log(image)
   // animation control for the bulb in the background
   const controls = useAnimation();
 
@@ -101,7 +102,8 @@ export default function RowCard({
 
           <TextLink label={ctaLabel} url={ctaLink} className="cta" />
         </Box>
-        <motion.div
+     
+           <motion.div
           initial="offscreen"
           whileInView="onscreen"
           viewport={{ once: true, amount: "all" }}
@@ -117,6 +119,8 @@ export default function RowCard({
             sizes="(max-width: 1080px) 100vw, 50vw "
           />
         </motion.div>
+      
+     
       </div>
     </Container>
   );

@@ -37,6 +37,13 @@ export const headerLinks = [
             { label: "Powerline Clearing", url: "/services/powerline-clearing", subtitle: "Deal with live electrical networks", graphic: "/services-graphics/powerline.png" },
         ]
     },
+
+    {
+        id: 6,
+        label: "Arbor Mulch",
+        url: "/services/arbor-mulch-delivery",
+       
+    },
     {
         id: 6,
         label: "Tree Removal Cost",
@@ -63,12 +70,7 @@ export const headerLinks = [
         ]
     },
 
-    {
-        id: 2,
-        label: "Testimonials",
-        url: "/testimonials",
-  
-    },
+
     {
         id: 2,
         label: "Contact",

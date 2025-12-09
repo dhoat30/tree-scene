@@ -256,6 +256,7 @@ ul {
 .body1 strong {
   margin: 8px 0 8px 0;
   font-weight: 400;
+  letter-spacing: -0.03rem;
   color: var(--light-on-surface-variant);
   font-family: var(--font-work-sans), Segoe UI, sans-serif;
   font-size: 1rem;
@@ -267,7 +268,7 @@ ul {
   letter-spacing: 0;
   margin: 0;
 }
-.body1 ul {
+.body1 ul, ol {
   margin-left: 32px;
   margin-top: 24px;
   margin-bottom: 24px;

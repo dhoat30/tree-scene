@@ -7,7 +7,7 @@ import { getOptions, getSinglePostData, getAllPosts, getSingleServicePackage } f
 
 export const metadata = {
     metadataBase: new URL('https://treescene.co.nz'),
-    title: 'Checkout | Epic Cleaning',
+    title: 'Checkout | Tree Scene',
     robots: {
         index: false,
         follow: true,
