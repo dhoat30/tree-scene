@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import { lightTheme } from "@/utils/themeSettings";
-import ThemeProvider from "@mui/material/styles/ThemeProvider";
+import { ThemeProvider } from "@mui/material/styles";
 
 export default function BlogTableOfContent({ data }) {
   if (!data) return null;

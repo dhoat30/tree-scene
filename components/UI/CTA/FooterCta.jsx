@@ -24,7 +24,7 @@ export default function FooterCta({ title, description, cta }) {
             </Typography>
             <Typography
               component="p"
-              variant="body1"
+              variant="h5"
               align="center"
               color="white"
               className="description mt-16"
@@ -71,7 +71,7 @@ export default function FooterCta({ title, description, cta }) {
   );
 }
 const Section = styled(Box)`
-background: var(--light-surface-container-lowest); 
+  background: var(--light-surface-container-lowest);
   padding: 56px 0;
   @media (max-width: 900px) {
     padding: 24px 0;

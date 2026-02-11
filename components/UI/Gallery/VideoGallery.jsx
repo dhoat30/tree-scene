@@ -1,10 +1,18 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
+import dynamic from "next/dynamic";
 import BeforeAfterMasonry from "../BeforeAfterSlider/BeforeAfterMasonry";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
-import ReactPlayer from "react-player/youtube";
+
+const ReactPlayer = dynamic(
+  () => import("react-player").then((mod) => mod.default),
+  {
+    ssr: false,
+    loading: () => null,
+  },
+);
 
 export default function VideoGallery({ galleryData }) {
   const [hasWindow, setHasWindow] = useState(false);

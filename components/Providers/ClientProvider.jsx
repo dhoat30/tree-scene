@@ -1,9 +1,7 @@
-'use client';
-import { ThemeProvider } from '@mui/material/styles';
-import {lightTheme } from "../../utils/themeSettings"
-import { useState, useEffect } from 'react';
-import Loading from '../UI/Loader/Loading'
-import LoadingIndicator from '@/components/UI/Loader/LoadingIndicator';
+"use client";
+import { ThemeProvider } from "@mui/material/styles";
+import { lightTheme } from "../../utils/themeSettings";
+import LoadingIndicator from "@/components/UI/Loader/LoadingIndicator";
 
 export default function ClientProvider({ children }) {
   // const [isLoading, setIsLoading] = useState(true);
@@ -13,13 +11,12 @@ export default function ClientProvider({ children }) {
   //   return () => clearTimeout(timer);
   // }, []);
 
+  return (
+    <ThemeProvider theme={lightTheme}>
+      <LoadingIndicator />
 
-
-  return <ThemeProvider theme={lightTheme}>
-            <LoadingIndicator />
-
-    {/* {isLoading && <Loading />} */}
-    {children}
-    
-    </ThemeProvider>;
+      {/* {isLoading && <Loading />} */}
+      {children}
+    </ThemeProvider>
+  );
 }

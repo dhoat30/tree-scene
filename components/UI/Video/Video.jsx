@@ -1,110 +1,79 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import ReactPlayer from "react-player/youtube";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import styled from "@emotion/styled";
 import PlayIcon from "../Icons/PlayIcon";
+import styles from "./Video.module.scss";
+const ReactPlayer = dynamic(
+  () => import("react-player").then((mod) => mod.default),
+  {
+    ssr: false,
+    loading: () => null,
+  },
+);
+// import BackgroundGradientHero from "../Icons/BackgroundGradientHero";
 export default function Video({
   videoID,
   placeholderImage,
   className,
   showCompressedImage,
+  priority = false,
 }) {
   const imageURL = showCompressedImage
-    ? placeholderImage.sizes.large
-    : placeholderImage.url;
-  const [isClient, setIsClient] = useState(false);
+    ? placeholderImage?.sizes?.large
+    : placeholderImage?.url;
   const [videoLoaded, setVideoLoaded] = useState(false); // New state for tracking video load
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+
   // Function to load and play the video
   const handleImageClick = () => {
     setVideoLoaded(true);
   };
   return (
-    <ContainerStyled className={className}>
-      <div className="video-wrapper">
+    <div className={`${styles.container} ${className}`}>
+      <div className={`${styles.videoWrapper}`}>
         {!videoLoaded && (
           <>
-            <div className="video-overlay"></div>
+            <div className={`${styles.videoOverlay}`}></div>
             <Image
               onClick={handleImageClick}
               src={imageURL} // Replace with your placeholder image path
               fill
               alt={placeholderImage.alt}
               style={{
-                objectFit: "cover", // cover, contain, none
+                objectFit: "cover",
+                borderRadius: "12px",
+                // cover, contain, none
               }}
-              sizes="(max-width: 1200px) 100vw, 50vw"
+              sizes="(max-width: 1200px) 100vw, 80vw"
+              priority={priority}
             />
-            <ButtonStyled onClick={handleImageClick}>
+            <div
+              className={`${styles.buttonStyled} flex align-center`}
+              onClick={handleImageClick}
+            >
               <PlayIcon />
-            </ButtonStyled>
+            </div>
           </>
         )}
 
         {videoLoaded && (
           <ReactPlayer
-            url={`https://www.youtube.com/watch?v=${videoID}`}
+            src={`https://www.youtube.com/watch?v=${videoID}`}
             style={{
               position: "absolute",
               top: 0,
               left: 0,
+              borderRadius: "12px",
+              overflow: "hidden",
+              background: "var(--dark-surface-container-high",
             }}
             width="100%"
             height="100%"
             controls={true}
+            playing={true}
           />
         )}
       </div>
-    </ContainerStyled>
+    </div>
   );
 }
-const ContainerStyled = styled.div`
-  position: relative;
-  .video-wrapper {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--light-outline-variant);
-  }
-  .video-overlay {
-    background: rgba(31, 101, 135, 0.3);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 8;
-  }
-  .img-wrapper {
-    img {
-      object-fit: cover;
-    }
-  }
-`;
-const ButtonStyled = styled.div`
-  display: flex;
-  align-items: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-
-  svg {
-    &:hover {
-      cursor: pointer;
-    }
-    width: 72px;
-    height: 72px;
-    cursor: pointer;
-    circle {
-      stroke: white !important;
-    }
-    path {
-      fill: white;
-    }
-  }
-`;

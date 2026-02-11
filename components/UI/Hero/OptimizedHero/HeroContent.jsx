@@ -17,15 +17,19 @@ export default function HeroContent({
   className,
   heroUSP,
 }) {
+  if (!ctaArray && ctaArray.length === 0) return;
+
   let ctaComponent = null;
   if (ctaArray.length === 1) {
     ctaComponent = (
       <div className="single-button-wrapper">
-        <Link href={ctaArray[0].cta_link.url}>
-          <Button variant="contained" size="large">
-            {ctaArray[0].cta_link.title}
-          </Button>
-        </Link>
+        {ctaArray && (
+          <Link href={ctaArray[0].cta_link.url}>
+            <Button variant="contained" size="large">
+              {ctaArray[0].cta_link.title}
+            </Button>
+          </Link>
+        )}
       </div>
     );
   }
@@ -103,7 +107,6 @@ export default function HeroContent({
 
 const Div = styled.div`
   .subtitle {
- 
     @media (max-width: 600px) {
       font-size: 1.5rem;
     }

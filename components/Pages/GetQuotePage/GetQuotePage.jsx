@@ -2,7 +2,7 @@
 import styled from "@emotion/styled";
 
 import Container from "@mui/material/Container";
-import ThemeProvider from "@mui/material/styles/ThemeProvider";
+import { ThemeProvider } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { lightTheme } from "@/utils/themeSettings";
 import HeroImage from "@/components/UI/Hero/OptimizedHero/HeroImage";
@@ -30,16 +30,19 @@ export default function GetQuotePage({ data, websitePackageOffer, heroUSP }) {
         );
       }
     }
-  }
- else if (data.acf.hero_section.show_before_after_images) { 
-
-  graphicComponent = <BeforeAfter data={{beforeImage: data.acf.hero_section.before_after_images.before_image, afterImage:data.acf.hero_section.before_after_images.after_image }} /> 
-  } 
-  else {
+  } else if (data.acf.hero_section.show_before_after_images) {
+    graphicComponent = (
+      <BeforeAfter
+        data={{
+          beforeImage: data.acf.hero_section.before_after_images.before_image,
+          afterImage: data.acf.hero_section.before_after_images.after_image,
+        }}
+      />
+    );
+  } else {
     graphicComponent = <HeroImage image={data.acf.hero_section.image} />;
   }
 
-  
   return (
     <ThemeProvider theme={lightTheme}>
       <Section>
@@ -48,7 +51,7 @@ export default function GetQuotePage({ data, websitePackageOffer, heroUSP }) {
             <Typography variant="h4" component="h1" className="subtitle">
               {data.acf.hero_section.subtitle}
             </Typography>
-              <HeroUSP data={heroUSP} /> 
+            <HeroUSP data={heroUSP} />
             <Typography
               variant="body1"
               component="p"
@@ -91,7 +94,7 @@ const Section = styled.section`
     @media (max-width: 600px) {
       padding: 0;
     }
-    .subtitle { 
+    .subtitle {
       font-weight: 600;
     }
     .form-container {

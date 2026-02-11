@@ -1,26 +1,13 @@
 "use client";
 import styled from "@emotion/styled";
 
-import Container from "@mui/material/Container";
-import ThemeProvider from "@mui/material/styles/ThemeProvider";
-import Typography from "@mui/material/Typography";
-import { lightTheme } from "@/utils/themeSettings";
-import HeroImage from "@/components/UI/Hero/OptimizedHero/HeroImage";
-import Video from "@/components/UI/Video/Video";
-import USP from "@/components/UI/USP/USP";
-import GetQuoteForm from "@/components/UI/Forms/GetQuoteForm";
-import HeroUSP from "@/components/UI/USP/HeroUSP";
-import BeforeAfter from "@/components/UI/BeforeAfterSlider/BeforeAfter";
 import MultipartForm from "@/components/UI/Forms/MultipartForm";
 // const WebsitePriceCalculatorForm = dynamic(() =>
 //   import("@/components/UI/Forms/WebsitePriceCalculatorForm")
 // );
 
 export default function GetQuoteMultipartForm() {
-
-  return (
-    <MultipartForm/> 
-  );
+  return <MultipartForm />;
 }
 const Section = styled.section`
   background: var(--light-surface-container-low);
@@ -40,7 +27,7 @@ const Section = styled.section`
     @media (max-width: 600px) {
       padding: 0;
     }
-    .subtitle { 
+    .subtitle {
       font-weight: 600;
     }
     .form-container {

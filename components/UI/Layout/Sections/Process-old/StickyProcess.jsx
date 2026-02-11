@@ -26,7 +26,7 @@ export default function StickyProcess({ title, description, cards }) {
   // Create a ref array for the content sections
   const contentRefs = useRef([]);
   contentRefs.current = cards.map(
-    (_, i) => contentRefs.current[i] ?? React.createRef()
+    (_, i) => contentRefs.current[i] ?? React.createRef(),
   );
 
   if (!cards) return null;
@@ -118,7 +118,7 @@ const ScrollAndOpacityWrapper = React.forwardRef(
         </motion.div>
       </Link>
     );
-  }
+  },
 );
 
 // Add display name for debugging

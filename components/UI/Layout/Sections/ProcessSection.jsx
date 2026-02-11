@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import RegularProcess from "./Process/RegularProcess";
-import StickyProcess from "./Process/StickyProcess";
+import RegularProcess from "./Process-old/RegularProcess";
+import StickyProcess from "./Process-old/StickyProcess";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default function ProcessSection({ title, description, cards }) {

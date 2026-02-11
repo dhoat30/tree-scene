@@ -21,8 +21,8 @@ export const lightTheme = createTheme({
       fontSize: "4rem",
       fontWeight: 900,
       color: "var(--light-on-surface)",
-      textTransform: "uppercase", 
-      lineHeight: "90%", 
+      textTransform: "uppercase",
+      lineHeight: "90%",
       "@media (max-width:900px)": {
         fontSize: "3rem",
       },
@@ -41,11 +41,10 @@ export const lightTheme = createTheme({
       fontWeight: 600,
       letterSpacing: "-0.05rem",
       color: "var(--light-on-surface)",
-              lineHeight: "100%",
+      lineHeight: "100%",
 
       "@media (max-width:600px)": {
         fontSize: "1.7rem",
-      
       },
     },
     h4: {
@@ -65,13 +64,13 @@ export const lightTheme = createTheme({
     body1: {
       color: "var( --light-on-surface-variant)",
       letterSpacing: "-0.03rem",
-      lineHeight: 1.5
+      lineHeight: 1.5,
     },
     body2: {},
     subtitle1: {
       color: "var(--light-on-surface)",
       fontWeight: 500,
-      fontSize: "0.9rem"
+      fontSize: "0.9rem",
     },
   },
   components: {
@@ -79,17 +78,35 @@ export const lightTheme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: "50px",
-          color: "var(--light-on-primary)",
-          paddingRight: "32px",
-          paddingLeft: "32px",
-     
+          textTransform: "uppercase",
+          fontWeight: 600,
+          transition: "all 0.2s ease-in-out",
+          padding: "12px 32px",
+          fontSize: "1rem",
         },
-        contained: { 
-          background: "var(--light-primary)"
-        }, 
+        contained: {
+          backgroundColor: "var(--light-primary)", // slightly darker yellow
+
+          "&:hover": {
+            backgroundColor: "var(--light-primary-container)", // slightly darker yellow
+            transform: "translateY(-1px)",
+          },
+        },
+
         outlined: {
+          borderRadius: "50px",
+          textTransform: "none",
           border: "1px solid var(--light-primary)",
-          color: "var(--light-primary)",
+          "&:hover": {
+            transform: "translateY(-1px)",
+          },
+        },
+        containedSecondary: {
+          backgroundColor: "var(--light-primary)",
+          color: "var(--light-on-primary)",
+          "&:hover": {
+            backgroundColor: "var(--dark-primary-container)",
+          },
         },
       },
     },
@@ -170,7 +187,35 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: "50px",
+          textTransform: "uppercase",
+          fontWeight: 600,
+          transition: "all 0.2s ease-in-out",
+          padding: "12px 32px",
+          fontSize: "1rem",
+        },
+        contained: {
+          backgroundColor: "var(--dark-primary)", // sdarkly darker yellow
+
+          "&:hover": {
+            backgroundColor: "var(--dark-primary-container)", // sdarkly darker yellow
+            transform: "translateY(-1px)",
+          },
+        },
+
+        outlined: {
+          borderRadius: "50px",
           textTransform: "none",
+          border: "1px solid var(--dark-primary)",
+          "&:hover": {
+            transform: "translateY(-1px)",
+          },
+        },
+        containedSecondary: {
+          backgroundColor: "var(--dark-primary)",
+          color: "var(--light-on-primary)",
+          "&:hover": {
+            backgroundColor: "var(--dark-primary-container)",
+          },
         },
       },
     },

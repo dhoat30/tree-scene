@@ -2,15 +2,15 @@
 import styled from "@emotion/styled";
 
 import Container from "@mui/material/Container";
-import ThemeProvider from "@mui/material/styles/ThemeProvider";
+import { ThemeProvider } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { lightTheme } from "@/utils/themeSettings";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import WebsiteInquiryLongForm from "@/components/UI/Forms/WebsiteInquiryLongForm";
 
-const WebsiteEnquiryForm = dynamic(() =>
-  import("@/components/UI/Forms/WebsiteEnquiryForm")
+const WebsiteEnquiryForm = dynamic(
+  () => import("@/components/UI/Forms/WebsiteEnquiryForm"),
 );
 
 export default function WebsiteInquiryPage({ data }) {
