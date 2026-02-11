@@ -6,10 +6,10 @@ import Button from "@mui/material/Button";
 import Link from "next/link";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import HeroUSP from "@/Components/UI/USP/HeroUSP";
+import HeroUSP from "@/components/UI/USP/HeroUSP";
 import Image from "next/image";
-import Video from "@/Components/UI/Video/Video";
-// import GoogleReviewSnippet from "@/Components/UI/GoogleReviews/GoogleReviewCard/GoogleReviewSnippet";
+import Video from "@/components/UI/Video/Video";
+// import GoogleReviewSnippet from "@/components/UI/GoogleReviews/GoogleReviewCard/GoogleReviewSnippet";
 
 export default function HeroSectionColumns({
   title,
