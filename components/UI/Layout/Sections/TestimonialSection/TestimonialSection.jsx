@@ -69,7 +69,7 @@ export default function TestimonialSection({
                       {singleItem.value}
                     </Typography>
                     <Typography
-                      className={`center-align mt-24 semi-bold ${styles.title}`}
+                      className={`center-align mt-8 semi-bold ${styles.title}`}
                       variant="h6"
                       component="h3"
                       color="var(--dark-on-surface)"

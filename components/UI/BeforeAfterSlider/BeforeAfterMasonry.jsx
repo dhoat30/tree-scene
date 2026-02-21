@@ -13,33 +13,34 @@ export default function BeforeAfterMasonry({ data, showTitle, priority }) {
           Before & After
         </Typography>
       )}
-
-      <ReactCompareSlider
-        className="image-wrapper"
-        onlyHandleDraggable={true}
-        style={{
-          paddingBottom: `${
-            (data.beforeImage.height / data.beforeImage.width) * 100
-          }%`,
-          touchAction: "pan-y",
-        }}
-        itemTwo={
-          <Image
-            src={data.beforeImage.url}
-            alt={data.beforeImage.alt ? data.beforeImage.alt : "Before"}
-            priority={priority}
-            fill
-          />
-        }
-        itemOne={
-          <Image
-            src={data.afterImage.url}
-            alt={data.afterImage.alt ? data.afterImage.alt : "Before"}
-            fill
-            priority={priority}
-          />
-        }
-      />
+      {data.afterImage && data.beforeImage && (
+        <ReactCompareSlider
+          className="image-wrapper"
+          onlyHandleDraggable={true}
+          style={{
+            paddingBottom: `${
+              (data.beforeImage.height / data.beforeImage.width) * 100
+            }%`,
+            touchAction: "pan-y",
+          }}
+          itemTwo={
+            <Image
+              src={data.beforeImage.url}
+              alt={data.beforeImage.alt ? data.beforeImage.alt : "Before"}
+              priority={priority}
+              fill
+            />
+          }
+          itemOne={
+            <Image
+              src={data.afterImage.url}
+              alt={data.afterImage.alt ? data.afterImage.alt : "Before"}
+              fill
+              priority={priority}
+            />
+          }
+        />
+      )}
     </Container>
   );
 }

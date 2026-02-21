@@ -17,36 +17,36 @@ export default function BeforeAfter({ data, showTitle }) {
           Before & After
         </Typography>
       )}
-
-      <ReactCompareSlider
-        className="image-wrapper"
-        onlyHandleDraggable={true}
-        style={{
-          paddingBottom: `${
-            (data.beforeImage.height / data.beforeImage.width) * 100
-          }%`,
-          touchAction: "pan-y",
-        }}
-        itemTwo={
-          <Image
-            src={data.beforeImage.url}
-            alt={data.beforeImage.alt ? data.beforeImage.alt : "Before image"}
-            sizes="(max-width: 1200px) 100vw, 50vw"
-            fill
-            priority
-          />
-        }
-        itemOne={
-          <Image
-            src={data.afterImage.url}
-            alt={data.afterImage.alt ? data.afterImage.alt : "After Image"}
-            fill
-            priority
-            sizes="(max-width: 1200px) 100vw, 50vw"
-
-          />
-        }
-      />
+      {data.afterImage && data.beforeImage && (
+        <ReactCompareSlider
+          className="image-wrapper"
+          onlyHandleDraggable={true}
+          style={{
+            paddingBottom: `${
+              (data.beforeImage.height / data.beforeImage.width) * 100
+            }%`,
+            touchAction: "pan-y",
+          }}
+          itemTwo={
+            <Image
+              src={data.beforeImage.url}
+              alt={data.beforeImage.alt ? data.beforeImage.alt : "Before image"}
+              sizes="(max-width: 1200px) 100vw, 50vw"
+              fill
+              priority
+            />
+          }
+          itemOne={
+            <Image
+              src={data.afterImage.url}
+              alt={data.afterImage.alt ? data.afterImage.alt : "After Image"}
+              fill
+              priority
+              sizes="(max-width: 1200px) 100vw, 50vw"
+            />
+          }
+        />
+      )}
     </Container>
   );
 }

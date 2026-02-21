@@ -18,12 +18,12 @@ export default function HeroContent({
   heroUSP,
 }) {
   if (!ctaArray && ctaArray.length === 0) return;
-
+  console.log(ctaArray);
   let ctaComponent = null;
   if (ctaArray.length === 1) {
     ctaComponent = (
       <div className="single-button-wrapper">
-        {ctaArray && (
+        {ctaArray && ctaArray.length > 0 && (
           <Link href={ctaArray[0].cta_link.url}>
             <Button variant="contained" size="large">
               {ctaArray[0].cta_link.title}

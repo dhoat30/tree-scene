@@ -1,0 +1,101 @@
+export const revalidate = 2592000; // applies to both page and metadata
+
+import {
+  getOptions,
+  getSinglePostData,
+  getGoogleReviews,
+  getServiceJobs,
+  getServiceClients,
+} from "@/utils/fetchData";
+import Layout from "@/components/UI/Layout/Layout";
+import OptimizedHero from "@/components/UI/Hero/OptimizedHero/OptimizedHero";
+import TechLogos from "@/components/UI/TechLogos/TechLogos";
+import USP from "@/components/UI/USP/USP";
+import Header from "@/components/UI/Header/Header";
+import Footer from "@/components/UI/Footer/Footer";
+import GoogleReviewsCarousel from "@/components/UI/GoogleReviews/GoogleReviewsCarousel";
+
+export async function generateMetadata(props, parent) {
+  const params = await props.params;
+  // read route params
+  const slug = params.slug;
+
+  // fetch data
+  const data = await getSinglePostData(slug, "/wp-json/wp/v2/equipment");
+
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+  if (data.length > 0) {
+    const seoData = data[0].yoast_head_json;
+    return {
+      title: seoData.title,
+      description: seoData.description,
+      metadataBase: new URL("https://treescene.co.nz"),
+      openGraph: {
+        title: seoData.title,
+        description: seoData.description,
+        url: "https://treescene.co.nz",
+        siteName: "Tree Scene Tauranga",
+        images: [
+          {
+            url: seoData?.og_image && seoData?.og_image[0]?.url,
+            width: 800,
+            height: 600,
+          },
+          {
+            url: seoData?.og_image && seoData?.og_image[0].url,
+            width: 1800,
+            height: 1600,
+          },
+        ],
+        type: "website",
+      },
+    };
+  }
+}
+
+export default async function Contact(props) {
+  const params = await props.params;
+  const slug = params.slug;
+  const isTreeRemovalPage = slug === "tree-removal" ? true : false;
+  const postData = await getSinglePostData(slug, "/wp-json/wp/v2/equipment");
+  const options = await getOptions();
+
+  let serviceJobs = await getServiceJobs();
+  const serviceClients = await getServiceClients();
+
+  serviceJobs = serviceJobs.map((job) => {
+    const client = serviceClients.find((c) => c.uuid === job.company_uuid);
+    return {
+      ...job,
+      client_name: client?.name.split(" ")[0] || "Unknown",
+    };
+  });
+
+  if (!postData) {
+    return {
+      notFound: true,
+    };
+  }
+  // google reviews data fetch
+  const googleReviewsData = await getGoogleReviews();
+  return (
+    <>
+      <Header />
+      <main>
+        {/* <TechLogos data={options.clients_logos} /> */}
+        <Layout
+          sections={postData[0]?.acf?.sections}
+          serviceJobs={serviceJobs}
+        />
+      </main>
+      <Footer
+        footerCtaData={options.footer_cta}
+        certifications={options.certifications}
+        contactInfo={options.contact_info}
+        socialData={options.social_links}
+        showFooterCta={false}
+      />
+    </>
+  );
+}
