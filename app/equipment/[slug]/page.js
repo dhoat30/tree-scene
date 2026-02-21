@@ -3,7 +3,6 @@ export const revalidate = 2592000; // applies to both page and metadata
 import {
   getOptions,
   getSinglePostData,
-  getGoogleReviews,
   getServiceJobs,
   getServiceClients,
 } from "@/utils/fetchData";
@@ -14,6 +13,7 @@ import USP from "@/components/UI/USP/USP";
 import Header from "@/components/UI/Header/Header";
 import Footer from "@/components/UI/Footer/Footer";
 import GoogleReviewsCarousel from "@/components/UI/GoogleReviews/GoogleReviewsCarousel";
+import reviewsData from "@/data/google-reviews.json";
 
 export async function generateMetadata(props, parent) {
   const params = await props.params;
@@ -77,8 +77,6 @@ export default async function Contact(props) {
       notFound: true,
     };
   }
-  // google reviews data fetch
-  const googleReviewsData = await getGoogleReviews();
   return (
     <>
       <Header />

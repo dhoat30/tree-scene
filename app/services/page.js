@@ -17,6 +17,7 @@ import Header from "@/components/UI/Header/Header";
 import Footer from "@/components/UI/Footer/Footer";
 import ServicesCardsTemplate from "@/components/UI/Services/ServicesCardsTemplate";
 import GoogleReviewsCarousel from "@/components/UI/GoogleReviews/GoogleReviewsCarousel";
+import reviewsData from "@/data/google-reviews.json";
 
 export async function generateMetadata(props, parent) {
   const params = await props.params;
@@ -79,7 +80,6 @@ export default async function Contact(props) {
       notFound: true,
     };
   }
-  const googleReviewsData = await getGoogleReviews();
   const allSlugs = allPosts.map((post) => post.slug);
 
   return (
@@ -108,7 +108,7 @@ export default async function Contact(props) {
           title={options.usp.section_title}
           description={options.usp.section_description}
         />
-        <GoogleReviewsCarousel data={googleReviewsData} />
+        <GoogleReviewsCarousel data={reviewsData} />
       </main>
       <Footer
         footerCtaData={options.footer_cta}

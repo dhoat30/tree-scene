@@ -14,6 +14,7 @@ import USP from "@/components/UI/USP/USP";
 import Header from "@/components/UI/Header/Header";
 import Footer from "@/components/UI/Footer/Footer";
 import GoogleReviewsCarousel from "@/components/UI/GoogleReviews/GoogleReviewsCarousel";
+import reviewsData from "@/data/google-reviews.json";
 
 export async function generateMetadata(props, parent) {
   const params = await props.params;
@@ -78,7 +79,6 @@ export default async function Contact(props) {
     };
   }
   // google reviews data fetch
-  const googleReviewsData = await getGoogleReviews();
   return (
     <>
       <Header />
@@ -104,7 +104,7 @@ export default async function Contact(props) {
               title={options.usp.section_title}
               description={options.usp.section_description}
             />
-            <GoogleReviewsCarousel data={googleReviewsData} />
+            <GoogleReviewsCarousel data={reviewsData} />
           </>
         )}
       </main>

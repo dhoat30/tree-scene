@@ -4,7 +4,6 @@ import {
   getOptions,
   getSinglePostData,
   getAllPosts,
-  getGoogleReviews,
   getServiceJobs,
   getServiceClients,
 } from "@/utils/fetchData";
@@ -18,6 +17,7 @@ import FaqAccordionSection from "@/components/UI/Layout/Sections/FaqAccordionSec
 import BlogsArchive from "@/components/Pages/BlogsPage/BlogsArchive";
 import GoogleReviewsCarousel from "@/components/UI/GoogleReviews/GoogleReviewsCarousel";
 import ServicesCardsTemplate from "@/components/UI/Services/ServicesCardsTemplate";
+import reviewsData from "@/data/google-reviews.json";
 
 export async function generateMetadata(props, parent) {
   const params = await props.params;
@@ -79,7 +79,6 @@ export default async function Page() {
     };
   }
   // google reviews data fetch
-  const googleReviewsData = await getGoogleReviews();
 
   return (
     <>
@@ -90,7 +89,7 @@ export default async function Page() {
           heroUSP={options.hero_usp}
         />
         <TechLogos data={options.clients_logos} />
-        <GoogleReviewsCarousel data={googleReviewsData} />
+        <GoogleReviewsCarousel data={reviewsData} />
         <ServicesCardsTemplate
           title="All Services"
           description="We offer a wide range of services to cater to all your cleaning needs."
