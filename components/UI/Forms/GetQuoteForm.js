@@ -147,7 +147,6 @@ export default function GetQuoteForm({ className, formName = "Get a Quote Form",
 
         Promise.all([axios(configHubspot), axios(configSendMail), axios(facebookData)])
             .then(function (response) {
-                console.log(response);
                 if (response[0].status === 200) {
                     setIsLoading(false);
                     setIsSuccess(true);

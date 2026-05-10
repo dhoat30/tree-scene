@@ -6,7 +6,6 @@ import HeroImage from "./HeroImage";
 import Video from "../../Video/Video";
 import BeforeAfter from "../../BeforeAfterSlider/BeforeAfter";
 export default async function OptimizedHero({ data, heroUSP }) {
-  console.log(data);
   if (!data) return null;
 
   const heroData = {

@@ -15,7 +15,6 @@ export default function RowCard({
   ctaLink,
   ctaLabel,
 }) {
-  console.log(image)
   // animation control for the bulb in the background
   const controls = useAnimation();
 

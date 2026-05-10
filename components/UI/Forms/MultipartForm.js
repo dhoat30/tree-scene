@@ -51,7 +51,6 @@ export default function MultipartForm({
 
   // theme
   const theme = useTheme();
-  console.log(formData);
   const handleNext = () => {
     // validate field on next click
     const currentField = multipartFormData[activeStep];
@@ -179,7 +178,6 @@ export default function MultipartForm({
 
     Promise.all([axios(configHubspot), axios(configSendMail)])
       .then(function (response) {
-        console.log(response);
         if (response[1].status === 200) {
           setIsLoading(false);
           setIsSuccess(true);
@@ -187,7 +185,6 @@ export default function MultipartForm({
           setError(false);
           router.push("/form-submitted/thank-you");
         } else {
-          console.log(response);
           setIsLoading(false);
           setIsSuccess(false);
           setError(true);

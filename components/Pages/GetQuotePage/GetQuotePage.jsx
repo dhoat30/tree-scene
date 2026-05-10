@@ -17,7 +17,6 @@ import BeforeAfter from "@/components/UI/BeforeAfterSlider/BeforeAfter";
 
 export default function GetQuotePage({ data, websitePackageOffer, heroUSP }) {
   let graphicComponent = null;
-  console.log("data", data);
   if (data.acf.hero_section.show_video) {
     if (data.acf.hero_section.video_options === "enter_youtube_id") {
       if (data.acf.hero_section.youtube_id) {

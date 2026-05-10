@@ -63,7 +63,6 @@ export default async function Contact() {
       notFound: true,
     };
   }
-  console.log(postData[0]?.acf);
   return (
     <>
       <Header />

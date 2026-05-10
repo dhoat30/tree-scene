@@ -1,4 +1,4 @@
-import { getOptions, getSinglePostData, getGoogleReviews, getServiceJobs, getServiceClients  } from '@/utils/fetchData'
+import { getOptions, getSinglePostData, getGoogleReviews, getServiceJobsWithClients } from '@/utils/fetchData'
 import Layout from '@/components/UI/Layout/Layout'
 import TechLogos from '@/components/UI/TechLogos/TechLogos'
 import USP from '@/components/UI/USP/USP'
@@ -50,21 +50,12 @@ export async function generateMetadata(props, parent) {
 }
 
 export default async function Contact() {
-
-    const postData = await getSinglePostData("get-free-quote", "/wp-json/wp/v2/pages")
-
-    const googleReviewsData = await getGoogleReviews()
-    const options = await getOptions()
-
-    let  serviceJobs = await getServiceJobs() 
-  const serviceClients = await getServiceClients() 
- serviceJobs = serviceJobs.map(job => {
-  const client = serviceClients.find(c => c.uuid === job.company_uuid);
-  return {
-    ...job,
-    client_name: client?.name.split(' ')[0] || 'Unknown',
-  };
-});
+    const [postData, googleReviewsData, options, serviceJobs] = await Promise.all([
+        getSinglePostData("get-free-quote", "/wp-json/wp/v2/pages"),
+        getGoogleReviews(),
+        getOptions(),
+        getServiceJobsWithClients(),
+    ])
 
     if (!postData) {
         return {

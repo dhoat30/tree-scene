@@ -17,8 +17,7 @@ export default function HeroContent({
   className,
   heroUSP,
 }) {
-  if (!ctaArray && ctaArray.length === 0) return;
-  console.log(ctaArray);
+  if (!ctaArray || ctaArray.length === 0) return null;
   let ctaComponent = null;
   if (ctaArray.length === 1) {
     ctaComponent = (

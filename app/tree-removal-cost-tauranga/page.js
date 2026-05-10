@@ -70,7 +70,6 @@ export default async function singleProject({ params }) {
     "/wp-json/wp/v2/pages",
   );
   const options = await getOptions();
-  console.log(data);
   if (!data.length) return null;
 
   //meta info

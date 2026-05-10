@@ -3,8 +3,7 @@ export const revalidate = 2592000; // applies to both page and metadata
 import {
   getOptions,
   getSinglePostData,
-  getServiceJobs,
-  getServiceClients,
+  getServiceJobsWithClients,
 } from "@/utils/fetchData";
 import Layout from "@/components/UI/Layout/Layout";
 import OptimizedHero from "@/components/UI/Hero/OptimizedHero/OptimizedHero";
@@ -55,21 +54,11 @@ export async function generateMetadata(props, parent) {
 }
 
 export default async function Contact() {
-  const postData = await getSinglePostData(
-    "contact-us",
-    "/wp-json/wp/v2/pages",
-  );
-  const options = await getOptions();
-
-  let serviceJobs = await getServiceJobs();
-  const serviceClients = await getServiceClients();
-  serviceJobs = serviceJobs.map((job) => {
-    const client = serviceClients.find((c) => c.uuid === job.company_uuid);
-    return {
-      ...job,
-      client_name: client?.name.split(" ")[0] || "Unknown",
-    };
-  });
+  const [postData, options, serviceJobs] = await Promise.all([
+    getSinglePostData("contact-us", "/wp-json/wp/v2/pages"),
+    getOptions(),
+    getServiceJobsWithClients(),
+  ]);
 
   if (!postData) {
     return {

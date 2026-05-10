@@ -4,8 +4,7 @@ import {
   getOptions,
   getSinglePostData,
   getAllPosts,
-  getServiceJobs,
-  getServiceClients,
+  getServiceJobsWithClients,
 } from "@/utils/fetchData";
 import Layout from "@/components/UI/Layout/Layout";
 import OptimizedHero from "@/components/UI/Hero/OptimizedHero/OptimizedHero";
@@ -59,19 +58,12 @@ export async function generateMetadata(props, parent) {
 }
 
 export default async function Page() {
-  const postData = await getSinglePostData("home", "/wp-json/wp/v2/pages");
-  const options = await getOptions();
-  const allPosts = await getAllPosts("wp-json/wp/v2/service");
-  let serviceJobs = await getServiceJobs();
-  const serviceClients = await getServiceClients();
-
-  serviceJobs = serviceJobs.map((job) => {
-    const client = serviceClients.find((c) => c.uuid === job.company_uuid);
-    return {
-      ...job,
-      client_name: client?.name.split(" ")[0] || "Unknown",
-    };
-  });
+  const [postData, options, allPosts, serviceJobs] = await Promise.all([
+    getSinglePostData("home", "/wp-json/wp/v2/pages"),
+    getOptions(),
+    getAllPosts("wp-json/wp/v2/service"),
+    getServiceJobsWithClients(),
+  ]);
 
   if (!postData) {
     return {

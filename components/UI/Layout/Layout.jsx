@@ -23,7 +23,6 @@ const JobsMap = dynamic(() => import("./Sections/JobsMap/JobsMap"), {
 });
 
 export default function Layout({ sections, projectsData, serviceJobs }) {
-  console.log(sections);
   if (!sections) return null;
   const sectionsJSX = sections.map((section, index) => {
     if (section.acf_fc_layout === "zigzag_cards") {

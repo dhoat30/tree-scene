@@ -3,8 +3,7 @@ export const revalidate = 2592000; // applies to both page and metadata
 import {
   getOptions,
   getSinglePostData,
-  getServiceJobs,
-  getServiceClients,
+  getServiceJobsWithClients,
 } from "@/utils/fetchData";
 import Layout from "@/components/UI/Layout/Layout";
 import OptimizedHero from "@/components/UI/Hero/OptimizedHero/OptimizedHero";
@@ -58,19 +57,11 @@ export default async function Contact(props) {
   const params = await props.params;
   const slug = params.slug;
   const isTreeRemovalPage = slug === "tree-removal" ? true : false;
-  const postData = await getSinglePostData(slug, "/wp-json/wp/v2/equipment");
-  const options = await getOptions();
-
-  let serviceJobs = await getServiceJobs();
-  const serviceClients = await getServiceClients();
-
-  serviceJobs = serviceJobs.map((job) => {
-    const client = serviceClients.find((c) => c.uuid === job.company_uuid);
-    return {
-      ...job,
-      client_name: client?.name.split(" ")[0] || "Unknown",
-    };
-  });
+  const [postData, options, serviceJobs] = await Promise.all([
+    getSinglePostData(slug, "/wp-json/wp/v2/equipment"),
+    getOptions(),
+    getServiceJobsWithClients(),
+  ]);
 
   if (!postData) {
     return {

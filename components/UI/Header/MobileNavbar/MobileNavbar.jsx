@@ -47,8 +47,6 @@ export default function MobileNavbar() {
   };
 
   const handleClick = (event, item, index) => {
-  
-   console.log(index)
     // Check if the link has sublinks
     if (item.subLinks && item.subLinks.length > 0) {
       event.preventDefault();
