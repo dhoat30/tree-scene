@@ -17,18 +17,21 @@ export default function HeroContent({
   className,
   heroUSP,
 }) {
-  if (!ctaArray || ctaArray.length === 0) return null;
+  const validCtas = Array.isArray(ctaArray)
+    ? ctaArray.filter((cta) => cta?.cta_link?.url && cta?.cta_link?.title)
+    : [];
+
   let ctaComponent = null;
-  if (ctaArray.length === 1) {
+  if (validCtas.length > 0) {
     ctaComponent = (
       <div className="single-button-wrapper">
-        {ctaArray && ctaArray.length > 0 && (
-          <Link href={ctaArray[0].cta_link.url}>
+        {validCtas.map(({ cta_link: ctaLink }) => (
+          <Link href={ctaLink.url} key={`${ctaLink.url}-${ctaLink.title}`}>
             <Button variant="contained" size="large">
-              {ctaArray[0].cta_link.title}
+              {ctaLink.title}
             </Button>
           </Link>
-        )}
+        ))}
       </div>
     );
   }
@@ -116,6 +119,10 @@ const Div = styled.div`
 
   .single-button-wrapper {
     margin-top: 24px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+
     button {
       width: 100%;
       max-width: 500px;

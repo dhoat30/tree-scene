@@ -18,6 +18,16 @@ import reviewsData from "@/data/google-reviews.json";
 
 export const dynamicParams = false;
 
+const defaultServiceCta = [
+  {
+    cta_link: {
+      title: "GET A QUOTE",
+      url: "/get-a-quote",
+      target: "",
+    },
+  },
+];
+
 export async function generateStaticParams() {
   return getAllPostSlugs("wp-json/wp/v2/service");
 }
@@ -74,6 +84,15 @@ export default async function Contact(props) {
   if (!postData.length) {
     notFound();
   }
+  const heroData = postData[0]?.acf?.hero_section;
+  const serviceHeroData = {
+    ...heroData,
+    buttons:
+      Array.isArray(heroData?.buttons) && heroData.buttons.length > 0
+        ? heroData.buttons
+        : defaultServiceCta,
+  };
+
   // google reviews data fetch
   return (
     <>
@@ -81,7 +100,7 @@ export default async function Contact(props) {
       <main>
         {!isTreeRemovalPage && (
           <OptimizedHero
-            data={postData[0]?.acf?.hero_section}
+            data={serviceHeroData}
             heroUSP={options.hero_usp}
           />
         )}
