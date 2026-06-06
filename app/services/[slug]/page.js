@@ -1,10 +1,12 @@
 export const revalidate = 2592000; // applies to both page and metadata
 
 import {
+  getAllPostSlugs,
   getOptions,
   getSinglePostData,
   getServiceJobsWithClients,
 } from "@/utils/fetchData";
+import { notFound } from "next/navigation";
 import Layout from "@/components/UI/Layout/Layout";
 import OptimizedHero from "@/components/UI/Hero/OptimizedHero/OptimizedHero";
 import TechLogos from "@/components/UI/TechLogos/TechLogos";
@@ -13,6 +15,12 @@ import Header from "@/components/UI/Header/Header";
 import Footer from "@/components/UI/Footer/Footer";
 import GoogleReviewsCarousel from "@/components/UI/GoogleReviews/GoogleReviewsCarousel";
 import reviewsData from "@/data/google-reviews.json";
+
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  return getAllPostSlugs("wp-json/wp/v2/service");
+}
 
 export async function generateMetadata(props, parent) {
   const params = await props.params;
@@ -63,10 +71,8 @@ export default async function Contact(props) {
     getServiceJobsWithClients(),
   ]);
 
-  if (!postData) {
-    return {
-      notFound: true,
-    };
+  if (!postData.length) {
+    notFound();
   }
   // google reviews data fetch
   return (

@@ -43,6 +43,15 @@ export const getAllPosts = async (apiRoute) => {
     return data
 }
 
+// Fetch only the fields needed to statically generate dynamic routes.
+export const getAllPostSlugs = async (apiRoute) => {
+    let response = await fetch(`${process.env.url}/${apiRoute}?_fields=slug&per_page=100`, {
+        next: { revalidate: CACHE_REVALIDATE_SECONDS },
+    });
+    let data = await response.json();
+    return data.map(({ slug }) => ({ slug }));
+}
+
 
 export const getOptions = async () => {
     let fetchData = await fetch(`${process.env.url}/wp-json/options/all`, {
