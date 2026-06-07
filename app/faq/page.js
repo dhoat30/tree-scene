@@ -31,10 +31,13 @@ export async function generateMetadata(props, parent) {
       title: seoData.title,
       description: seoData.description,
       metadataBase: new URL("https://treescene.co.nz"),
+      alternates: {
+        canonical: "https://treescene.co.nz/faq",
+      },
       openGraph: {
         title: seoData.title,
         description: seoData.description,
-        url: "https://treescene.co.nz",
+        url: "https://treescene.co.nz/faq",
         siteName: "Tree Scene Tauranga",
         images: [
           {
@@ -49,6 +52,12 @@ export async function generateMetadata(props, parent) {
           },
         ],
         type: "website",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: seoData.title,
+        description: seoData.description,
+        images: seoData?.og_image?.[0]?.url ? [seoData.og_image[0].url] : [],
       },
     };
   }
@@ -72,6 +81,23 @@ export default async function Contact(props) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: options?.faq?.items?.map((item) => ({
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: item.answer,
+              },
+            })),
+          }),
+        }}
+      />
       <Header />
       <main>
         <div className="mt-40"></div>

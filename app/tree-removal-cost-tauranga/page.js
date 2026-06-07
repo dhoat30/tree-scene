@@ -35,10 +35,13 @@ export async function generateMetadata({ params, searchParams }, parent) {
       title: seoData.title,
       description: seoData.description,
       metadataBase: new URL("https://treescene.co.nz"),
+      alternates: {
+        canonical: "https://treescene.co.nz/tree-removal-cost-tauranga",
+      },
       openGraph: {
         title: seoData.title,
         description: seoData.description,
-        url: `https://treescene.co.nz/blogs/${slug}`,
+        url: "https://treescene.co.nz/tree-removal-cost-tauranga",
         siteName: "treescene.co.nz",
         images: [
           {
@@ -53,6 +56,12 @@ export async function generateMetadata({ params, searchParams }, parent) {
           },
         ],
         type: "article",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: seoData.title,
+        description: seoData.description,
+        images: seoData?.og_image?.[0]?.url ? [seoData.og_image[0].url] : [],
       },
     };
   }

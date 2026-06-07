@@ -48,10 +48,13 @@ export async function generateMetadata(props, parent) {
       title: seoData.title,
       description: seoData.description,
       metadataBase: new URL("https://treescene.co.nz"),
+      alternates: {
+        canonical: `https://treescene.co.nz/services/${slug}`,
+      },
       openGraph: {
         title: seoData.title,
         description: seoData.description,
-        url: "https://treescene.co.nz",
+        url: `https://treescene.co.nz/services/${slug}`,
         siteName: "Tree Scene Tauranga",
         images: [
           {
@@ -66,6 +69,12 @@ export async function generateMetadata(props, parent) {
           },
         ],
         type: "website",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: seoData.title,
+        description: seoData.description,
+        images: seoData?.og_image?.[0]?.url ? [seoData.og_image[0].url] : [],
       },
     };
   }
@@ -96,6 +105,24 @@ export default async function Contact(props) {
   // google reviews data fetch
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: postData[0]?.title?.rendered,
+            description: postData[0]?.yoast_head_json?.description,
+            provider: {
+              "@type": "LocalBusiness",
+              name: "Tree Scene Tauranga",
+              url: "https://treescene.co.nz",
+            },
+            areaServed: "Tauranga",
+            url: `https://treescene.co.nz/services/${slug}`,
+          }),
+        }}
+      />
       <Header />
       <main>
         {!isTreeRemovalPage && (

@@ -18,6 +18,24 @@ const work_sans = Work_Sans({
   preload: true,
 });
 
+export const metadata = {
+  metadataBase: new URL("https://treescene.co.nz"),
+  title: {
+    default: "Tree Scene Tauranga | Professional Tree Services",
+    template: "%s | Tree Scene Tauranga",
+  },
+  description:
+    "Professional tree removal, pruning, stump grinding and land clearing in Tauranga, Bay of Plenty. Licensed arborists available 24/7.",
+  openGraph: {
+    siteName: "Tree Scene Tauranga",
+    type: "website",
+    locale: "en_NZ",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+};
+
 export default function RootLayout({ children }) {
   const GTM_ID = "GTM-5FNFX47G";
 

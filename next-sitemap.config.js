@@ -22,7 +22,15 @@ module.exports = {
     siteUrl: isProd ? 'https://treescene.co.nz' : 'http://localhost:3000',
     generateRobotsTxt: true,
     sitemapSize: 1000,
-    exclude: [ '/thank-you', '/order-received', '/checkout', '/form-submitted/thank-you'],
+    exclude: [
+      '/thank-you',
+      '/order-received',
+      '/checkout',
+      '/form-submitted/thank-you',
+      '/book-now/order-received',
+      '/mulch-waitlist-form',
+      '/get-free-quote',
+    ],
     additionalPaths: async (config) => {
         // const blogUrls = await getBlogsData();
         const services = await getServices();

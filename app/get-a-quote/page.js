@@ -33,10 +33,13 @@ export async function generateMetadata(props, parent) {
       title: seoData.title,
       description: seoData.description,
       metadataBase: new URL("https://treescene.co.nz"),
+      alternates: {
+        canonical: "https://treescene.co.nz/get-a-quote",
+      },
       openGraph: {
         title: seoData.title,
         description: seoData.description,
-        url: "https://treescene.co.nz",
+        url: "https://treescene.co.nz/get-a-quote",
         siteName: "Tree Scene Tauranga",
         images: [
           {
@@ -51,6 +54,12 @@ export async function generateMetadata(props, parent) {
           },
         ],
         type: "website",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: seoData.title,
+        description: seoData.description,
+        images: seoData?.og_image?.[0]?.url ? [seoData.og_image[0].url] : [],
       },
     };
   }

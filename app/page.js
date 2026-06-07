@@ -34,6 +34,9 @@ export async function generateMetadata(props, parent) {
       title: seoData?.title,
       description: seoData?.description,
       metadataBase: new URL("https://treescene.co.nz"),
+      alternates: {
+        canonical: "https://treescene.co.nz",
+      },
       openGraph: {
         title: seoData?.title,
         description: seoData?.description,
@@ -52,6 +55,12 @@ export async function generateMetadata(props, parent) {
           },
         ],
         type: "website",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: seoData?.title,
+        description: seoData?.description,
+        images: seoData?.og_image?.[0]?.url ? [seoData.og_image[0].url] : [],
       },
     };
   }
@@ -74,6 +83,28 @@ export default async function Page() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: "Tree Scene Tauranga",
+            url: "https://treescene.co.nz",
+            telephone: options?.contact_info?.info?.find((i) =>
+              i.url?.startsWith("tel:")
+            )?.label,
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Tauranga",
+              addressRegion: "Bay of Plenty",
+              addressCountry: "NZ",
+            },
+            areaServed: "Tauranga",
+            sameAs: options?.social_links?.map((s) => s.link).filter(Boolean),
+          }),
+        }}
+      />
       <Header />
       <main>
         <OptimizedHero
