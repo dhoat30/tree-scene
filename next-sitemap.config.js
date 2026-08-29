@@ -1,7 +1,5 @@
 /** @type {import('next-sitemap').IConfig} */
 
-const isProd = process.env.NODE_ENV === 'production';
-
 const getData = async (endpoint, urlPrefix) => {
     try {
         const fetchData = await fetch(endpoint);
@@ -19,7 +17,9 @@ const getServices = () => getData('https://cms.treescene.co.nz/wp-json/wp/v2/ser
 // const getIndustrialServices = () => getData('https://cms.treescene.co.nz/wp-json/wp/v2/industrial-cleaning?acf_format=standard&per_page=100', "industrial-cleaning");
 
 module.exports = {
-    siteUrl: isProd ? 'https://treescene.co.nz' : 'http://localhost:3000',
+    // Sitemaps are deployment artefacts and must always use the public origin.
+    // SITE_URL still allows an explicit override for preview environments.
+    siteUrl: process.env.SITE_URL || 'https://treescene.co.nz',
     generateRobotsTxt: true,
     sitemapSize: 1000,
     exclude: [
