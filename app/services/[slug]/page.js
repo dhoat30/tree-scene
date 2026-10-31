@@ -52,6 +52,7 @@ export async function generateMetadata(props, parent) {
       alternates: {
         canonical: `https://treescene.co.nz/services/${slug}`,
       },
+      
       openGraph: {
         title: seoData.title,
         description: seoData.description,
