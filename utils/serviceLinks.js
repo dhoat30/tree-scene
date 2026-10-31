@@ -44,11 +44,7 @@ export const linkTargets = {
     url: "/services/storm-damaged-trees-emergency-tree-work",
     description: "Quick help with fallen, leaning or damaged trees after a storm.",
   },
-  "powerline-clearing": {
-    label: "Powerline Clearing",
-    url: "/services/powerline-clearing",
-    description: "Deal with trees growing too close to power lines before they become a hazard.",
-  },
+ 
   "planting-and-gardening-services-tauranga": {
     label: "Planting & Gardening",
     url: "/services/planting-and-gardening-services-tauranga",

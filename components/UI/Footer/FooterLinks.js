@@ -8,7 +8,6 @@ export const services = [
     { label: "Storm-Damaged Trees and Emergency Tree Work", url: "/services/storm-damaged-trees-emergency-tree-work" },
     { label: "Firewood & Mulch Tauranga", url: "/services/firewood-and-mulch-tauranga" },
     { label: "Stump Grinding", url: "/services/stump-grinding" },
-    { label: "Powerline Clearing", url: "/services/powerline-clearing" },
     { label: "Palm Cleaning & Removal", url: "/services/palm-cleaning-removal-services" },
     { label: "Arbor Mulch Delivery", url: "/services/arbor-mulch-delivery" },
 ]

@@ -89,12 +89,7 @@ export const headerLinks = [
         subtitle: "Keep your home warm",
         graphic: "/services-graphics/firewood.png",
       },
-      {
-        label: "Powerline Clearing",
-        url: "/services/powerline-clearing",
-        subtitle: "Deal with live electrical networks",
-        graphic: "/services-graphics/powerline.png",
-      },
+    
     ],
   },
 

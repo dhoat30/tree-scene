@@ -152,6 +152,12 @@ const nextConfig = {
                 destination: '/services',
                 permanent: true,
             },
+                {
+                source: '/services/powerline-clearing',
+                destination: '/services',
+                permanent: true,
+            },
+            
            
         ]
     },
