@@ -14,6 +14,7 @@ import Header from "@/components/UI/Header/Header";
 import Footer from "@/components/UI/Footer/Footer";
 import ServicesCardsTemplate from "@/components/UI/Services/ServicesCardsTemplate";
 import FaqAccordionSection from "@/components/UI/Layout/Sections/FaqAccordionSection";
+import RelatedLinks from "@/components/UI/RelatedLinks/RelatedLinks";
 
 export async function generateMetadata(props, parent) {
   const params = await props.params;
@@ -117,6 +118,7 @@ export default async function Contact(props) {
           title={options.usp.section_title}
           description={options.usp.section_description}
         />
+        <RelatedLinks pageId="popular" title="Popular tree services in Tauranga" />
       </main>
       <Footer
         footerCtaData={options.footer_cta}

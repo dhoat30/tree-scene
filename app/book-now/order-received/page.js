@@ -1,3 +1,4 @@
+import { SiteAreasCovered } from "@/components/UI/Layout/Sections/AreasCovered/AreasCovered";
 import Header from '@/components/UI/Header/Header';
 import ThankYou from '@/components/UI/ThankYou/ThankYou';
 
@@ -28,6 +29,7 @@ export default async function Page() {
 
                 <ThankYou title="Thank You for Your Order!" description="We have received your order and are currently processing it." />
             </main>
+      <SiteAreasCovered />
         </>
 
     )

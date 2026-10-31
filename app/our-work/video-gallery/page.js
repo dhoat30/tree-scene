@@ -14,6 +14,8 @@ import Footer from "@/components/UI/Footer/Footer";
 import BreadcrumbHero from "@/components/UI/Hero/BreadcrumbHero";
 
 import VideoGallery from "@/components/UI/Gallery/VideoGallery";
+import RelatedLinks from "@/components/UI/RelatedLinks/RelatedLinks";
+
 export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
   const slug = params.slug;
@@ -91,6 +93,7 @@ export default async function Contact() {
           title={options.usp.section_title}
           description={options.usp.section_description}
         />
+        <RelatedLinks pageId="popular" title="Popular tree services in Tauranga" />
       </main>
       <Footer
         footerCtaData={options.footer_cta}

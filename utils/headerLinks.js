@@ -35,6 +35,12 @@ export const headerLinks = [
         graphic: "/services-graphics/tree-removal.png",
       },
       {
+        label: "Shelterbelt Topping & Removal",
+        url: "/services/shelterbelt-topping-removal",
+        subtitle: "Height reduction & complete removal",
+        graphic: "/services-graphics/hedge.png",
+      },
+      {
         label: "Palm Cleaning & Removal",
         url: "/services/palm-cleaning-removal-services",
         subtitle: "Safe & efficient waste removal",

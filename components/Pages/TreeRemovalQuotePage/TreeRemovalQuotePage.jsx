@@ -1,3 +1,4 @@
+import { SiteAreasCovered } from "@/components/UI/Layout/Sections/AreasCovered/AreasCovered";
 import Image from "next/image";
 import Link from "next/link";
 import TreeRemovalQuoteForm from "./TreeRemovalQuoteForm";
@@ -391,6 +392,8 @@ export default function TreeRemovalQuotePage() {
         </div>
         <a href="#free-site-visit">Book my free site visit</a>
       </section>
+
+      <SiteAreasCovered />
 
       <footer className={styles.footer}>
         <Image src="/logo.png" width={147} height={49} alt="Tree Scene Tauranga" />

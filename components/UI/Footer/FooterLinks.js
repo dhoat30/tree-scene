@@ -1,4 +1,5 @@
 export const services = [
+    { label: "Shelterbelt Topping & Removal", url: "/services/shelterbelt-topping-removal" },
     { label: "Tree Removal", url: "/services/tree-removal" },
     { label: "Tree Pruning", url: "/services/tree-pruning-tauranga" },
     { label: "Hedge Trimming", url: "/services/hedge-trimming-tauranga" },
@@ -8,6 +9,8 @@ export const services = [
     { label: "Firewood & Mulch Tauranga", url: "/services/firewood-and-mulch-tauranga" },
     { label: "Stump Grinding", url: "/services/stump-grinding" },
     { label: "Powerline Clearing", url: "/services/powerline-clearing" },
+    { label: "Palm Cleaning & Removal", url: "/services/palm-cleaning-removal-services" },
+    { label: "Arbor Mulch Delivery", url: "/services/arbor-mulch-delivery" },
 ]
 
 

@@ -1,3 +1,4 @@
+import { SiteAreasCovered } from "@/components/UI/Layout/Sections/AreasCovered/AreasCovered";
 export const revalidate = 2592000; // applies to both page and metadata
 
 import Header from "@/components/UI/Header/Header";
@@ -28,6 +29,7 @@ export default async function Page() {
       <main>
         <ThankYou />
       </main>
+      <SiteAreasCovered />
     </>
   );
 }

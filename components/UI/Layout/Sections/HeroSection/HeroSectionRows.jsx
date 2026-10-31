@@ -4,8 +4,6 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Link from "next/link";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import HeroUSP from "@/components/UI/USP/HeroUSP";
 import Image from "next/image";
 import Video from "@/components/UI/Video/Video";
@@ -57,45 +55,45 @@ export default function HeroSectionRows({
       <Container className={`${styles.container} align-center`} maxWidth="lg">
         <div className={`${styles.contentWrapper}`}>
           {/* <GoogleReviewSnippet reviewerPics={reviewerPics} reviewTitle={reviewTitle} />  */}
-          <Typography
-            variant="h6"
-            component="div"
-            className={`${styles.subtitle} mb-16`}
-          >
-            {subtitle}
-          </Typography>
+          {subtitle && (
+            <Typography component="p" className={styles.subtitle}>
+              {subtitle}
+            </Typography>
+          )}
           <div
             dangerouslySetInnerHTML={{ __html: title }}
             className={`heading-1  colored-text center-align ${styles.title}`}
           />
           <div
             dangerouslySetInnerHTML={{ __html: description }}
-            className={`heading-4  mt-16 center-align ${styles.description}`}
+            className={`heading-4 ${styles.description}`}
           />
-          <HeroUSP data={uspData} />
+          {uspData && (
+            <div className={styles.uspWrapper}>
+              <HeroUSP data={uspData} />
+            </div>
+          )}
 
           {ctaArr && ctaArr.length > 0 && (
-            <div
-              className={` mt-32 flex gap-24 justify-center ${styles.ctaWrapper}`}
-            >
+            <div className={styles.ctaWrapper}>
               {ctaArr.map((cta, index) => {
                 return (
-                  <Link href={cta.cta_link.url} key={index}>
-                    <Button
-                      className="block"
-                      variant={index === 0 ? "contained" : "outlined"}
-                      disableElevation
-                      size="large"
-                    >
-                      {cta.cta_link.title}
-                    </Button>
-                  </Link>
+                  <Button
+                    key={index}
+                    component={Link}
+                    href={cta.cta_link.url}
+                    variant={index === 0 ? "contained" : "outlined"}
+                    disableElevation
+                    size="large"
+                  >
+                    {cta.cta_link.title}
+                  </Button>
                 );
               })}
             </div>
           )}
           {ctaMicroCopy && (
-            <div className="flex justify-center mt-16">
+            <div className={styles.microcopy}>
               <Typography
                 variant="body1"
                 component={"p"}
@@ -106,7 +104,7 @@ export default function HeroSectionRows({
             </div>
           )}
         </div>
-        <div className={`${styles.graphicWrapper} mt-40`}>{graphic}</div>
+        {graphic && <div className={styles.graphicWrapper}>{graphic}</div>}
       </Container>
     </section>
   );

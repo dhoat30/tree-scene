@@ -15,6 +15,7 @@ import Footer from "@/components/UI/Footer/Footer";
 import ServicesCardsTemplate from "@/components/UI/Services/ServicesCardsTemplate";
 import GoogleReviewsCarousel from "@/components/UI/GoogleReviews/GoogleReviewsCarousel";
 import reviewsData from "@/data/google-reviews.json";
+import { serviceSlug, serviceTitle, serviceDescription, serviceImage } from "./shelterbelt-topping-removal/content";
 
 export async function generateMetadata(props, parent) {
   const params = await props.params;
@@ -79,7 +80,16 @@ export default async function Contact(props) {
       notFound: true,
     };
   }
-  const allSlugs = allPosts.map((post) => post.slug);
+  // This locally authored service does not need a matching WordPress post.
+  const serviceCards = [
+    ...allPosts.filter((post) => post.slug !== serviceSlug),
+    {
+      slug: serviceSlug,
+      title: { rendered: serviceTitle },
+      excerpt: { rendered: `<p>${serviceDescription}</p>` },
+      acf: { hero_section: { image: { sizes: { medium_large: serviceImage }, alt: "Treescene grapple crane truck at work" } } },
+    },
+  ];
 
   return (
     <>
@@ -93,7 +103,7 @@ export default async function Contact(props) {
         <ServicesCardsTemplate
           title={postData[0]?.acf.service_cards_section.title}
           description={postData[0]?.acf.service_cards_section.description}
-          cards={allPosts}
+          cards={serviceCards}
           archivePageSlug="services"
         />
         <Layout

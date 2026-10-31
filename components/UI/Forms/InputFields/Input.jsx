@@ -16,7 +16,7 @@ import styled from "@emotion/styled";
 import Slider from "@mui/material/Slider";
 import Chip from "@mui/material/Chip";
 import Select from "@mui/material/Select";
-import TextField from "@mui/material/TextField";
+import TextFieldStyle from "./StyledTextField";
 
 // styling for select
 const ITEM_HEIGHT = 48;
@@ -296,12 +296,6 @@ const FormControlStyled = styled(FormControl)`
   }
 `;
 
-const TextFieldStyle = styled(TextField)`
-  label,
-  input {
-    font-weight: 350;
-  }
-`;
 
 const SliderContainer = styled.div`
   margin-top: 16px;

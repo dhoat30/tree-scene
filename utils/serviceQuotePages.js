@@ -1,0 +1,46 @@
+export const quotePages = {
+  treeRemoval: {
+    slug: 'tree-removal-quote',
+    seoTitle: 'Tree Removal Quotes Tauranga | Treescene NZ',
+    seoDescription: 'Request a free, no-obligation tree removal quote in Tauranga and surrounding areas. Experienced arborists, specialist equipment and cleanup options.',
+    title: 'Tree Removal',
+    highlight: 'Quotes',
+    description: 'Get a free, no-obligation quote for tree removal in Tauranga and surrounding areas. From individual trees to large, complex removals, we’ll assess your property and explain the right approach.',
+    benefits: [
+      { title: 'Small trees to large removals', description: 'Individual trees, palms, conifers and more complex removal projects.' },
+      { title: 'Controlled cutting & handling', description: 'Specialist grapple crane equipment for suitable sites and tree sections.' },
+      { title: 'Cleanup to suit your property', description: 'Chipping, log stacking and waste removal agreed in your quotation.' },
+      { title: 'Experienced, insured team', description: 'Qualified arborists with over 25 years of industry experience and $2M insurance.' },
+    ],
+    steps: ['Share your contact details', 'Tell us about your trees and property', 'We assess the job and provide a clear quote'],
+    image: { url: '/images/shelterbelt/grapple-crane.webp', alt: 'Treescene grapple crane truck working beside trees and homes', caption: 'Specialist equipment for controlled tree removal.' },
+    form: { serviceLabel: 'Tree Removal', crmService: 'Tree Removal', formName: 'Tree Removal Landing Page — Free Site Visit', eventName: 'tree_removal_lead', messageLabel: 'Tell us about your tree (optional)', banner: 'Experienced arborists. A quote tailored to your property.' },
+    faqs: [
+      { question: 'How much does tree removal cost?', answer: 'The quote depends on the tree’s size, condition, access and surroundings, as well as the cleanup required. We assess the work before confirming your price.', link: { url: '/tree-removal-cost-tauranga', title: 'Read our tree removal cost guide' } },
+      { question: 'Can you work near buildings and fences?', answer: 'We assess the surrounding structures, access and ground conditions before choosing the method. Our grapple crane can grip, cut and handle suitable sections where site conditions allow.' },
+      { question: 'Can you remove the branches, logs and stump?', answer: 'Chipping, log stacking and green waste removal can be included in your quote. Stump grinding is available as an additional service where separately quoted.' },
+    ],
+  },
+  hedgeShelterbelt: {
+    slug: 'hedge-shelterbelt-trimming-quote',
+    seoTitle: 'Hedge & Shelterbelt Trimming Quotes Tauranga | Treescene NZ',
+    seoDescription: 'Request a free quote for hedge trimming, shelterbelt topping and height reduction in Tauranga and surrounding areas. Talk to the experienced Treescene team.',
+    title: 'Hedge & Shelterbelt Trimming',
+    highlight: 'Quotes',
+    description: 'Get a free, no-obligation quote for hedge trimming, shelterbelt topping or height reduction. We work on residential boundaries, orchards, farms and lifestyle blocks across Tauranga and surrounding areas.',
+    benefits: [
+      { title: 'Hedges & tall shelterbelts', description: 'Routine hedge trimming through to substantial shelterbelt reductions.' },
+      { title: 'A practical cutting plan', description: 'We assess the species, condition and access before agreeing on the cutting level.' },
+      { title: 'Residential & rural properties', description: 'Garden boundaries, lifestyle blocks, farms and long orchard shelterbelts.' },
+      { title: 'Chipping & cleanup options', description: 'On-site woodchips, log stacking or green waste removal as agreed in your quote.' },
+    ],
+    steps: ['Share your contact details', 'Tell us the approximate height and length', 'We assess the work and provide a clear quote'],
+    image: { url: '/images/shelterbelt/shelter-belt-reduction.jpg', alt: 'Shelterbelt reduction work by Treescene', caption: 'Practical hedge and shelterbelt management for your property.' },
+    form: { serviceLabel: 'Hedge & Shelterbelt Trimming', crmService: 'Hedge Trimming', formName: 'Hedge & Shelterbelt Trimming — Quote Request', eventName: 'hedge_shelterbelt_lead', messageLabel: 'Hedge or shelterbelt details (optional)', banner: 'From garden hedges to orchard shelterbelts.' },
+    faqs: [
+      { question: 'What details help you prepare a quote?', answer: 'Your location, the approximate hedge or shelterbelt height and length, access conditions, and whether you want trimming or a larger reduction are helpful. You can leave these details in the optional message.' },
+      { question: 'Is topping suitable for every shelterbelt?', answer: 'No. The response depends on the species, age, condition and severity of reduction. We discuss relevant risks, including stress, dieback or poor regrowth, during assessment.' },
+      { question: 'Can you take away the trimmings?', answer: 'Yes. Chipping, on-site woodchip placement, log stacking and green waste removal options can be agreed in your quote.' },
+    ],
+  },
+};

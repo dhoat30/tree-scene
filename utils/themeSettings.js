@@ -80,9 +80,20 @@ export const lightTheme = createTheme({
           borderRadius: "50px",
           textTransform: "uppercase",
           fontWeight: 600,
-          transition: "all 0.2s ease-in-out",
+          transition: "background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease",
           padding: "12px 32px",
           fontSize: "1rem",
+          minHeight: "44px",
+          gap: "8px",
+          lineHeight: 1.5,
+          "&:focus-visible": {
+            outline: "3px solid currentColor",
+            outlineOffset: "4px",
+          },
+          "@media (prefers-reduced-motion: reduce)": {
+            transition: "none",
+            "&:hover": { transform: "none" },
+          },
         },
         contained: {
           backgroundColor: "var(--light-primary)", // slightly darker yellow

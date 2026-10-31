@@ -3,7 +3,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import TextField from '@mui/material/TextField';
+import StyledTextField from "@/components/UI/Forms/InputFields/StyledTextField";
 
 export default function GoogleAutocomplete({
   value,
@@ -13,7 +13,7 @@ export default function GoogleAutocomplete({
   helperText,
   label,
   required,
-  className, 
+  className,
   autoComplete
 }) {
   const inputRef = useRef(null);
@@ -38,13 +38,14 @@ export default function GoogleAutocomplete({
   }, [onSelect]);
 
   return (
-    <TextField
+    <StyledTextField
     className={className}
       label={label}
       value={value}
       onChange={(e) => onChange(e.target.value)}
       inputRef={inputRef}
       fullWidth
+      color="secondary"
       required={required}
       autoComplete={autoComplete}
       error={error}

@@ -9,6 +9,10 @@ import ServiceTabs from "./Sections/ServiceTabs";
 import Packages from "./Sections/Packages";
 import FaqAccordionSection from "./Sections/FaqAccordionSection";
 import ServiceChecklist from "./Sections/ServiceChecklist";
+import USP from "../USP/USP";
+import BenefitsGrid from "./Sections/BenefitsGrid/BenefitsGrid";
+import AreasCovered from "./Sections/AreasCovered/AreasCovered";
+import QuoteRequest from "./Sections/QuoteRequest/QuoteRequest";
 import dynamic from "next/dynamic";
 import HeroSectionColumns from "./Sections/HeroSection/HeroSectionColumns";
 import HeroSectionRows from "./Sections/HeroSection/HeroSectionRows";
@@ -25,6 +29,9 @@ const JobsMap = dynamic(() => import("./Sections/JobsMap/JobsMap"), {
 export default function Layout({ sections, projectsData, serviceJobs }) {
   if (!sections) return null;
   const sectionsJSX = sections.map((section, index) => {
+    if (section.acf_fc_layout === "quote_request") {
+      return <QuoteRequest key={index} data={section} />;
+    }
     if (section.acf_fc_layout === "zigzag_cards") {
       return (
         <ZigZagCardsSection
@@ -126,6 +133,18 @@ export default function Layout({ sections, projectsData, serviceJobs }) {
         />
       );
     }
+    if (section.acf_fc_layout === "areas_covered") {
+      return (
+        <AreasCovered
+          key={index}
+          title={section.title}
+          description={section.description}
+          groups={section.groups}
+          note={section.note}
+          ctaGroup={section.cta_group}
+        />
+      );
+    }
     if (section.acf_fc_layout === "local_faq") {
       return (
         <FaqAccordionSection
@@ -133,6 +152,30 @@ export default function Layout({ sections, projectsData, serviceJobs }) {
           title={section.section_title}
           description={section.section_description}
           qaData={section.items}
+        />
+      );
+    }
+    if (section.acf_fc_layout === "benefits_grid") {
+      return (
+        <BenefitsGrid
+          key={index}
+          title={section.title}
+          subtitle={section.subtitle}
+          description={section.description}
+          items={section.items}
+          ctaGroup={section.cta_group}
+        />
+      );
+    }
+    if (section.acf_fc_layout === "usp") {
+      return (
+        <USP
+          key={index}
+          title={section.title}
+          description={section.description}
+          cards={section.items}
+          statsArray={section.stats}
+          showTitle={section.show_title !== false}
         />
       );
     }

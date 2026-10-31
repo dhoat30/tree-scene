@@ -16,11 +16,11 @@ import BlogTableOfContent from "@/components/UI/TableOfContent/BlogTableOfConten
 import Header from "@/components/UI/Header/Header";
 import Footer from "@/components/UI/Footer/Footer";
 import BreadCrumb from "@/components/UI/BreadCrumb/BreadCrumb";
+import RelatedLinks from "@/components/UI/RelatedLinks/RelatedLinks";
 
-export async function generateMetadata({ params, searchParams }, parent) {
-  // read route params
-  const slug = params.slug;
+const pageUrl = "https://treescene.co.nz/tree-removal-cost-tauranga";
 
+export async function generateMetadata(props, parent) {
   // fetch data
   const data = await getSinglePostData(
     "tree-removal-cost-tauranga",
@@ -32,16 +32,17 @@ export async function generateMetadata({ params, searchParams }, parent) {
   if (data.length > 0) {
     const seoData = data[0].yoast_head_json;
     return {
-      title: seoData.title,
+      // Yoast titles already end with the brand, so skip the layout's " | Tree Scene Tauranga" suffix.
+      title: { absolute: seoData.title },
       description: seoData.description,
       metadataBase: new URL("https://treescene.co.nz"),
       alternates: {
-        canonical: "https://treescene.co.nz/tree-removal-cost-tauranga",
+        canonical: pageUrl,
       },
       openGraph: {
         title: seoData.title,
         description: seoData.description,
-        url: "https://treescene.co.nz/tree-removal-cost-tauranga",
+        url: pageUrl,
         siteName: "treescene.co.nz",
         images: [
           {
@@ -72,8 +73,7 @@ function countWords(text) {
   return words.length;
 }
 
-export default async function singleProject({ params }) {
-  const slug = params.slug;
+export default async function singleProject() {
   const data = await getSinglePostData(
     "tree-removal-cost-tauranga",
     "/wp-json/wp/v2/pages",
@@ -106,7 +106,7 @@ export default async function singleProject({ params }) {
   publishedDate = `${publishedDate.getDate()} ${months[publishedDate.getMonth()]}, ${publishedDate.getFullYear()}`;
 
   // share buttons
-  const postUrl = `${process.env.siteUrl}/blogs/ ${data[0].slug}`;
+  const postUrl = pageUrl;
   const postTitle = data[0].title.rendered;
   const postDescription = data[0].excerpt.rendered;
   //schema data
@@ -118,7 +118,7 @@ export default async function singleProject({ params }) {
     datePublished: data[0].yoast_head_json.article_published_time,
     dateModified: data[0].yoast_head_json.article_modified_time,
     description: data[0].yoast_head_json.description,
-    url: `${process.env.siteUrl} /blogs/${slug} `,
+    url: pageUrl,
     wordCount: `${countWords(data[0].content.rendered)} `,
     image: [
       data[0].yoast_head_json?.og_image
@@ -135,13 +135,12 @@ export default async function singleProject({ params }) {
       name: process.env.name,
       logo: {
         "@type": "ImageObject",
-        "@id": process.env.darkLogo,
-        url: process.env.darkLogo,
+        url: `${process.env.siteUrl}/logo.png`,
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${process.env.siteUrl} /blogs/${slug} `,
+      "@id": pageUrl,
     },
   };
 
@@ -179,6 +178,11 @@ export default async function singleProject({ params }) {
             />
           </div>
         </section>
+        <RelatedLinks
+          pageId="tree-removal-cost-tauranga"
+          title="Tree services in Tauranga"
+          description="Find out more about the services that go into a tree removal job."
+        />
       </main>
       <Footer
         footerCtaData={options.footer_cta}

@@ -945,3 +945,10 @@ strong {
   }
 
 }
+
+// Let the original white-backed logo sit cleanly on the site's light surfaces.
+// Match both the source URL and Next Image's optimised URL so every use agrees.
+img[src="/logo.png"],
+img[src*="url=%2Flogo.png&"] {
+  mix-blend-mode: multiply;
+}

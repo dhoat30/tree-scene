@@ -13,6 +13,7 @@ import Header from "@/components/UI/Header/Header";
 import Footer from "@/components/UI/Footer/Footer";
 import BreadcrumbHero from "@/components/UI/Hero/BreadcrumbHero";
 import GoogleReviewGridLayout from "@/components/UI/GoogleReviews/GoogleReviewGridLayout";
+import RelatedLinks from "@/components/UI/RelatedLinks/RelatedLinks";
 
 export async function generateMetadata(props, parent) {
   const params = await props.params;
@@ -97,6 +98,7 @@ export default async function Contact() {
           title={options.usp.section_title}
           description={options.usp.section_description}
         />
+        <RelatedLinks pageId="popular" title="Popular tree services in Tauranga" />
       </main>
       <Footer
         footerCtaData={options.footer_cta}

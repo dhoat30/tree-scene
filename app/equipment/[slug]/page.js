@@ -13,6 +13,7 @@ import TechLogos from "@/components/UI/TechLogos/TechLogos";
 import USP from "@/components/UI/USP/USP";
 import Header from "@/components/UI/Header/Header";
 import Footer from "@/components/UI/Footer/Footer";
+import RelatedLinks from "@/components/UI/RelatedLinks/RelatedLinks";
 import GoogleReviewsCarousel from "@/components/UI/GoogleReviews/GoogleReviewsCarousel";
 import reviewsData from "@/data/google-reviews.json";
 
@@ -92,6 +93,7 @@ export default async function Contact(props) {
           sections={postData[0]?.acf?.sections}
           serviceJobs={serviceJobs}
         />
+        <RelatedLinks pageId={slug} />
       </main>
       <Footer
         footerCtaData={options.footer_cta}

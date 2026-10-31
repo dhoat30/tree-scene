@@ -114,11 +114,19 @@ export default async function Page() {
         <TechLogos data={options.clients_logos} />
         <GoogleReviewsCarousel data={reviewsData} />
         <ServicesCardsTemplate
-          title="All Services"
-          description="We offer a wide range of services to cater to all your cleaning needs."
+          title="Tree Services in Tauranga"
+          description="From tree removal and stump grinding to pruning, hedge trimming and land clearing, we look after properties across Tauranga and the Bay of Plenty."
           cards={allPosts}
           archivePageSlug="services"
           showLimitedServices={true}
+          featuredSlugs={[
+            "tree-removal",
+            "stump-grinding",
+            "tree-pruning-tauranga",
+            "hedge-trimming-tauranga",
+            "land-clearing-tauranga",
+            "storm-damaged-trees-emergency-tree-work",
+          ]}
         />
         {/* <ServiceSelectorTabs residentialServicesData={residentialServices} commercialServicesData={commercialServices} industrialServicesData={industrialServices} title={postData[0]?.acf?.services_selector.title} description={postData[0]?.acf?.services_selector.description} /> */}
         <Layout

@@ -1,0 +1,40 @@
+.section { padding: 120px 0 72px; background: var(--light-surface-container-lowest); }
+.columns { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); align-items: start; gap: 48px; }
+.copy { min-width: 0; }
+.eyebrow { color: var(--light-primary); font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 16px; }
+.copy h1 { color: var(--light-primary-fixed-dim); font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1.08; letter-spacing: -.045em; font-weight: 700; text-wrap: balance; overflow-wrap: break-word; }
+.copy h1 span { display: block; color: var(--light-primary); }
+.lead { margin-top: 24px; max-width: 62ch; color: var(--light-on-surface-variant); font-size: clamp(1.05rem, 1.7vw, 1.25rem); line-height: 1.65; }
+.benefits { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
+.benefit { display: flex; align-items: flex-start; gap: 14px; padding: 20px; border: 1px solid var(--light-outline-variant); border-radius: 12px; }
+.check { display: inline-flex; flex-shrink: 0; justify-content: center; align-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--light-primary); color: var(--light-on-primary); }
+.benefit h2 { font-size: 1rem; font-weight: 600; line-height: 1.35; color: var(--light-primary-fixed-dim); margin-bottom: 8px; }
+.benefit p { color: var(--light-on-surface-variant); font-size: .9rem; line-height: 1.6; }
+.proof { display: grid; grid-template-columns: 1.1fr 1fr; gap: 16px; margin-top: 28px; }
+.process { border-radius: 12px; padding: 26px; background: var(--light-primary-fixed-dim); color: var(--light-on-primary-container); }
+.process h2 { color: var(--light-inverse-primary); font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; line-height: 1.5; margin-bottom: 24px; }
+.process ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
+.process li { display: flex; align-items: center; gap: 12px; font-size: .95rem; line-height: 1.6; }
+.process li span { display: inline-flex; flex-shrink: 0; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--light-primary); font-weight: 600; }
+.photo { position: relative; min-height: 300px; border-radius: 12px; overflow: hidden; background: var(--light-primary-fixed-dim); }
+.photo img { object-fit: cover; }
+.photo figcaption { position: absolute; inset: auto 0 0; padding: 48px 20px 20px; background: linear-gradient(transparent, rgba(9,39,28,.95)); color: var(--light-on-primary-container); font-size: .9rem; line-height: 1.5; }
+.formCard { min-width: 0; border: 1px solid var(--light-outline-variant); border-radius: 16px; overflow: hidden; background: var(--light-surface-container-lowest); box-shadow: 0 16px 48px rgba(9,39,28,.09); }
+.formHeading { background: var(--light-primary-fixed-dim); padding: 28px 24px; text-align: center; color: var(--light-on-primary-container); }
+.formHeading h2 { font-size: clamp(1.7rem, 2.7vw, 2.35rem); line-height: 1.15; font-weight: 600; letter-spacing: -.03em; }
+.formHeading p { margin-top: 12px; font-size: 1rem; line-height: 1.6; }
+.formBanner { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 20px; background: var(--light-primary); color: var(--light-on-primary); text-align: center; font-size: .9rem; font-weight: 500; line-height: 1.5; }
+.formBanner svg { flex-shrink: 0; width: 20px; height: 20px; }
+.formBody { display: grid; gap: 18px; padding: 28px; }
+.nameFields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.formBody :global(.MuiFormControl-root) { margin-top: 0; min-width: 0; }
+.formBody :global(.MuiOutlinedInput-root) { border-radius: 8px; }
+.formBody :global(.MuiButton-root) { margin: 4px 0 0; }
+.privacy { display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--light-on-surface-variant); font-size: .8rem; line-height: 1.5; text-align: center; }
+.privacy svg { width: 16px; height: 16px; flex-shrink: 0; }
+.talk { text-align: center; color: var(--light-on-surface-variant); font-size: .95rem; line-height: 1.6; }
+.talk a { color: var(--light-primary); font-weight: 600; margin-left: 6px; }
+.assurances { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 16px; border-top: 1px solid var(--light-outline-variant); padding-top: 18px; font-size: .75rem; font-weight: 500; color: var(--light-primary-fixed-dim); }
+@media (max-width: 1100px) { .columns { gap: 28px; } .benefits { grid-template-columns: 1fr; } .benefit { padding: 16px; } .proof { grid-template-columns: 1fr; } .photo { min-height: 260px; } }
+@media (max-width: 900px) { .section { padding: 100px 0 48px; } .columns { grid-template-columns: 1fr; gap: 32px; } .benefits { grid-template-columns: repeat(2, minmax(0,1fr)); margin-top: 0; } .copy { display: contents; } .copy > .eyebrow { margin-bottom: -20px; } .copy h1 { grid-row: 2; } .lead { grid-row: 3; margin-top: -12px; } .formCard { grid-row: 4; } .benefits { grid-row: 5; } .proof { grid-row: 6; margin-top: 0; grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .section { padding-top: 92px; } .benefits, .proof { grid-template-columns: 1fr; } .nameFields { grid-template-columns: 1fr; gap: 18px; } .formBody { padding: 22px; } .formHeading { padding: 24px 20px; } .formBanner { font-size: .85rem; } .photo { min-height: 300px; } }

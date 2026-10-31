@@ -14,6 +14,7 @@ import USP from "@/components/UI/USP/USP";
 import Header from "@/components/UI/Header/Header";
 import Footer from "@/components/UI/Footer/Footer";
 import GoogleReviewsCarousel from "@/components/UI/GoogleReviews/GoogleReviewsCarousel";
+import RelatedLinks from "@/components/UI/RelatedLinks/RelatedLinks";
 import reviewsData from "@/data/google-reviews.json";
 
 export const dynamicParams = false;
@@ -110,16 +111,28 @@ export default async function Contact(props) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Service",
-            name: postData[0]?.title?.rendered,
-            description: postData[0]?.yoast_head_json?.description,
-            provider: {
-              "@type": "LocalBusiness",
-              name: "Tree Scene Tauranga",
-              url: "https://treescene.co.nz",
-            },
-            areaServed: "Tauranga",
-            url: `https://treescene.co.nz/services/${slug}`,
+            "@graph": [
+              {
+                "@type": "Service",
+                name: postData[0]?.title?.rendered,
+                description: postData[0]?.yoast_head_json?.description,
+                provider: {
+                  "@type": "LocalBusiness",
+                  name: "Tree Scene Tauranga",
+                  url: "https://treescene.co.nz",
+                },
+                areaServed: "Tauranga",
+                url: `https://treescene.co.nz/services/${slug}`,
+              },
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Home", item: "https://treescene.co.nz" },
+                  { "@type": "ListItem", position: 2, name: "Services", item: "https://treescene.co.nz/services" },
+                  { "@type": "ListItem", position: 3, name: postData[0]?.title?.rendered, item: `https://treescene.co.nz/services/${slug}` },
+                ],
+              },
+            ],
           }),
         }}
       />
@@ -149,6 +162,7 @@ export default async function Contact(props) {
             <GoogleReviewsCarousel data={reviewsData} />
           </>
         )}
+        <RelatedLinks pageId={slug} />
       </main>
       <Footer
         footerCtaData={options.footer_cta}

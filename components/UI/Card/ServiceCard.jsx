@@ -18,7 +18,7 @@ export default function ServiceCard({ title, description, image, cta }) {
 
       <div className="content-wrapper">
         <Typography variant="h6" component="h3" className="title">
-          {title}
+          <Link href={cta?.link}>{title}</Link>
         </Typography>
         <Typography
           color="var(--dark-on-surface)"
@@ -46,6 +46,11 @@ export default function ServiceCard({ title, description, image, cta }) {
 
 const Card = styled.div`
     background-color: var(--light-surface-container-lowest) !important;
+
+  .title a {
+    color: inherit;
+    text-decoration: none;
+  }
 
   .card {
 

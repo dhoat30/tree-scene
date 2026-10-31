@@ -7,12 +7,12 @@
 
     .container {
         grid-template-columns: 600px 1fr;
-        @media(max-width: 1366px){ 
+        @media(max-width: 1366px){
             grid-template-columns: 1fr 1fr;
         }
-          @media(max-width: 1100px){ 
+          @media(max-width: 1100px){
             grid-template-columns: 1fr ;
-            gap: 24px; 
+            gap: 24px;
         }
     }
 
@@ -74,7 +74,7 @@
                     .title,
                     .description {
                         color: var(--light-tertiary);
-                       
+
                     }
 
                     background: var(--dark-tertiary);
@@ -116,15 +116,15 @@
     }
 
     .contentWrapper {
-       .subtitle, 
+       .subtitle,
         .title,
         .description {
-             @media(max-width: 1100px){ 
+             @media(max-width: 1100px){
                             text-align: center;
                         }
-         
+
         }
-        .title{ 
+        .title{
             text-transform: uppercase;
         }
 
@@ -153,56 +153,131 @@
             }
         }
     }
-    .ctaWrapper{ 
+    .ctaWrapper{
         flex-wrap: wrap;
-        @media(max-width: 1100px){ 
+        @media(max-width: 1100px){
             justify-content: center;
         }
     }
 }
 
 
-// section rows --------------------------------
+// Shared centred hero, used by every page selecting the rows layout.
 .sectionRows {
-    padding: 120px 0 80px 0;
-      background: var(--light-surface-container-lowest); 
-
-    @media(max-width: 1100px) {
-        padding: 80px 0 40px 0;
-    }
-
-  
-
-    .graphicWrapper {
-
-        @media(max-width: 900px) {
-            margin-top: 40px !important; 
-        }
-
-       
-    }
+    padding: 128px 0 72px;
+    background: var(--light-surface-container-lowest);
 
     .contentWrapper {
-        max-width: 950px; 
-        margin: 0 auto; 
-       .subtitle, 
-        .title,
-        .description {
-             @media(max-width: 1100px){ 
-                            text-align: center;
-                        }
-         
+        max-width: 960px;
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    .subtitle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin: 0 0 24px;
+        padding: 7px 14px;
+        border: 1px solid var(--light-outline-variant);
+        border-radius: 50px;
+        color: var(--light-primary);
+        background: var(--light-surface-container-low);
+        font-size: .8rem;
+        font-weight: 600;
+        line-height: 1.5;
+        letter-spacing: .04em;
+
+        &::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: currentColor;
         }
-        .title{ 
-            text-transform: uppercase;
+    }
+
+    .title {
+        text-transform: uppercase;
+        margin-inline: auto;
+
+        h1, h2 {
+            font-size: clamp(2.25rem, 4.5vw, 4rem);
+            line-height: 1.08;
+            letter-spacing: -.04em;
+            font-weight: 700;
+            text-wrap: balance;
+            overflow-wrap: break-word;
+        }
+    }
+
+    .description {
+        max-width: 66ch;
+        margin: 24px auto 0;
+        text-align: center;
+        text-wrap: pretty;
+
+        &, p {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            line-height: 1.65;
+            letter-spacing: -.015em;
         }
 
-     
+        p { margin: 0; }
+        p + p { margin-top: 12px; }
     }
-    .ctaWrapper{ 
-        flex-wrap: wrap;
-        @media(max-width: 1100px){ 
+
+    .uspWrapper {
+        :global(.text-usp-wrapper), :global(.image-usp-wrapper) {
             justify-content: center;
         }
+    }
+
+    .ctaWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 28px;
+    }
+
+    .microcopy {
+        max-width: 65ch;
+        margin: 18px auto 0;
+
+        p {
+            font-size: .85rem;
+            line-height: 1.6;
+            color: var(--light-on-surface-variant);
+            text-wrap: balance;
+        }
+    }
+
+    .graphicWrapper {
+        max-width: 1040px;
+        margin: 44px auto 0;
+    }
+
+    @media (max-width: 1100px) {
+        padding: 104px 0 48px;
+    }
+
+    @media (max-width: 600px) {
+        padding: 96px 0 40px;
+
+        .subtitle { margin-bottom: 20px; font-size: .75rem; }
+        .description { margin-top: 20px; }
+        .ctaWrapper {
+            flex-direction: column;
+            align-items: stretch;
+            max-width: 360px;
+            margin-inline: auto;
+            gap: 12px;
+        }
+        .microcopy { max-width: 40ch; }
+        .graphicWrapper { margin-top: 32px; }
     }
 }

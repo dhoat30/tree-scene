@@ -12,13 +12,18 @@ export default function ServicesCardsTemplate({
   cards,
   archivePageSlug,
   showLimitedServices = false,
+  featuredSlugs,
 }) {
   if (!cards.length > 0) return null;
-  // reverse the order of the cards
-  const reversedCards = [...cards].reverse();
+  // featuredSlugs picks and orders specific cards; otherwise show newest first
+  const orderedCards = featuredSlugs
+    ? featuredSlugs
+        .map((slug) => cards.find((card) => card.slug === slug))
+        .filter(Boolean)
+    : [...cards].reverse();
 
-  const serviceCards = reversedCards.map((item, key) => {
-    if (showLimitedServices && key > 2) return null;
+  const serviceCards = orderedCards.map((item, key) => {
+    if (showLimitedServices && !featuredSlugs && key > 2) return null;
     return (
       <ServiceCard
         key={key}

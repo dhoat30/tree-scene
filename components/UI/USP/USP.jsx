@@ -1,162 +1,185 @@
 "use client";
-import React from "react";
 import styled from "@emotion/styled";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import Container from "@mui/material/Container";
-import Divider from "@mui/material/Divider";
-export default function USP({
-  title,
-  description,
-  cards,
-  showTitle = false,
-  statsArray,
-}) {
+
+export default function USP({ title, description, cards, showTitle = false, statsArray }) {
+  const items = Array.isArray(cards) ? cards : [];
+  const stats = Array.isArray(statsArray) ? statsArray : [];
+  const hasHeading = showTitle && (title || description);
+  if (!hasHeading && !items.length && !stats.length) return null;
+
   return (
-    <Section>
-      <Container maxWidth="xl" className="container">
-        {showTitle && (
-          <div className="title-wrapper">
-            <Typography variant="h2" component="h2" className="title">
-              {title}
-            </Typography>
-            <Typography
-              variant="body1"
-              component="p"
-              className="description mt-16"
-            >
-              {description}
-            </Typography>
-            {statsArray && statsArray.length > 0 && (
-              <div className="stats-wrapper mt-24">
-                {statsArray.map((stat, index) => (
-                  <div key={index} className="stat">
-                    <Typography
-                      variant="h2"
-                      component="div"
-                      className="title"
-                      color="var(--dark-on-surface)"
-                      align="center"
-                    >
-                      {stat.value}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      component="div"
-                      className="description"
-                      color="var(--dark-on-surface)"
-                      align="center"
-                    >
-                      {stat.label}
-                    </Typography>
+    <Section data-section="usp">
+      <Container maxWidth="lg">
+        {(hasHeading || stats.length > 0) && (
+          <div className={`usp-header ${hasHeading ? "" : "stats-only"}`}>
+            {hasHeading && (
+              <div className="usp-intro">
+                {title && (
+                  <Typography variant="h2" component="h2" className="usp-title">
+                    {title}
+                  </Typography>
+                )}
+                {description && (
+                  <Typography variant="body1" component="p" className="usp-description">
+                    {description}
+                  </Typography>
+                )}
+              </div>
+            )}
+            {stats.length > 0 && (
+              <dl className="usp-stats">
+                {stats.map((stat, index) => (
+                  <div key={index} className="usp-stat">
+                    <dt>{stat.label}</dt>
+                    <dd>{stat.value}</dd>
                   </div>
                 ))}
-              </div>
+              </dl>
             )}
           </div>
         )}
-        <div className="cards-wrapper">
-          {cards &&
-            cards.length > 0 &&
-            cards.map((card, index) => (
-              <div key={index} className="card">
-                <Image
-                  src={card.icon.url}
-                  alt={card.icon.alt}
-                  width="80"
-                  height="80"
-                  className="image"
-                />
-                <div className="content">
-                  <Typography
-                    variant="h6"
-                    component="h3"
-                    className="title mt-16"
-                    color="var(--dark-on-surface)"
-                  >
+        {items.length > 0 && (
+          <div className="usp-grid">
+            {items.map((card, index) => (
+              <article key={index} className="usp-card">
+                <div className="usp-card-header">
+                  {card.icon?.url && (
+                    <span className="usp-icon">
+                      <Image src={card.icon.url} alt="" width={48} height={48} />
+                    </span>
+                  )}
+                  <Typography variant="h6" component="h3" className="usp-card-title">
                     {card.title}
                   </Typography>
-                  <Typography
-                    variant="body1"
-                    component="p"
-                    className="description mt-8"
-                    color="var(--dark-on-surface-variant)"
-                  >
-                    {card.description}
-                  </Typography>
                 </div>
-              </div>
+                <Typography variant="body1" component="p" className="usp-card-description">
+                  {card.description}
+                </Typography>
+              </article>
             ))}
-        </div>
+          </div>
+        )}
       </Container>
     </Section>
   );
 }
+
 const Section = styled.section`
-  margin-top: 8px;
-  background: var(--dark-secondary-container);
   padding: 80px 0;
+  background: var(--light-primary-fixed-dim);
+  color: var(--light-on-primary-container);
+
+  .usp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
+    margin-bottom: 36px;
+  }
+
+  .usp-intro { max-width: 650px; min-width: 0; }
+
+  .usp-title {
+    color: var(--light-on-primary-container);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -.04em;
+    text-wrap: balance;
+  }
+
+  .usp-description {
+    margin-top: 18px;
+    color: var(--light-inverse-primary);
+    font-size: 1rem;
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+
+  .usp-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    flex-shrink: 0;
+    max-width: 45%;
+  }
+
+  .usp-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 24px;
+    border-left: 1px solid var(--light-surface-tint);
+    max-width: 160px;
+
+    dt { font-size: .8rem; line-height: 1.5; color: var(--light-inverse-primary); }
+    dd {
+      order: -1;
+      margin: 0;
+      color: var(--light-on-primary-container);
+      font-size: clamp(2rem, 3vw, 2.75rem);
+      font-weight: 600;
+      letter-spacing: -.04em;
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+  .stats-only { justify-content: center; }
+  .stats-only .usp-stats { max-width: 100%; }
+
+  .usp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .usp-card {
+    min-width: 0;
+    padding: 28px;
+    border-radius: 16px;
+    border: 1px solid var(--light-surface-tint);
+    background: var(--light-primary-container);
+  }
+
+  .usp-card-header { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+  .usp-icon { display: inline-flex; flex-shrink: 0; }
+  .usp-icon img { width: 48px; height: 48px; object-fit: contain; }
+
+  .usp-card-title {
+    color: var(--light-on-primary-container);
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -.02em;
+    overflow-wrap: break-word;
+  }
+
+  .usp-card-description {
+    color: var(--light-inverse-primary);
+    font-size: .95rem;
+    line-height: 1.7;
+  }
 
   @media (max-width: 900px) {
-    padding: 40px 0;
+    .usp-header { flex-direction: column; gap: 28px; text-align: center; }
+    .usp-stats { max-width: 100%; }
+    .usp-stat { text-align: left; }
   }
-  .container {
-    display: grid;
-    grid-template-columns: 500px 1fr;
-    gap: 80px;
-    align-items: start;
-    @media (max-width: 1300px) {
-      gap: 40px;
-    }
-    @media (max-width: 1250px) {
-      gap: 24px;
-      grid-template-columns: 1fr;
-    }
-    .title-wrapper {
-      @media (min-width: 1250px) {
-        position: sticky;
-        top: 100px;
-      }
-      .title {
-        color: var(--dark-on-surface);
-      }
-      .description {
-        color: var(--dark-on-surface-variant);
-      }
-    }
-    .cards-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      @media (max-width: 900px) {
-        gap: 16px;
-      }
-      @media (max-width: 650px) {
-        grid-template-columns: 1fr;
-      }
-      .card {
-        border-radius: 12px;
-        border: 1px solid #b3f1be;
-        background: var(
-          --material-theme-sys-dark-medium-contrast-on-secondary-fixed-variant,
-          #003f1d
-        );
-        padding: 16px;
-        .title {
-        }
-        .image {
-          border-radius: 50%;
-        }
-      }
-    }
-    .stats-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      .stat {
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        padding: 8px 16px;
-      }
-    }
+
+  @media (max-width: 650px) {
+    padding: 48px 0;
+    .usp-header { margin-bottom: 28px; }
+    .usp-grid { grid-template-columns: 1fr; gap: 16px; }
+    .usp-card { padding: 24px; border-radius: 12px; }
+    .usp-card-header { gap: 12px; margin-bottom: 14px; }
+    .usp-card-title { font-size: 1.125rem; }
+    .usp-icon img { width: 40px; height: 40px; }
+    .usp-stats { gap: 20px; }
+    .usp-stat { padding-left: 16px; max-width: 140px; }
   }
 `;
